@@ -1,4 +1,4 @@
-# openshift-ghost
+# JavaScript Demo
 
 ## Bing Map
 

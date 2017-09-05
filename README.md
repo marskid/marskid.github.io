@@ -2,4 +2,4 @@
 
 ## Bing Map
 
-* [Circle](https://marskid.github.io/pages/bing-map/circle/index.html)
+* [Circle](https://marskid.github.io/bing-map/circle/index.html)

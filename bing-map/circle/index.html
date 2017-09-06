@@ -219,7 +219,11 @@
         window.map = new Microsoft.Maps.Map('#myMap', {
           credentials: 'At8g0RbyhJIuKh3ctoceki9TqUkD7FcMg3tjKDNdN8yrBJXjDJhRMik6ydqR95Cl',
           center: new Microsoft.Maps.Location(31.25486609903968, 121.48103426106735),
-          disableScrollWheelZoom: true
+          disableScrollWheelZoom: true,
+          showMapTypeSelector: false,
+          showTrafficButton: false,
+          showZoomButtons: false,
+          showLocateMeButton: false
         });
 
         //Load the spatial math module
@@ -249,29 +253,12 @@
             function viewChangeHandler() {
               var origin = map.getCenter();
               addOrigin(origin);
-              showOrigin();
             }
 
             function addOrigin(location) {
               circles[index % 2] = location;
               three.renderCircles(circles);
               index++;
-            }
-
-            function showOrigin() {
-              var origins = three.getOrigins();
-              var json = [];
-
-              for (var i = 0, len = originPin.length; i < len; i++) {
-                map.entities.remove(originPin.pop());
-              }
-
-              for (var i = 0, len = origins.length; i < len; i++) {
-                json.push({latitude: origins[i].latitude, longitude: origins[i].longitude});
-                originPin.push(new Microsoft.Maps.Pushpin(origins[i], { text: 'R' + String(i)}));
-              }
-
-              map.entities.push(originPin);
             }
           } catch (e) {
             console.log(e);
@@ -285,12 +272,4 @@
     <div id="myMap" style="position:relative;width:100%;height:400px;margin: auto"></div>
     <div id="outputPanel"></div>
   </body>
-  <style>
-    body {
-      margin: 0;
-    }
-    .details-bar.cleanslate {
-      display: none !important;
-    }
-  </style>
 </html>

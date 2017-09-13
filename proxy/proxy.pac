@@ -1,6310 +1,4774 @@
-var FindProxyForURL = function(init, profiles) {
-    return function(url, host) {
-        "use strict";
-        var result = init, scheme = url.substr(0, url.indexOf(":"));
-        do {
-            result = profiles[result];
-            if (typeof result === "function") result = result(url, host, scheme);
-        } while (typeof result !== "string" || result.charCodeAt(0) === 43);
-        return result;
-    };
-}("+Auto Switch", {
-    "+Auto Switch": function(url, host, scheme) {
-        "use strict";
-        if (/^raw\.githubusercontent\.com$/.test(host)) return "+Optimized";
-        return "+__ruleListOf_Auto Switch";
-    },
-    "+__ruleListOf_Auto Switch": function(url, host, scheme) {
-        "use strict";
-        if (/^https:\/\/share\.dmhy\.org/.test(url)) return "DIRECT";
-        if (/^http:\/\/blog\.ontrac\.com/.test(url)) return "DIRECT";
-        if (/^http:\/\/store\.sprite\.org/.test(url)) return "DIRECT";
-        if (/(?:^|\.)intl\.target\.com$/.test(host)) return "DIRECT";
-        if (/^http:\/\/xx\.wwwhost\.biz/.test(url)) return "DIRECT";
-        if (/(?:^|\.).*v6\.facebook\.com$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)redirector\.gvt1\.com$/.test(host)) return "DIRECT";
-        if (/^http:\/\/v2ex\.com/.test(url)) return "DIRECT";
-        if (/^http:\/\/cdn\.v2ex\.com/.test(url)) return "DIRECT";
-        if (/^http:\/\/cn\.v2ex\.com/.test(url)) return "DIRECT";
-        if (/^http:\/\/hk\.v2ex\.com/.test(url)) return "DIRECT";
-        if (/^http:\/\/i\.v2ex\.com/.test(url)) return "DIRECT";
-        if (/^http:\/\/lax\.v2ex\.com/.test(url)) return "DIRECT";
-        if (/^http:\/\/neue\.v2ex\.com/.test(url)) return "DIRECT";
-        if (/^http:\/\/pagespeed\.v2ex\.com/.test(url)) return "DIRECT";
-        if (/^http:\/\/static\.v2ex\.com/.test(url)) return "DIRECT";
-        if (/^http:\/\/workspace\.v2ex\.com/.test(url)) return "DIRECT";
-        if (/^http:\/\/www\.v2ex\.com/.test(url)) return "DIRECT";
-        if (/(?:^|\.)aftygh\.gov\.tw$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)aide\.gov\.tw$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)tpde\.aide\.gov\.tw$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)arte\.gov\.tw$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)chukuang\.gov\.tw$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)cwb\.gov\.tw$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)cycab\.gov\.tw$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)dbnsa\.gov\.tw$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)df\.gov\.tw$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)eastcoast-nsa\.gov\.tw$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)erv-nsa\.gov\.tw$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)grb\.gov\.tw$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)gysd\.nyc\.gov\.tw$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)hchcc\.gov\.tw$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)hsinchu-cc\.gov\.tw$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)iner\.gov\.tw$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)klsio\.gov\.tw$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)kmseh\.gov\.tw$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)lungtanhr\.gov\.tw$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)maolin-nsa\.gov\.tw$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)matsu-news\.gov\.tw$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)matsu-nsa\.gov\.tw$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)matsucc\.gov\.tw$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)moe\.gov\.tw$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)mvdis\.gov\.tw$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)nankan\.gov\.tw$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)ncree\.gov\.tw$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)necoast-nsa\.gov\.tw$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)siraya-nsa\.gov\.tw$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)cromotc\.nat\.gov\.tw$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)tax\.nat\.gov\.tw$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)necoast-nsa\.gov\.tw$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)ner\.gov\.tw$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)nmmba\.gov\.tw$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)nmp\.gov\.tw$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)nmvttc\.gov\.tw$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)northguan-nsa\.gov\.tw$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)npm\.gov\.tw$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)nstm\.gov\.tw$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)ntdmh\.gov\.tw$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)ntl\.gov\.tw$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)ntsec\.gov\.tw$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)ntuh\.gov\.tw$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)nvri\.gov\.tw$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)penghu-nsa\.gov\.tw$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)post\.gov\.tw$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)siraya-nsa\.gov\.tw$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)stdtime\.gov\.tw$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)sunmoonlake\.gov\.tw$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)taitung-house\.gov\.tw$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)taoyuan\.gov\.tw$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)tphcc\.gov\.tw$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)trimt-nsa\.gov\.tw$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)vghtpe\.gov\.tw$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)vghks\.gov\.tw$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)vghtc\.gov\.tw$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)wanfang\.gov\.tw$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)yatsen\.gov\.tw$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)yda\.gov\.tw$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)bianlei\.com$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)www\.exblog\.jp$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)site\.locql\.com$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)download\.syniumsoftware\.com$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)haygo\.com$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)f\.cl\.ly$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)hiwifi\.com$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)myvlog\.im\.tv$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)music\.jwmusic\.org$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)www\.kodingen\.com$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)openwrt\.org\.cn$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)simplecd\.me$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)static\.soup\.io$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)www\.typepad\.com$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)static\.typepad\.com$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)vpser\.net$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)wallproxy\.com\.cn$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)aliyun\.com$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)baidu\.com$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)chinaso\.com$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)chinaz\.com$/.test(host)) return "DIRECT";
-        if (/^http:\/\/nrch\.culture\.tw\//.test(url)) return "DIRECT";
-        if (/(?:^|\.)dl\.google\.com$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)kh\.google\.com$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)tools\.google\.com$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)fonts\.googleapis\.com$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)storage\.googleapis\.com$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)cn\.gravatar\.com$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)connectivitycheck\.gstatic\.com$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)csi\.gstatic\.com$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)fonts\.gstatic\.com$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)haosou\.com$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)jd\.com$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)jike\.com$/.test(host)) return "DIRECT";
-        if (/^http:\/\/translate\.google\.cn/.test(url)) return "DIRECT";
-        if (/^http:\/\/www\.google\.cn\/maps/.test(url)) return "DIRECT";
-        if (/(?:^|\.)http2\.golang\.org$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)gov\.cn$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)qq\.com$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)sina\.cn$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)sina\.com\.cn$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)sogou\.com$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)so\.com$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)soso\.com$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)taobao\.com$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)uluai\.com\.cn$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)weibo\.com$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)yahoo\.cn$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)youdao\.com$/.test(host)) return "DIRECT";
-        if (/(?:^|\.)zhongsou\.com$/.test(host)) return "DIRECT";
-        if (/^http:\/\/ime\.baidu\.jp/.test(url)) return "DIRECT";
-        if (/(?:^|\.)2dbook\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)4tern\.com$/.test(host)) return "+Optimized";
-        if (/^http:\/\/85\.17\.73\.31\//.test(url)) return "+Optimized";
-        if (/(?:^|\.)adorama\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)agnesb\.fr$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)akiba-web\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)alien-ufos\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)altrec\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)arena\.taipei$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)asianspiss\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)assimp\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)athenaeizou\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)azubu\.tv$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)banorte\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)bash-hackers\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)beeg\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)global\.bing\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)bloombergview\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)boysmaster\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)carfax\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".casinobellini.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)casinobellini\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)centauro\.com\.br$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)images\.comico\.tw$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)static\.comico\.tw$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)crossfire\.co\.kr$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)d2pass\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)darpa\.mil$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)dawangidc\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)deezer\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)desipro\.de$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)dingchin\.com\.tw$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)dish\.com$/.test(host)) return "+Optimized";
-        if (/^http:\/\/img\.dlsite\.jp\//.test(url)) return "+Optimized";
-        if (/(?:^|\.)dm530\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("share.dmhy.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)dmm\.co\.jp$/.test(host)) return "+Optimized";
-        if (/^http:\/\/www\.dmm\.com\/netgame/.test(url)) return "+Optimized";
-        if (/(?:^|\.)eesti\.ee$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".expekt.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)expekt\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".extmatrix.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)extmatrix\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)fakku\.net$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)fastpic\.ru$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)filesor\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)financetwitter\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)findmima\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)flipboard\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)flitto\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)funkyimg\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)fxnetworks\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)g-area\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)gettyimages\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)getuploader\.com$/.test(host)) return "+Optimized";
-        if (/^https:\/\/github\.com\/programthink\/zhao/.test(url)) return "+Optimized";
-        if (/^https:\/\/raw\.githubusercontent\.com\/programthink\/zhao/.test(url)) return "+Optimized";
-        if (/(?:^|\.)glass8\.eu$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)glype\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)go141\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)hautelook\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)hautelookcdn\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)hmvdigital\.ca$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)hmvdigital\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)homedepot\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)hoovers\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)hulu\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)huluim\.com$/.test(host)) return "+Optimized";
-        if (/^http:\/\/secure\.hustler\.com/.test(url)) return "+Optimized";
-        if (/^http:\/\/hustlercash\.com/.test(url)) return "+Optimized";
-        if (/^http:\/\/www\.hustlercash\.com/.test(url)) return "+Optimized";
-        if (/(?:^|\.)hybrid-analysis\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)cdn.*\.i-scmp\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)ilovelongtoes\.com$/.test(host)) return "+Optimized";
-        if (/^http:\/\/imgmega\.com\/.*\.gif\.html/.test(url)) return "+Optimized";
-        if (/^http:\/\/imgmega\.com\/.*\.jpg\.html/.test(url)) return "+Optimized";
-        if (/^http:\/\/imgmega\.com\/.*\.jpeg\.html/.test(url)) return "+Optimized";
-        if (/^http:\/\/imgmega\.com\/.*\.png\.html/.test(url)) return "+Optimized";
-        if (/^http:\/\/imgur\.com\/upload/.test(url)) return "+Optimized";
-        if (/^https:\/\/imgur\.com\/upload/.test(url)) return "+Optimized";
-        if (/(?:^|\.)javhub\.net$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)javhuge\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".javlibrary.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)javlibrary\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)jcpenney\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)jims\.net$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)jukujo-club\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)juliepost\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)kawaiikawaii\.jp$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)kendatire\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)khatrimaza\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)kkbox\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)leisurepro\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)longtoes\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)lovetvshow\.com$/.test(host)) return "+Optimized";
-        if (/^http:\/\/www\.m-sport\.co\.uk/.test(url)) return "+Optimized";
-        if (/(?:^|\.)macgamestore\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)madonna-av\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)mangafox\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)mangafox\.me$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)manta\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)matome-plus\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)matome-plus\.net$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)mattwilcox\.net$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)metarthunter\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)mfxmedia\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)kb\.monitorware\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)monster\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)moodyz\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)mos\.ru$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)msha\.gov$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)muzu\.tv$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)mvg\.jp$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".mybet.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)mybet\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)nationwide\.com$/.test(host)) return "+Optimized";
-        if (/^http:\/\/www\.nbc\.com\/live/.test(url)) return "+Optimized";
-        if (/(?:^|\.)neo-miracle\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)netflix\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)nflximg\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)nflximg\.net$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)nflxext\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)nflxso\.net$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)nflxvideo\.net$/.test(host)) return "+Optimized";
-        if (/^http:\/\/mo\.nightlife141\.com/.test(url)) return "+Optimized";
-        if (/(?:^|\.)nordstrom\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)nordstromimage\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)nordstromrack\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)nottinghampost\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)ntdtv\.cz$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)s1\.nudezz\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)nusatrip\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)nuuvem\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)omni7\.jp$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)onapp\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)ontrac\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)pandora\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".pandora.tv") >= 0) return "+Optimized";
-        if (/(?:^|\.)parkansky\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)phmsociety\.org$/.test(host)) return "+Optimized";
-        if (/^http:\/\/.*\.pimg\.tw\//.test(url)) return "+Optimized";
-        if (/(?:^|\.)pure18\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)qq\.co\.za$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)r18\.com$/.test(host)) return "+Optimized";
-        if (/^http:\/\/radiko\.jp/.test(url)) return "+Optimized";
-        if (/(?:^|\.)ramcity\.com\.au$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)rd\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)rdio\.com$/.test(host)) return "+Optimized";
-        if (/^https:\/\/riseup\.net/.test(url)) return "+Optimized";
-        if (/(?:^|\.)sadistic-v\.com$/.test(host)) return "+Optimized";
-        if (/^http:\/\/cdn.*\.search\.xxx\//.test(url)) return "+Optimized";
-        if (/(?:^|\.)shutterstock\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)slacker\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)sm-miracle\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)spotify\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)springboardplatform\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)sprite\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)superokayama\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)superpages\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)swagbucks\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)switch1\.jp$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)tapanwap\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)target\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)thebodyshop-usa\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)tma\.co\.jp$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)tracfone\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)tryheart\.jp$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)turntable\.fm$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)twerkingbutt\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)ulop\.net$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)vegasred\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)vevo\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)vip-enterprise\.com$/.test(host)) return "+Optimized";
-        if (/^http:\/\/viu\.tv\/ch\//.test(url)) return "+Optimized";
-        if (/^http:\/\/viu\.tv\/encore\//.test(url)) return "+Optimized";
-        if (/^http:\/\/ecsm\.vs\.com\//.test(url)) return "+Optimized";
-        if (/(?:^|\.)wanz-factory\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)ssl\.webpack\.de$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)wheretowatch\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)wingamestore\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)wizcrafts\.net$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)vod\.wwe\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)xfinity\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)ytn\.co\.kr$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)zattoo\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)zim\.vn$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)zozotown\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("14.102.250.18") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("14.102.250.19") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("50.7.31.230:8898") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("174.142.105.153") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("69.65.19.160") >= 0) return "+Optimized";
-        if (/(?:^|\.)xn--4gq171p\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)xn--i2ru8q2qg\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)xn--p8j9a0d9c9a\.xn--q9jyb4c$/.test(host)) return "+Optimized";
-        if (/^https:\/\/.*\.s3\.amazonaws\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("china-mmm.jp.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".lsxszzg.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".china-mmm.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)china-mmm\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("china-mmm.sa.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".now.im") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".amazon.com/Dalai-Lama") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("s3-ap-northeast-1.amazonaws.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".avmo.pw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".avmoo.com") >= 0) return "+Optimized";
-        if (/^http:\/\/avmoo\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".avmoo.net") >= 0) return "+Optimized";
-        if (/^http:\/\/avmoo\.net/.test(url)) return "+Optimized";
-        if (/(?:^|\.)avmoo\.pw$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".javmoo.xyz") >= 0) return "+Optimized";
-        if (/^http:\/\/javmoo\.xyz/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".javtag.com") >= 0) return "+Optimized";
-        if (/^http:\/\/javtag\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".javzoo.com") >= 0) return "+Optimized";
-        if (/^http:\/\/javzoo\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".1dumb.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".25u.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".2waky.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".3-a.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".4dq.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".4mydomain.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".4pu.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".acmetoy.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".almostmy.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".americanunfinished.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".authorizeddns.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".authorizeddns.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".authorizeddns.us") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".bigmoney.biz") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".changeip.name") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".changeip.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".changeip.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".cleansite.biz") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".cleansite.info") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".cleansite.us") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".compress.to") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ddns.info") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ddns.me.uk") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ddns.mobi") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ddns.ms") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ddns.name") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ddns.us") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dhcp.biz") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dns-dns.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dns-stuff.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dns04.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dns05.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dns1.us") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dns2.us") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dnset.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dnsrd.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dsmtp.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dumb1.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dynamic-dns.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dynamicdns.biz") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dynamicdns.co.uk") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dynamicdns.me.uk") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dynamicdns.org.uk") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dyndns.pro") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dynssl.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".edns.biz") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".epac.to") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".esmtp.biz") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ezua.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".faqserv.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".fartit.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".freeddns.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".freetcp.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".freewww.biz") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".freewww.info") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftp1.biz") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftpserver.biz") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".gettrials.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".got-game.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".gr8domain.biz") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".gr8name.biz") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".https443.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".https443.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ikwb.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".instanthq.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".iownyour.biz") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".iownyour.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".isasecret.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".itemdb.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".itsaol.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".jetos.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".jkub.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".jungleheart.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".justdied.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".lflink.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".lflinkup.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".lflinkup.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".lflinkup.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".longmusic.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".mefound.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".moneyhome.biz") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".mrbasic.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".mrbonus.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".mrface.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".mrslove.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".my03.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".mydad.info") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".myddns.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".myftp.info") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".myftp.name") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".mylftv.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".mymom.info") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".mynetav.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".mynetav.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".mynumber.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".mypicture.info") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".mypop3.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".mypop3.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".mysecondarydns.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".mywww.biz") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".myz.info") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ninth.biz") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ns01.biz") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ns01.info") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ns01.us") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ns02.biz") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ns02.info") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ns02.us") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ns1.name") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ns2.name") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ns3.name") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ocry.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".onedumb.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".onmypc.biz") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".onmypc.info") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".onmypc.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".onmypc.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".onmypc.us") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".organiccrap.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".otzo.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ourhobby.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".pcanywhere.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".port25.biz") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".proxydns.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".qhigh.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".qpoe.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".rebatesrule.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".sellclassics.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".sendsmtp.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".serveuser.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".serveusers.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".sexidude.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".sexxxy.biz") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".sixth.biz") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".squirly.info") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ssl443.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".toh.info") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".toythieves.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".trickip.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".trickip.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".vizvaz.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".wha.la") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".wikaba.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".www1.biz") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".wwwhost.biz") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".x24hr.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".xxuz.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".xxxy.biz") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".xxxy.info") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ygto.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".youdontcare.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".yourtrap.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".zyns.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".zzux.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("d1b183sg0nvnuh.cloudfront.net") >= 0) return "+Optimized";
-        if (/^https:\/\/d1b183sg0nvnuh\.cloudfront\.net/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("d1c37gjwa26taa.cloudfront.net") >= 0) return "+Optimized";
-        if (/^https:\/\/d1c37gjwa26taa\.cloudfront\.net/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("d3c33hcgiwev3.cloudfront.net") >= 0) return "+Optimized";
-        if (/^https:\/\/d3c33hcgiwev3\.cloudfront\.net/.test(url)) return "+Optimized";
-        if (/(?:^|\.)d3rhr7kgmtrq1v\.cloudfront\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".3d-game.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".4irc.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".b0ne.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".chatnook.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".darktech.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".deaftone.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dtdns.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".effers.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".etowns.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".etowns.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".flnet.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".gotgeeks.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".scieron.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".slyip.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".slyip.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".suroot.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".blogdns.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dyndns.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dyndns-ip.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dyndns-pics.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".from-sd.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".from-pr.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".is-a-hunter.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dynu.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dynu.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".freeddns.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)facebook\.br$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".facebook.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)facebook\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)facebook\.design$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)connect\.facebook\.net$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)facebook\.hu$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)facebook\.in$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)facebook\.nl$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)facebook\.se$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)fb\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)fb\.me$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)m\.me$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)messenger\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)oculus\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)oculuscdn\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)rocksdb\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)whatsapp\.net$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)1e100\.net$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)abc\.xyz$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)admob\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)adsense\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)agoogleaday\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)ampproject\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)android\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)androidify\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)api\.ai$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".appspot.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)appspot\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)blog\.google$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("blogspot.com") >= 0) return "+Optimized";
-        if (/^https?:\/\/[^\/]+blogspot\.(.*)/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".blogspot.hk") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".blogspot.jp") >= 0) return "+Optimized";
-        if (/(?:^|\.)certificate-transparency\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)chrome\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)chromecast\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)chromeexperiments\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)chromercise\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)chromestatus\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)chromium\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)com\.google$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)creativelab5\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)data-vocabulary\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)debug\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)deepmind\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)deja\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)design\.google$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)digisfera\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)domains\.google$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)environment\.google$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)feedburner\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)g\.co$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)gcr\.io$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)get\.how$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)getmdl\.io$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)ggpht\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)gmail\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)gmodules\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)godoc\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)golang\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)goo\.gl$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".google.ae") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".google.as") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".google.am") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".google.at") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".google.az") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".google.ba") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".google.be") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".google.bg") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".google.cat") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".google.cd") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".google.ci") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".google.co.id") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".google.co.jp") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".google.co.kr") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".google.co.ma") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".google.co.uk") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".google.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".google.de") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".google.dj") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".google.dk") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".google.es") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".google.fi") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".google.fm") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".google.fr") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".google.gg") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".google.gl") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".google.gr") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".google.ie") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".google.is") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".google.it") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".google.jo") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".google.kz") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".google.lv") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".google.mn") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".google.ms") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".google.nl") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".google.nu") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".google.no") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".google.ro") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".google.ru") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".google.rw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".google.sc") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".google.sh") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".google.sk") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".google.sm") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".google.sn") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".google.tk") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".google.tm") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".google.to") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".google.tt") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".google.vu") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".google.ws") >= 0) return "+Optimized";
-        if (/^https?:\/\/([^\/]+\.)*google\.(ac|ad|ae|al|am|as|at|az|ba|be|bf|bg|bi|bj|bs|bt|by|ca|cat|cd|cf|cg|ch|ci|cl|cm|co.ao|co.bw|co.ck|co.cr|co.id|co.il|co.in|co.jp|co.ke|co.kr|co.ls|co.ma|com|com.af|com.ag|com.ai|com.ar|com.au|com.bd|com.bh|com.bn|com.bo|com.br|com.bz|com.co|com.cu|com.cy|com.do|com.ec|com.eg|com.et|com.fj|com.gh|com.gi|com.gt|com.hk|com.jm|com.kh|com.kw|com.lb|com.ly|com.mm|com.mt|com.mx|com.my|com.na|com.nf|com.ng|com.ni|com.np|com.om|com.pa|com.pe|com.pg|com.ph|com.pk|com.pr|com.py|com.qa|com.sa|com.sb|com.sg|com.sl|com.sv|com.tj|com.tr|com.tw|com.ua|com.uy|com.vc|com.vn|co.mz|co.nz|co.th|co.tz|co.ug|co.uk|co.uz|co.ve|co.vi|co.za|co.zm|co.zw|cv|cz|de|dj|dk|dm|dz|ee|es|eu|fi|fm|fr|ga|ge|gg|gl|gm|gp|gr|gy|hk|hn|hr|ht|hu|ie|im|iq|is|it|je|jo|kg|ki|kz|la|li|lk|lt|lu|lv|md|me|mg|mk|ml|mn|ms|mu|mv|mw|mx|ne|nl|no|nr|nu|org|pl|pn|ps|pt|ro|rs|ru|rw|sc|se|sh|si|sk|sm|sn|so|sr|st|td|tg|tk|tl|tm|tn|to|tt|us|vg|vn|vu|ws)\/.*/.test(url)) return "+Optimized";
-        if (/(?:^|\.)googleapis\.cn$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)googleapis\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)googleapps\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)googleartproject\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)googleblog\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)googlebot\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)googlecapital\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)googlecode\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)googlecommerce\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)googledomains\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)googleearth\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)googledrive\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)googlegroups\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)googlehosted\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)googleideas\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)googleinsidesearch\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)googlelabs\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)googlemail\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)googleplay\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)googleplus\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)googlesource\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)googlesyndication\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)googleusercontent\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)googlevideo\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)googleweblight\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)googlezip\.net$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)groups\.google\.cn$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)gstatic\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)gvt0\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)gvt1\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)gvt3\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)gwtproject\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)html5rocks\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)iam\.soy$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)igoogle\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)itasoftware\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)like\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)madewithcode\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)material\.io$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)nic\.google$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)on2\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)panoramio\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)picasaweb\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)polymer-project\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)questvisual\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)api\.recaptcha\.net$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)api-secure\.recaptcha\.net$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)api-verify\.recaptcha\.net$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)redhotlabs\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)registry\.google$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)savethedate\.foo$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)schema\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)shattered\.io$/.test(host)) return "+Optimized";
-        if (/^http:\/\/sipml5\.org\//.test(url)) return "+Optimized";
-        if (/(?:^|\.)stories\.google$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)synergyse\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)teachparentstech\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)tensorflow\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)thinkwithgoogle\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)tiltbrush\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)waveprotocol\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)waymo\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)webmproject\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)webrtc\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)whatbrowser\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)withgoogle\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)xn--ngstr-lra8j\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)youtu\.be$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".youtube.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)youtube\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)youtube-nocookie\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)youtubeeducation\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)youtubegaming\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)ytimg\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)zynamics\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)naughtyamerica\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".v2ex.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)gov\.taipei$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".gov.tw") >= 0) return "+Optimized";
-        if (/(?:^|\.)archives\.gov\.tw$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)tacc\.cwb\.gov\.tw$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)immigration\.gov\.tw$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)itaiwan\.gov\.tw$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)mjib\.gov\.tw$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)nsc\.gov\.tw$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)ntbna\.gov\.tw$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)ntsna\.gov\.tw$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("taipei.gov.tw") >= 0) return "+Optimized";
-        if (/(?:^|\.)thb\.gov\.tw$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".030buy.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".0rz.tw") >= 0) return "+Optimized";
-        if (/^http:\/\/0rz\.tw/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("1-apple.com.tw") >= 0) return "+Optimized";
-        if (/(?:^|\.)1-apple\.com\.tw$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".100ke.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".1000giri.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)1000giri\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".10conditionsoflove.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)10musume\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("123rf.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".12bet.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)12bet\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".12vpn.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".12vpn.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)12vpn\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)12vpn\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("141hongkong.com/forum") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".141tube.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".1688.com.au") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".173ng.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)173ng\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".177pic.info") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".17t17p.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)18board\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)18board\.info$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("18onlygirls.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".18p2p.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".18virginsex.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".1949er.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("zhao.1984.city") >= 0) return "+Optimized";
-        if (/(?:^|\.)zhao\.1984\.city$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("1984bbs.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)1984bbs\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".1984bbs.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)1984bbs\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".1991way.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)1991way\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".1998cdp.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".1bao.org") >= 0) return "+Optimized";
-        if (/^http:\/\/1bao\.org/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".1eew.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".1mobile.com") >= 0) return "+Optimized";
-        if (/^http:\/\/.*\.1mobile\.tw/.test(url)) return "+Optimized";
-        if (/(?:^|\.)1pondo\.tv$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".2-hand.info") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".2000fun.com/bbs") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".2008xianzhang.info") >= 0) return "+Optimized";
-        if (/(?:^|\.)2008xianzhang\.info$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)2017\.hk$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("21andy.com/blog") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".21pron.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("21sextury.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".228.net.tw") >= 0) return "+Optimized";
-        if (/(?:^|\.)24hrs\.ca$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("24smile.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("2lipstube.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".2shared.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("30boxes.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".315lz.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)32red\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)36rain\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".3a5a.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("3arabtv.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".3boys2girls.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".3proxy.ru") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".3ren.ca") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".3tui.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)4bluestones\.biz$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".4everproxy.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)4everproxy\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)4rbtv\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)4shared\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("taiwannation.50webs.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)51\.ca$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)51jav\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".51luoben.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)51luoben\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".5278.cc") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("5aimiku.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("5i01.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".5isotoi5.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".5maodang.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)63i\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".64museum.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("64tianwang.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("64wiki.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".66.ca") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("666kb.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("6park.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)6park\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)7capture\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".7cow.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".8-d.com") >= 0) return "+Optimized";
-        if (/^http:\/\/8-d\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("85cc.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".85cc.us") >= 0) return "+Optimized";
-        if (/^http:\/\/85cc\.us/.test(url)) return "+Optimized";
-        if (/^http:\/\/85st\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".881903.com/page/zh-tw/") >= 0) return "+Optimized";
-        if (/(?:^|\.)881903\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".888.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".888poker.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("89-64.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)89-64\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".8news.com.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".8z1.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)8z1\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".9001700.com") >= 0) return "+Optimized";
-        if (/^http:\/\/908taiwan\.org\//.test(url)) return "+Optimized";
-        if (/(?:^|\.)91porn\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".92ccav.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".991.com") >= 0) return "+Optimized";
-        if (/^http:\/\/991\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".99btgc01.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)99btgc01\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".99cn.info") >= 0) return "+Optimized";
-        if (/^http:\/\/99cn\.info/.test(url)) return "+Optimized";
-        if (/(?:^|\.)9bis\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)9bis\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tibet.a.se") >= 0) return "+Optimized";
-        if (/^http:\/\/tibet\.a\.se/.test(url)) return "+Optimized";
-        if (/(?:^|\.)a-normal-day\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("a5.com.ru") >= 0) return "+Optimized";
-        if (/^http:\/\/aamacau\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".abc.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".abchinese.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ablwang.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".aboluowang.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)aboluowang\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".aboutgfw.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".abs.edu") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".accim.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".aceros-de-hispania.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".acevpn.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)acevpn\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".acg18.me") >= 0) return "+Optimized";
-        if (/^http:\/\/acg18\.me/.test(url)) return "+Optimized";
-        if (/(?:^|\.)acgkj\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".acnw.com.au") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("actfortibet.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("actimes.com.au") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("activpn.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)activpn\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)aculo\.us$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)addictedtocoffee\.de$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".adelaidebbs.com/bbs") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".adpl.org.hk") >= 0) return "+Optimized";
-        if (/^http:\/\/adpl\.org\.hk/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".adult-sex-games.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)adult-sex-games\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("adultfriendfinder.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("adultkeep.net/peepshow/members/main.htm") >= 0) return "+Optimized";
-        if (/(?:^|\.)advanscene\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)advertfan\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ae.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)aenhancers\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)af\.mil$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".afantibbs.com") >= 0) return "+Optimized";
-        if (/^http:\/\/afantibbs\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ai-kan.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)ai-kan\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("ai-wen.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".aiph.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)aiph\.net$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)airconsole\.com$/.test(host)) return "+Optimized";
-        if (/^http:\/\/download\.aircrack-ng\.org/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".airvpn.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)airvpn\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".aisex.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)ait\.org\.tw$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("aiweiwei.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".aiweiweiblog.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)aiweiweiblog\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)www\.ajsands\.com$/.test(host)) return "+Optimized";
-        if (/^https:\/\/fbcdn.*\.akamaihd\.net\//.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("a248.e.akamai.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)a248\.e\.akamai\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("voa-11.akacast.akamaistream.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".akademiye.org/ug") >= 0) return "+Optimized";
-        if (/^http:\/\/akademiye\.org\/ug/.test(url)) return "+Optimized";
-        if (/(?:^|\.)akiba-online\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".al-islam.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)al-qimmah\.net$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)alabout\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".alanhou.com") >= 0) return "+Optimized";
-        if (/^http:\/\/alanhou\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".alarab.qa") >= 0) return "+Optimized";
-        if (/(?:^|\.)alasbarricadas\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("alexlur.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)alforattv\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".alhayat.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".alicejapan.co.jp") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("aliengu.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)alkasir\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)allconnected\.co$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".alldrawnsex.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)alldrawnsex\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".allervpn.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)allfinegirls\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".allgirlmassage.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("allgirlsallowed.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".allgravure.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("alliance.org.hk") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".allinfa.com") >= 0) return "+Optimized";
-        if (/^http:\/\/allinfa\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".alljackpotscasino.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)allmovie\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".alphaporno.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)alternate-tools\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("alternativeto.net/software") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("alvinalexander.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("alwaysdata.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)alwaysdata\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)alwaysdata\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".alwaysvpn.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)alwaysvpn\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)am730\.com\.hk$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("amazon.com/Prisoner-State-Secret-Journal-Premier") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("ameblo.jp") >= 0) return "+Optimized";
-        if (/(?:^|\.)ameblo\.jp$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("www1.american.edu/ted/ice/tibet") >= 0) return "+Optimized";
-        if (/(?:^|\.)americangreencard\.com$/.test(host)) return "+Optimized";
-        if (/^http:\/\/www\.americorps\.gov/.test(url)) return "+Optimized";
-        if (/(?:^|\.)amiblockedornot\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".amigobbs.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".amitabhafoundation.us") >= 0) return "+Optimized";
-        if (/^http:\/\/amitabhafoundation\.us/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".amnesty.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)amnesty\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)amnesty\.org\.hk$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".amnesty.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".amnestyusa.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)amnestyusa\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".amnyemachen.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".amoiist.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("androidplus.co/apk") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".andygod.com") >= 0) return "+Optimized";
-        if (/^http:\/\/andygod\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("annatam.com/chinese") >= 0) return "+Optimized";
-        if (/(?:^|\.)anchorfree\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)ancsconf\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)andfaraway\.net$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)android-x86\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("angelfire.com/hi/hayashi") >= 0) return "+Optimized";
-        if (/(?:^|\.)angularjs\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("animecrazy.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".animeshippuuden.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("aniscartujo.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)aniscartujo\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)anobii\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("anonymise.us") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".anonymitynetwork.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".anonymizer.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("anontext.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".anpopo.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".answering-islam.org") >= 0) return "+Optimized";
-        if (/^http:\/\/www\.antd\.org/.test(url)) return "+Optimized";
-        if (/(?:^|\.)anthonycalzadilla\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".anti1984.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("antichristendom.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".antiwave.net") >= 0) return "+Optimized";
-        if (/^http:\/\/antiwave\.net/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".anysex.com") >= 0) return "+Optimized";
-        if (/^http:\/\/anysex\.com/.test(url)) return "+Optimized";
-        if (/(?:^|\.)aobo\.com\.au$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".aofriend.com") >= 0) return "+Optimized";
-        if (/^http:\/\/aofriend\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".aofriend.com.au") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".aojiao.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)aolchannels\.aol\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("video.aol.ca/video-detail") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("video.aol.co.uk/video-detail") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("video.aol.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)video\.aol\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)search\.aol\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("www.aolnews.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)aomiwang\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("video.ap.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".apetube.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)apiary\.io$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".apigee.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)apigee\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("apk-dl.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("apkdler.com/apk/view") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".apkmonk.com/app") >= 0) return "+Optimized";
-        if (/(?:^|\.)apkplz\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("apkpure.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)apkpure\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".aplusvpn.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".appdownloader.net/Android") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("appledaily.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".appshopper.com") >= 0) return "+Optimized";
-        if (/^http:\/\/appshopper\.com/.test(url)) return "+Optimized";
-        if (/(?:^|\.)appsocks\.net$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)appsto\.re$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)archives\.gov$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".archive.is") >= 0) return "+Optimized";
-        if (/^http:\/\/archive\.is/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".archive.fo") >= 0) return "+Optimized";
-        if (/(?:^|\.)archive\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".arctosia.com") >= 0) return "+Optimized";
-        if (/^http:\/\/arctosia\.com/.test(url)) return "+Optimized";
-        if (/(?:^|\.)areca-backup\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".arethusa.su") >= 0) return "+Optimized";
-        if (/(?:^|\.)arethusa\.su$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)arlingtoncemetery\.mil$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)army\.mil$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)arstechnica\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".art4tibet1998.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("artofpeacefoundation.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("artsy.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)asacp\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".asahichinese.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)asahichinese\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("asdfg.jp/dabr") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("asg.to") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".asia-gaming.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".asiaharvest.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)asiaharvest\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("asianews.it") >= 0) return "+Optimized";
-        if (/^http:\/\/japanfirst\.asianfreeforum\.com\//.test(url)) return "+Optimized";
-        if (/(?:^|\.)asiansexdiary\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)asianwomensfilm\.de$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".asiatgp.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".asiatoday.us") >= 0) return "+Optimized";
-        if (/(?:^|\.)askstudent\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".askynz.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)askynz\.net$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)assembla\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)astrill\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)atc\.org\.au$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".atchinese.com") >= 0) return "+Optimized";
-        if (/^http:\/\/atchinese\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("atgfw.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".atlaspost.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)atlaspost\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)atdmt\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".atnext.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)atnext\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("ice.audionow.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("avaaz.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)avaaz\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".avbody.tv") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".avcity.tv") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".avcool.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".avdb.in") >= 0) return "+Optimized";
-        if (/(?:^|\.)avdb\.in$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".avdb.tv") >= 0) return "+Optimized";
-        if (/(?:^|\.)avdb\.tv$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".avfantasy.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)avidemux\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)avoision\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".avyahoo.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)axureformac\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".azerbaycan.tv") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("azerimix.com") >= 0) return "+Optimized";
-        if (/^http:\/\/.*boxun.*\.azurewebsites\.net/.test(url)) return "+Optimized";
-        if (/(?:^|\.)boxun.*\.azurewebsites\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("forum.baby-kingdom.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("babynet.com.hk") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("backchina.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)backchina\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".backpackers.com.tw/forum") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("backtotiananmen.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".badjojo.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("badoo.com") >= 0) return "+Optimized";
-        if (/^http:\/\/.*2\.bahamut\.com\.tw/.test(url)) return "+Optimized";
-        if (/(?:^|\.)baidu\.jp$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)bailandaily\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)baixing\.me$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)bakgeekhome\.tk$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".banana-vpn.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)banana-vpn\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".bandwagonhost.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)bandwagonhost\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".bangbrosnetwork.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".bangchen.net") >= 0) return "+Optimized";
-        if (/^http:\/\/bangchen\.net/.test(url)) return "+Optimized";
-        if (/(?:^|\.)bangyoulater\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("bannedbook.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)bannedbook\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".bannednews.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".baramangaonline.com") >= 0) return "+Optimized";
-        if (/^http:\/\/baramangaonline\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".barenakedislam.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)barnabu\.co\.uk$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("bartvpn.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".bastillepost.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("bayvoice.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)bayvoice\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("dajusha.baywords.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)bbchat\.tv$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)bb-chat\.tv$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".bbc.co.uk/chinese") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".bbc.co.uk/news/world-asia-china") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".bbc.co.uk/tv") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".bbc.co.uk/zhongwen") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".bbc.com/ukchina") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".bbc.com/zhongwen") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".bbc.com%2Fzhongwen") >= 0) return "+Optimized";
-        if (/^http:\/\/.*news\.bbc\.co\.uk\/onthisday.*newsid_2496000\/2496277/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("newsforums.bbc.co.uk") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".bbcchinese.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)bbcchinese\.com$/.test(host)) return "+Optimized";
-        if (/^http:\/\/bbc\.in/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".bbg.gov") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".bbkz.com/forum") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".bbnradio.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("bbs-tw.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".bbsdigest.com/thread") >= 0) return "+Optimized";
-        if (/(?:^|\.)bbsfeed\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("bbsland.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".bbsmo.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".bbsone.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("bbtoystore.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".bcast.co.nz") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".bcc.com.tw/board") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".bcchinese.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".bcmorning.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("bdsmvideos.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".beaconevents.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".bebo.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)bebo\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".beevpn.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)beevpn\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".behindkink.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)beijing1989\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("beijingspring.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)beijingspring\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".belamionline.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".bell.wiki") >= 0) return "+Optimized";
-        if (/^http:\/\/bell\.wiki/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("bemywife.cc") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("beric.me") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".berlintwitterwall.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)berlintwitterwall\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".berm.co.nz") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".bestforchina.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)bestforchina\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".bestgore.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)bestvpn\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".bestvpnserver.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".bestvpnservice.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".bestvpnusa.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)bet365\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".betfair.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)betternet\.co$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".bettervpn.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)bettervpn\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".bettween.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)bettween\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)betvictor\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".bewww.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".beyondfirewall.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)bfnn\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)bfsh\.hk$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".bgvpn.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)bgvpn\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".bianlei.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("biantailajiao.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("biantailajiao.in") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".biblesforamerica.org") >= 0) return "+Optimized";
-        if (/^http:\/\/biblesforamerica\.org/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".bic2011.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("bigfools.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)bigjapanesesex\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".bignews.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)bignews\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".bigsound.org") >= 0) return "+Optimized";
-        if (/^http:\/\/billypan\.com\/wiki/.test(url)) return "+Optimized";
-        if (/(?:^|\.)billywr\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("bipic.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".bit.do") >= 0) return "+Optimized";
-        if (/^http:\/\/bit\.do/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".bit.ly") >= 0) return "+Optimized";
-        if (/^http:\/\/bit\.ly/.test(url)) return "+Optimized";
-        if (/(?:^|\.)bitcointalk\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".bitshare.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)bitshare\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("bitsnoop.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("bizhat.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)bl-doujinsouko\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".bjnewlife.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".bjs.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("bjzc.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)bjzc\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".blacklogic.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".blackvpn.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)blackvpn\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("blewpass.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("tor.blingblingsquad.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".blinkx.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)blinkx\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("blinw.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".blip.tv") >= 0) return "+Optimized";
-        if (/(?:^|\.)blip\.tv\/$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".blockcn.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)blockcn\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)blockless\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)blog\.de$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".blog.jp") >= 0) return "+Optimized";
-        if (/^http:\/\/blog\.jp/.test(url)) return "+Optimized";
-        if (/(?:^|\.)blogblog\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".blogcatalog.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)blogcatalog\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)blogcity\.me$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".blogger.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)blogger\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("blogimg.jp") >= 0) return "+Optimized";
-        if (/(?:^|\.)blog\.kangye\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".bloglines.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)bloglines\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)bloglovin\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("rconversation.blogs.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("blogtd.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".blogtd.org") >= 0) return "+Optimized";
-        if (/^http:\/\/blogtd\.org/.test(url)) return "+Optimized";
-        if (/(?:^|\.)bloodshed\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".bloomberg.cn") >= 0) return "+Optimized";
-        if (/(?:^|\.)bloomberg\.cn$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".bloomberg.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)bloomberg\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("bloomberg.de") >= 0) return "+Optimized";
-        if (/(?:^|\.)bloomberg\.de$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)bloomfortune\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("blueangellive.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".bmfinn.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".bnews.co") >= 0) return "+Optimized";
-        if (/(?:^|\.)bnews\.co$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)bnrmetal\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("boardreader.com/thread") >= 0) return "+Optimized";
-        if (/(?:^|\.)boardreader\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".bod.asia") >= 0) return "+Optimized";
-        if (/^http:\/\/bod\.asia/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".bodog88.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".bolehvpn.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)bolehvpn\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("bonbonme.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".bonbonsex.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".bonfoundation.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".bongacams.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)boobstagram\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)book\.com\.tw$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("bookepub.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)books\.com\.tw$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)botanwang\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".bot.nu") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".bowenpress.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)bowenpress\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)app\.box\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("dl.box.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)dl\.box\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".boxpn.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)boxpn\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("boxun.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)boxun\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".boxun.tv") >= 0) return "+Optimized";
-        if (/(?:^|\.)boxun\.tv$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("boxunblog.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)boxunblog\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".boxunclub.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("boyangu.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".boyfriendtv.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".boysfood.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)br\.st$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".brainyquote.com/quotes/authors/d/dalai_lama") >= 0) return "+Optimized";
-        if (/(?:^|\.)brandonhutchinson\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)braumeister\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".bravotube.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)bravotube\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".brazzers.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)brazzers\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".break.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)break\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("breakgfw.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)breakgfw\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("breaking911.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".breakingtweets.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)breakingtweets\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)breakwall\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("briian.com/6511/freegate") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".briefdream.com/%E7%B4%A0%E6%A3%BA") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("brizzly.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)brizzly\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)brkmd\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("broadbook.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".broadpressinc.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)broadpressinc\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("bbs.brockbbs.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("brucewang.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".brutaltgp.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)brutaltgp\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".bt2mag.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)bt95\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".btaia.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".btbtav.com") >= 0) return "+Optimized";
-        if (/^http:\/\/btdigg\.org/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".btku.me") >= 0) return "+Optimized";
-        if (/(?:^|\.)btku\.me$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)btku\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".btspread.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".budaedu.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)budaedu\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".buddhanet.com.tw/zfrop/tibet") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".buddhistchannel.tv") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".buffered.com") >= 0) return "+Optimized";
-        if (/^http:\/\/buffered\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".bullog.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)bullog\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".bullogger.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)bullogger\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("bunbunhk.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".busayari.com") >= 0) return "+Optimized";
-        if (/^http:\/\/busayari\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".businessinsider.com/bing-could-be-censoring-search-results-2014") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".businessinsider.com/china-banks-preparing-for-debt-implosion-2014") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".businessinsider.com/hong-kong-activists-defy-police-tear-gas-as-protests-continue-overnight-2014") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".businessinsider.com/internet-outages-reported-in-north-korea-2014") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".businessinsider.com/iphone-6-is-approved-for-sale-in-china-2014") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".businessinsider.com/nfl-announcers-surface-tablets-2014") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".businessinsider.com/panama-papers") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".businessinsider.com/umbrella-man-hong-kong-2014") >= 0) return "+Optimized";
-        if (/^http:\/\/www\.businessinsider\.com\.au\//.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".businessweek.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".busu.org/news") >= 0) return "+Optimized";
-        if (/^http:\/\/busu\.org\/news/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("busytrade.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".buugaa.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".buzzhand.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".buzzhand.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".buzzorange.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)buzzorange\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)bvpn\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("bwsj.hk") >= 0) return "+Optimized";
-        if (/(?:^|\.)bx\.tl$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".c-spanvideo.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)c-spanvideo\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)c-est-simple\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".c100tibet.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)cablegatesearch\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".cachinese.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".cacnw.com") >= 0) return "+Optimized";
-        if (/^http:\/\/cacnw\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".cactusvpn.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)cactusvpn\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".cafepress.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".cahr.org.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".calameo.com/books") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("cn.calameo.com") >= 0) return "+Optimized";
-        if (/^http:\/\/cn\.calameo\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".calgarychinese.ca") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".calgarychinese.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".calgarychinese.net") >= 0) return "+Optimized";
-        if (/^http:\/\/blog\.calibre-ebook\.com/.test(url)) return "+Optimized";
-        if (/^http:\/\/google\.calstate\.edu/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("falun.caltech.edu") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".its.caltech.edu/~falun/") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".cam4.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".cam4.jp") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".cam4.sg") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".camfrog.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)camfrog\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)cams\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".cams.org.sg") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("canadameet.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".canalporno.com") >= 0) return "+Optimized";
-        if (/^http:\/\/bbs\.cantonese\.asia\//.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".canyu.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)canyu\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".cao.im") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".caobian.info") >= 0) return "+Optimized";
-        if (/(?:^|\.)caobian\.info$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("caochangqing.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)caochangqing\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".cap.org.hk") >= 0) return "+Optimized";
-        if (/(?:^|\.)cap\.org\.hk$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".carabinasypistolas.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("cardinalkungfoundation.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("carmotorshow.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".cartoonmovement.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)cartoonmovement\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".casadeltibetbcn.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".casatibet.org.mx") >= 0) return "+Optimized";
-        if (/^http:\/\/casatibet\.org\.mx/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("cari.com.my") >= 0) return "+Optimized";
-        if (/(?:^|\.)caribbeancom\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".casinoking.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".casinoriva.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)catch22\.net$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)catfightpayperview\.xxx$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".catholic.org.hk") >= 0) return "+Optimized";
-        if (/(?:^|\.)catholic\.org\.hk$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("catholic.org.tw") >= 0) return "+Optimized";
-        if (/(?:^|\.)catholic\.org\.tw$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".cathvoice.org.tw") >= 0) return "+Optimized";
-        if (/(?:^|\.)cattt\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".cbc.ca") >= 0) return "+Optimized";
-        if (/(?:^|\.)cbc\.ca$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".cbsnews.com/video") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".cbtc.org.hk") >= 0) return "+Optimized";
-        if (/(?:^|\.)cccat\.cc$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)cccat\.co$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ccdtr.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)ccdtr\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".cchere.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)cchere\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ccim.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".cclife.ca") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("cclife.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("cclifefl.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ccthere.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)ccthere\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".cctongbao.com/article/2078732") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("ccue.ca") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("ccue.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ccvoice.ca") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ccw.org.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".cgdepot.org") >= 0) return "+Optimized";
-        if (/^http:\/\/cgdepot\.org/.test(url)) return "+Optimized";
-        if (/(?:^|\.)cdbook\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".cdcparty.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".cdef.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)cdef\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)cdig\.info$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("cdjp.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)cdjp\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("cdninstagram.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)cdninstagram\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".cdnews.com.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("cdp1989.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("cdp1998.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)cdp1998\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("cdp2006.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)cdp2006\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".cdpa.url.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("cdpeu.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("cdpusa.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("cdpweb.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)cdpweb\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("cdpwu.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)cdpwu\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)cdw\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".cecc.gov") >= 0) return "+Optimized";
-        if (/(?:^|\.)cecc\.gov$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)cellulo\.info$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)cenews\.eu$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)centerforhumanreprod\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)centralnation\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".centurys.net") >= 0) return "+Optimized";
-        if (/^http:\/\/centurys\.net/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".cfhks.org.hk") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".cftfc.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".cgst.edu") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".change.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)change\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".changp.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)changp\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".changsa.net") >= 0) return "+Optimized";
-        if (/^http:\/\/changsa\.net/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".channel8news.sg/news8") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".chapm25.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".chaturbate.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".chuang-yen.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("chengmingmag.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".chenguangcheng.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)chenguangcheng\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".chenpokong.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".chenpokong.net") >= 0) return "+Optimized";
-        if (/^http:\/\/chenpokong\.net/.test(url)) return "+Optimized";
-        if (/(?:^|\.)cherrysave\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".chhongbi.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("chicagoncmtv.com") >= 0) return "+Optimized";
-        if (/^http:\/\/chicagoncmtv\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".china-week.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("china101.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)china101\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)china18\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)china21\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("china21.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)china21\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".china5000.us") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("chinaaffairs.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)chinaaffairs\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)chinaaid\.me$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("chinaaid.us") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("chinaaid.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("chinaaid.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("chinacomments.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)chinacomments\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".chinachange.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)chinachange\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("chinachannel.hk") >= 0) return "+Optimized";
-        if (/(?:^|\.)chinachannel\.hk$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".chinacitynews.be") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".chinadialogue.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".chinadigitaltimes.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)chinadigitaltimes\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".chinaelections.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)chinaelections\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".chinaeweekly.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)chinaeweekly\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)chinafreepress\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".chinagate.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("chinageeks.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("chinagfw.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)chinagfw\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".chinagonet.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".chinagreenparty.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)chinagreenparty\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".chinahorizon.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)chinahorizon\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".chinahush.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".chinainperspective.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)chinainterimgov\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("chinalaborwatch.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("chinalawtranslate.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".chinapost.com.tw/taiwan/national/national-news") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("chinaxchina.com/howto") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("chinalawandpolicy.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".chinamule.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)chinamule\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("chinamz.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".chinapress.com.my") >= 0) return "+Optimized";
-        if (/(?:^|\.)chinapress\.com\.my$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".china-review.com.ua") >= 0) return "+Optimized";
-        if (/^http:\/\/china-review\.com\.ua/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".chinarightsia.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("chinasmile.net/forums") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("chinasocialdemocraticparty.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)chinasocialdemocraticparty\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("chinasoul.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)chinasoul\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".chinasucks.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".chinatimes.com/realtimenews/260409/") >= 0) return "+Optimized";
-        if (/(?:^|\.)chinatopsex\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".chinatown.com.au") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("chinatweeps.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("chinaway.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".chinaworker.info") >= 0) return "+Optimized";
-        if (/(?:^|\.)chinaworker\.info$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("chinayouth.org.hk") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("chinayuanmin.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)chinayuanmin\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".chinese-hermit.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("chinese-leaders.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("chinese-memorial.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".chinesedaily.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)chinesedailynews\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".chinesedemocracy.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)chinesedemocracy\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)chinesegay\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".chinesen.de") >= 0) return "+Optimized";
-        if (/(?:^|\.)chinesen\.de$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".chinesepen.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".chinesetalks.net/ch") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".chingcheong.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)chingcheong\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".chinman.net") >= 0) return "+Optimized";
-        if (/^http:\/\/chinman\.net/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("chithu.org") >= 0) return "+Optimized";
-        if (/^http:\/\/chn\.chosun\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("cnnews.chosun.com/client/news/viw.asp?cate=C01&mcate") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".chrdnet.com") >= 0) return "+Optimized";
-        if (/^http:\/\/chrdnet\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".christianfreedom.org") >= 0) return "+Optimized";
-        if (/^http:\/\/christianfreedom\.org/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("christianstudy.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)christianstudy\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("christusrex.org/www1/sdc") >= 0) return "+Optimized";
-        if (/(?:^|\.)chromeadblock\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".chubold.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("chubun.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("chuizi.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("christiantimes.org.hk") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".chrlawyers.hk") >= 0) return "+Optimized";
-        if (/^http:\/\/chrlawyers\.hk/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".churchinhongkong.org/b5/index.php") >= 0) return "+Optimized";
-        if (/^http:\/\/churchinhongkong\.org\/b5\/index\.php/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".chushigangdrug.ch") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".cienen.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".cineastentreff.de") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".cipfg.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)circlethebayfortibet\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".citizencn.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)citizencn\.com$/.test(host)) return "+Optimized";
-        if (/^http:\/\/citizenlab\.org/.test(url)) return "+Optimized";
-        if (/^http:\/\/www\.citizenlab\.org/.test(url)) return "+Optimized";
-        if (/(?:^|\.)citizenscommission\.hk$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".citizenlab.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("citizensradio.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".city365.ca") >= 0) return "+Optimized";
-        if (/^http:\/\/city365\.ca/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("city9x.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".citytalk.tw/event") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".civicparty.hk") >= 0) return "+Optimized";
-        if (/(?:^|\.)civicparty\.hk$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".civildisobediencemovement.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("civilhrfront.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)civilhrfront\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".civiliangunner.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".civilmedia.tw") >= 0) return "+Optimized";
-        if (/(?:^|\.)civilmedia\.tw$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("psiphon.civisec.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)vpn\.cjb\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ck101.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)ck101\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".clarionproject.org/news/islamic-state-isis-isil-propaganda") >= 0) return "+Optimized";
-        if (/(?:^|\.)classicalguitarblog\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".clb.org.hk") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("clearharmony.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("clearwisdom.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("clinica-tibet.ru") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".clipfish.de") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("cloakpoint.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)club1069\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("cmi.org.tw") >= 0) return "+Optimized";
-        if (/^http:\/\/www\.cmoinc\.org/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("cmp.hku.hk") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("hkupop.hku.hk") >= 0) return "+Optimized";
-        if (/(?:^|\.)cmule\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)cmule\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)cms\.gov$/.test(host)) return "+Optimized";
-        if (/^http:\/\/vpn\.cmu\.edu/.test(url)) return "+Optimized";
-        if (/^http:\/\/vpn\.sv\.cmu\.edu/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".cn6.eu") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".cna.com.tw") >= 0) return "+Optimized";
-        if (/(?:^|\.)cna\.com\.tw$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".cnabc.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".cnd.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)cnd\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("download.cnet.com/Freegate") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".cnex.org.cn") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".cnineu.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("wiki.cnitter.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".cnn.com/video") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".cnpolitics.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)cnpolitics\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".cn-proxy.com") >= 0) return "+Optimized";
-        if (/^http:\/\/cn-proxy\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".cnproxy.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("blog.cnyes.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("news.cnyes.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)coat\.co\.jp$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".cochina.co") >= 0) return "+Optimized";
-        if (/(?:^|\.)cochina\.co$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)cochina\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".code1984.com/64") >= 0) return "+Optimized";
-        if (/^http:\/\/goagent\.codeplex\.com/.test(url)) return "+Optimized";
-        if (/(?:^|\.)codeshare\.io$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)codeskulptor\.org$/.test(host)) return "+Optimized";
-        if (/^http:\/\/tosh\.comedycentral\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("comefromchina.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)comefromchina\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".comic-mega.me") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("commandarms.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)commentshk\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".communistcrimes.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)communistcrimes\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)communitychoicecu\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)compileheart\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".contactmagazine.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".convio.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".coobay.com") >= 0) return "+Optimized";
-        if (/^http:\/\/www\.cool18\.com\/bbs.*\//.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".coolaler.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)coolaler\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("coolder.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)coolder\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)coolloud\.org\.tw$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".coolncute.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("corumcollege.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".cos-moe.com") >= 0) return "+Optimized";
-        if (/^http:\/\/cos-moe\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".cosplayjav.pl") >= 0) return "+Optimized";
-        if (/^http:\/\/cosplayjav\.pl/.test(url)) return "+Optimized";
-        if (/(?:^|\.)couchdbwiki\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)cotweet\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("cpj.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)cpj\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".cq99.us") >= 0) return "+Optimized";
-        if (/^http:\/\/cq99\.us/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("crackle.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)crackle\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".crazys.cc") >= 0) return "+Optimized";
-        if (/(?:^|\.)crchina\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("crd-net.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("creaders.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)creaders\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".creadersnet.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)cristyli\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".crocotube.com") >= 0) return "+Optimized";
-        if (/^http:\/\/crocotube\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".crossthewall.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)crossthewall\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("csdparty.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)csdparty\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)csuchen\.de$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".csw.org.uk") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ct.org.tw") >= 0) return "+Optimized";
-        if (/(?:^|\.)ct\.org\.tw$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ctao.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ctfriend.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ctitv.com.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("cts.com.tw") >= 0) return "+Optimized";
-        if (/^http:\/\/library\.usc\.cuhk\.edu\.hk\//.test(url)) return "+Optimized";
-        if (/^http:\/\/mjlsh\.usc\.cuhk\.edu\.hk\//.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".cuhkacs.org/~benng") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".cuihua.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)cuihua\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".cuiweiping.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)cuiweiping\.net$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)culture\.tw$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".cumlouder.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)cumlouder\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)curvefish\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".cusu.hk") >= 0) return "+Optimized";
-        if (/(?:^|\.)cusu\.hk$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".cw.com.tw") >= 0) return "+Optimized";
-        if (/^http:\/\/forum\.cyberctm\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("cyberghostvpn.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)cyberghostvpn\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)cynscribe\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("cytode.us") >= 0) return "+Optimized";
-        if (/(?:^|\.)ifan\.cz\.cc$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)mike\.cz\.cc$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)nic\.cz\.cc$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".d-fukyu.com") >= 0) return "+Optimized";
-        if (/^http:\/\/d-fukyu\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("cl.d0z.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".d100.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)d100\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".d2bay.com") >= 0) return "+Optimized";
-        if (/^http:\/\/d2bay\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dabr.co.uk") >= 0) return "+Optimized";
-        if (/(?:^|\.)dabr\.co\.uk$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("dabr.eu") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("dabr.mobi") >= 0) return "+Optimized";
-        if (/(?:^|\.)dabr\.mobi$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)dabr\.me$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("dadazim.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)dadazim\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dadi360.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("dafagood.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("dafahao.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dagelijksestandaard.nl") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".daidostup.ru") >= 0) return "+Optimized";
-        if (/^http:\/\/daidostup\.ru/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dailidaili.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)dailidaili\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dailymotion.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)dailymotion\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("daiphapinfo.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dajiyuan.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)dajiyuan\.de$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("dajiyuan.eu") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("dalailama.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dalailama.mn") >= 0) return "+Optimized";
-        if (/^http:\/\/dalailama\.mn/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dalailama.ru") >= 0) return "+Optimized";
-        if (/(?:^|\.)dalailama\.ru$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("dalailama80.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dalailama-archives.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dalailamacenter.org") >= 0) return "+Optimized";
-        if (/^http:\/\/dalailamacenter\.org/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("dalailamafellows.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dalailamafilm.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dalailamafoundation.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dalailamahindi.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dalailamainaustralia.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dalailamajapanese.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dalailamaprotesters.info") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dalailamaquotes.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dalailamatrust.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dalailamavisit.org.nz") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dalailamaworld.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)dalailamaworld\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("dalianmeng.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)dalianmeng\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".daliulian.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)daliulian\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".danke4china.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)danke4china\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".danwei.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("daolan.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".daozhongxing.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("darktoy.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)dastrassi\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("blog.daum.net/_blog") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".david-kilgour.com") >= 0) return "+Optimized";
-        if (/^http:\/\/david-kilgour\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("daxa.cn") >= 0) return "+Optimized";
-        if (/(?:^|\.)daxa\.cn$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("cn.dayabook.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".daylife.com/topic/dalai_lama") >= 0) return "+Optimized";
-        if (/(?:^|\.)db\.tt$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dbc.hk/main") >= 0) return "+Optimized";
-        if (/(?:^|\.)dcard\.tw$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("dcmilitary.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ddc.com.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ddhw.info") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("ddns.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)de-sci\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".de-sci.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("packages.debian.org/zh-cn/lenny/gpass") >= 0) return "+Optimized";
-        if (/(?:^|\.)decodet\.co$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".definebabe.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)delcamp\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("delicious.com/GFWbookmark") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".democrats.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)democrats\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)desc\.se$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)dessci\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".destroy-china.jp") >= 0) return "+Optimized";
-        if (/(?:^|\.)deutsche-welle\.de$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)devio\.us$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)devpn\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)dfas\.mil$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("dfn.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("dharmakara.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dharamsalanet.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".diaoyuislands.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)diaoyuislands\.org$/.test(host)) return "+Optimized";
-        if (/^http:\/\/digiland\.tw\//.test(url)) return "+Optimized";
-        if (/(?:^|\.)digitalnomadsproject\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".diigo.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)diigo\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)dilber\.se$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)furl\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dipity.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)directcreative\.com$/.test(host)) return "+Optimized";
-        if (/^https:\/\/search\.disconnect\.me/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".discuss.com.hk") >= 0) return "+Optimized";
-        if (/(?:^|\.)discuss\.com\.hk$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".discuss4u.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("disp.cc") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".disqus.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)disqus\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dit-inc.us") >= 0) return "+Optimized";
-        if (/(?:^|\.)dit-inc\.us$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dizhidizhi.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)dizhuzhishang\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("djangosnippets.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".djorz.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)djorz\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)dl-laby\.jp$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)dlsite\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)dlyoutube\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)dmcdn\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dnscrypt.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)dnscrypt\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)dns2go\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)dnssec\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("doctorvoice.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dogfartnetwork.com/tour") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("gloryhole.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dojin.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dok-forum.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)dolc\.de$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)dolf\.org\.hk$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)dollf\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".domain.club.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".domaintoday.com.au") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("dongtaiwang.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)dongtaiwang\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dongtaiwang.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)dongtaiwang\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dongyangjing.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dontfilter.us") >= 0) return "+Optimized";
-        if (/(?:^|\.)dontmovetochina\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dorjeshugden.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dotplane.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)dotplane\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)dotsub\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dotvpn.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)dotvpn\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".doub.io") >= 0) return "+Optimized";
-        if (/(?:^|\.)doub\.io$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)dougscripts\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)douhokanko\.net$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)doujincafe\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("dowei.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("dphk.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("dpp.org.tw") >= 0) return "+Optimized";
-        if (/(?:^|\.)dpp\.org\.tw$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)dpr\.info$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)dragonsprings\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".drepung.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)drgan\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".drmingxia.org") >= 0) return "+Optimized";
-        if (/^http:\/\/drmingxia\.org/.test(url)) return "+Optimized";
-        if (/(?:^|\.)dropbooks\.tv$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)dropbox\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)api\.dropboxapi\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)dropboxusercontent\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("drsunacademy.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".drtuber.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dscn.info") >= 0) return "+Optimized";
-        if (/^http:\/\/dscn\.info/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dstk.dk") >= 0) return "+Optimized";
-        if (/^http:\/\/dstk\.dk/.test(url)) return "+Optimized";
-        if (/(?:^|\.)dtiblog\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)dtic\.mil$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dtwang.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".duanzhihu.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".duckdns.org") >= 0) return "+Optimized";
-        if (/^http:\/\/duckdns\.org/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".duckduckgo.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)duckduckgo\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".duckload.com/download") >= 0) return "+Optimized";
-        if (/(?:^|\.)duckmylife\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".duga.jp") >= 0) return "+Optimized";
-        if (/^http:\/\/duga\.jp/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".duihua.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)duihua\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)duihuahrjournal\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dunyabulteni.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".duoweitimes.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)duoweitimes\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("duping.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)duplicati\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("dupola.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("dupola.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dushi.ca") >= 0) return "+Optimized";
-        if (/(?:^|\.)dvorak\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dw.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)dw\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)dw\.de$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dw-world.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)dw-world\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dw-world.de") >= 0) return "+Optimized";
-        if (/^http:\/\/dw-world\.de/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("www.dwheeler.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("dwnews.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)dwnews\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("dwnews.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)dwnews\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("xys.dxiong.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)dynawebinc\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".dzze.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)e-classical\.com\.tw$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)e-gold\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".e-gold.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)g\.e-hentai\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)lofi\.e-hentai\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".e-hentaidb.com") >= 0) return "+Optimized";
-        if (/^http:\/\/e-hentaidb\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("e-info.org.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".e-traderland.net/board") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".e-zone.com.hk/discuz") >= 0) return "+Optimized";
-        if (/^http:\/\/e-zone\.com\.hk\/discuz/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".e123.hk") >= 0) return "+Optimized";
-        if (/(?:^|\.)e123\.hk$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".earlytibet.com") >= 0) return "+Optimized";
-        if (/^http:\/\/earlytibet\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".earthcam.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".earthvpn.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)earthvpn\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("eastern-ark.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".easternlightning.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".eastturkestan.com") >= 0) return "+Optimized";
-        if (/^http:\/\/www\.eastturkistan\.net\//.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".eastturkistan-gov.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".eastturkistancc.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".eastturkistangovernmentinexile.us") >= 0) return "+Optimized";
-        if (/(?:^|\.)eastturkistangovernmentinexile\.us$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".easyca.ca") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".easypic.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ebony-beauty.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("ebookbrowse.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("ebookee.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)ecfa\.org\.tw$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)ecimg\.tw$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("ecministry.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".economist.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("bbs.ecstart.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)edgecastcdn\.net$/.test(host)) return "+Optimized";
-        if (/twimg\.edgesuite\.net\/\/?appledaily/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("edicypages.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".edmontonchina.cn") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".edmontonservice.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("edoors.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".edubridge.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)edubridge\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".edupro.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)eevpn\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("efcc.org.hk") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".efukt.com") >= 0) return "+Optimized";
-        if (/^http:\/\/efukt\.com/.test(url)) return "+Optimized";
-        if (/(?:^|\.)eic-av\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".eisbb.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".eksisozluk.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)eksisozluk\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("electionsmeter.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)elgoog\.im$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".elpais.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)elpais\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".eltondisney.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".emaga.com/info/3407") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("emilylau.org.hk") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".emanna.com/chineseTraditional") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".empfil.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".emule-ed2k.com") >= 0) return "+Optimized";
-        if (/^http:\/\/emule-ed2k\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".emulefans.com") >= 0) return "+Optimized";
-        if (/^http:\/\/emulefans\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".emuparadise.me") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".enanyang.my/news/20170502/%E7%BE%8E%E5%9B%BD%E4%B9%8B%E9%9F%B3%E5%A4%A7%E5%9C%B0%E9%9C%87%E3%80%8A%E8%8B%B9%E6%9E%9C%E3%80%8B%E7%8B%AC%E5%AE%B6") >= 0) return "+Optimized";
-        if (/(?:^|\.)enewstree\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".enfal.de") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("chinese.engadget.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)engagedaily\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("englishforeveryone.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)englishfromengland\.co\.uk$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("englishpen.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".enlighten.org.tw") >= 0) return "+Optimized";
-        if (/(?:^|\.)entermap\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".entnt.com") >= 0) return "+Optimized";
-        if (/^http:\/\/entnt\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".episcopalchurch.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".epochhk.com") >= 0) return "+Optimized";
-        if (/^http:\/\/epochhk\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("epochtimes-bg.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)epochtimes-bg\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("epochtimes-romania.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)epochtimes-romania\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("epochtimes.co.il") >= 0) return "+Optimized";
-        if (/(?:^|\.)epochtimes\.co\.il$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("epochtimes.co.kr") >= 0) return "+Optimized";
-        if (/(?:^|\.)epochtimes\.co\.kr$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("epochtimes.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)epochtimes\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".epochtimes.cz") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("epochtimes.de") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("epochtimes.fr") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".epochtimes.ie") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".epochtimes.it") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("epochtimes.jp") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("epochtimes.ru") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("epochtimes.se") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("epochtimestr.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".epochweek.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)epochweek\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)epochweekly\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".eporner.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".equinenow.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("erabaru.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".eraysoft.com.tr") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".erepublik.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".erights.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)erights\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".erktv.com") >= 0) return "+Optimized";
-        if (/^http:\/\/erktv\.com/.test(url)) return "+Optimized";
-        if (/(?:^|\.)ernestmandel\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)erodaizensyu\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)erodoujinlog\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)erodoujinworld\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)eromanga-kingdom\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)eromangadouzin\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".eromon.net") >= 0) return "+Optimized";
-        if (/^http:\/\/eromon\.net/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".eroprofile.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".eroticsaloon.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".eslite.com/product") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".eslite.com/Search_BW.aspx?q") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("wiki.esu.im/%E8%9B%A4%E8%9B%A4%E8%AF%AD%E5%BD%95") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".etaa.org.au") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".etadult.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("etaiwannews.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)etizer\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)etokki\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ettoday.net/news/20151216/614081") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("etvonline.hk") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".eu.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)eu\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".eucasino.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".eulam.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".eurekavpt.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)eurekavpt\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("eeas.europa.eu/delegations/china/press_corner/all_news/news/2015/20150716_zh") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("eeas.europa.eu/statements-eeas/2015/151022") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".evschool.net") >= 0) return "+Optimized";
-        if (/^http:\/\/evschool\.net/.test(url)) return "+Optimized";
-        if (/(?:^|\.)exblog\.jp$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)blog\.exblog\.co\.jp$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".exchristian.hk") >= 0) return "+Optimized";
-        if (/(?:^|\.)exchristian\.hk$/.test(host)) return "+Optimized";
-        if (/^http:\/\/blog\.excite\.co\.jp/.test(url)) return "+Optimized";
-        if (/(?:^|\.)exmormon\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)expatshield\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".expecthim.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)expecthim\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("experts-univers.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)exploader\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".expressvpn.com") >= 0) return "+Optimized";
-        if (/^http:\/\/expressvpn\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".extremetube.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("eyevio.jp") >= 0) return "+Optimized";
-        if (/(?:^|\.)eyevio\.jp$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".eyny.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)eyny\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ezpc.tk/category/soft") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ezpeer.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)facebookquotes4u\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".faceless.me") >= 0) return "+Optimized";
-        if (/(?:^|\.)faceless\.me$/.test(host)) return "+Optimized";
-        if (/^http:\/\/facesoftibetanselfimmolators\.info/.test(url)) return "+Optimized";
-        if (/(?:^|\.)facesofnyfw\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".faith100.org") >= 0) return "+Optimized";
-        if (/^http:\/\/faith100\.org/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".faithfuleye.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)faiththedog\.info$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".fakku.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".falsefire.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)falsefire\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("falun-co.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("falunart.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)falunasia\.info$/.test(host)) return "+Optimized";
-        if (/^http:\/\/falunau\.org/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".falunaz.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("falundafa.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("falundafa-dc.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)falundafa-florida\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)falundafa-nc\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)falundafa-pa\.net$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)falundafa-sacramento\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("falun-ny.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)falundafaindia\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("falundafamuseum.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".falungong.club") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".falungong.de") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("falungong.org.uk") >= 0) return "+Optimized";
-        if (/(?:^|\.)falunhr\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("faluninfo.de") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("faluninfo.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".falunpilipinas.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)falunworld\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("familyfed.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)fanglizhi\.info$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)fangong\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("fangongheike.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".fanqiang.tk") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("fanqianghou.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)fanqianghou\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".fanqiangzhe.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)fanqiangzhe\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("fapdu.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("faproxy.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".fawanghuihui.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)fbcdn\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("fanqiangyakexi.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("fail.hk") >= 0) return "+Optimized";
-        if (/(?:^|\.)famunion\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".fan-qiang.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".fangbinxing.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)fangbinxing\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("fangeming.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".fangmincn.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)fangmincn\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".fanhaodang.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)fanswong\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".fanyue.info") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".farwestchina.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("en.favotter.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("nytimes.map.fastly.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)nytimes\.map\.fastly\.net$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)fast\.wistia\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)fastssh\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)faststone\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("favstar.fm") >= 0) return "+Optimized";
-        if (/(?:^|\.)favstar\.fm$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("faydao.com/weblog") >= 0) return "+Optimized";
-        if (/(?:^|\.)fbsbx\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("fc2.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".fc2china.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".fc2cn.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)fc2cn\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("fc2blog.net") >= 0) return "+Optimized";
-        if (/^http:\/\/uygur\.fc2web\.com\//.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("video.fdbox.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".fdc64.de") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".fdc64.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".fdc89.jp") >= 0) return "+Optimized";
-        if (/(?:^|\.)fourface\.nodesnoop\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)feelssh\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("feer.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".feifeiss.com") >= 0) return "+Optimized";
-        if (/^http:\/\/feitianacademy\.org/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".feitian-california.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)feministteacher\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".fengzhenghu.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)fengzhenghu\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".fengzhenghu.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)fengzhenghu\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".fevernet.com") >= 0) return "+Optimized";
-        if (/^http:\/\/ff\.im/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("fffff.at") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("fflick.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ffvpn.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("fgmtv.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".fgmtv.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".fhreports.net") >= 0) return "+Optimized";
-        if (/^http:\/\/fhreports\.net/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".figprayer.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)figprayer\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".fileflyer.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)fileflyer\.com$/.test(host)) return "+Optimized";
-        if (/^http:\/\/feeds\.fileforum\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".files2me.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".fileserve.com/file") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("fillthesquare.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("filmingfortibet.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".filthdump.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".finchvpn.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)finchvpn\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("findmespot.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)findyoutube\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".fingerdaily.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("finler.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".firearmsworld.net") >= 0) return "+Optimized";
-        if (/^http:\/\/firearmsworld\.net/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".fireofliberty.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)fireofliberty\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".firetweet.io") >= 0) return "+Optimized";
-        if (/(?:^|\.)firetweet\.io$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".flagsonline.it") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("fleshbot.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".fleursdeslettres.com") >= 0) return "+Optimized";
-        if (/^http:\/\/fleursdeslettres\.com/.test(url)) return "+Optimized";
-        if (/(?:^|\.)flgg\.us$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)flgjustice\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)flickr\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)staticflickr\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("flickrhivemind.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".flickriver.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".fling.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)flipkart\.com$/.test(host)) return "+Optimized";
-        if (/^http:\/\/cn\.fmnnow\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("fofldfradio.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("blog.foolsmountain.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".forum4hk.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("fangong.forums-free.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("pioneer-worker.forums-free.com") >= 0) return "+Optimized";
-        if (/^https:\/\/ss.*\.4sqi\.net/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("video.foxbusiness.com") >= 0) return "+Optimized";
-        if (/^http:\/\/foxgay\.com/.test(url)) return "+Optimized";
-        if (/(?:^|\.)fringenetwork\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)flecheinthepeche\.fr$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".fochk.org") >= 0) return "+Optimized";
-        if (/^http:\/\/fochk\.org/.test(url)) return "+Optimized";
-        if (/(?:^|\.)focustaiwan\.tw$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".focusvpn.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)fofg\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".fofg-europe.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".fooooo.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)fooooo\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("footwiball.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".fotile.me") >= 0) return "+Optimized";
-        if (/(?:^|\.)fourthinternational\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)foxdie\.us$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)foxsub\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("foxtang.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".fpmt.org") >= 0) return "+Optimized";
-        if (/^http:\/\/fpmt\.org/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".fpmt.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".fpmt-osel.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)fpmtmexico\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("fqok.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)fqrouter\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)franklc\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".freakshare.com") >= 0) return "+Optimized";
-        if (/^http:\/\/freakshare\.com/.test(url)) return "+Optimized";
-        if (/(?:^|\.)free4u\.com\.ar$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("free-gate.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".free-hada-now.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("free-proxy.cz") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".free.fr/adsl") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("kineox.free.fr") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("tibetlibre.free.fr") >= 0) return "+Optimized";
-        if (/(?:^|\.)freealim\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("whitebear.freebearblog.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)freebrowser\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".freechal.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".freedomchina.info") >= 0) return "+Optimized";
-        if (/(?:^|\.)freedomchina\.info$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".freedomhouse.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)freedomhouse\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".freedomsherald.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)freedomsherald\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".freefq.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".freefuckvids.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".freegao.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)freegao\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("freeilhamtohti.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".freekwonpyong.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)saveliuxiaobo\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".freelotto.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)freelotto\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("freeman2.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".freeopenvpn.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("freemoren.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("freemorenews.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("freemuse.org/archives/789") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("freenet-china.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("freenewscn.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("cn.freeones.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".freeoz.org/bbs") >= 0) return "+Optimized";
-        if (/(?:^|\.)freeoz\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)freessh\.us$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("free4u.com.ar") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".free-ssh.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)free-ssh\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".freedomcollection.org/interviews/rebiya_kadeer") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".freeforums.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)freenetproject\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".freeoz.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".freetibet.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)freetibet\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".freetibetanheroes.org") >= 0) return "+Optimized";
-        if (/^http:\/\/freetibetanheroes\.org/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".freeviewmovies.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".freevpn.me") >= 0) return "+Optimized";
-        if (/^http:\/\/freevpn\.me/.test(url)) return "+Optimized";
-        if (/(?:^|\.)freewallpaper4\.me$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".freewebs.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".freewechat.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)freewechat\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("freeweibo.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)freeweibo\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".freexinwen.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".freeyoutubeproxy.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)freeyoutubeproxy\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("friendfeed.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("friendfeed-media.com/e99a4ebe2fb4c1985c2a58775eb4422961aa5a2e") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("friends-of-tibet.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".friendsoftibet.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("freechina.net") >= 0) return "+Optimized";
-        if (/^http:\/\/www\.zensur\.freerk\.com\//.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("freevpn.nl") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("freeyellow.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("hk.frienddy.com/hk") >= 0) return "+Optimized";
-        if (/^http:\/\/adult\.friendfinder\.com\//.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".fring.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)fring\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".fromchinatousa.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)frommel\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".frontlinedefenders.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".frootvpn.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)frootvpn\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)fscked\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".fsurf.com") >= 0) return "+Optimized";
-        if (/^https:\/\/www\.ftchinese\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/channel/video") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/00102753") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001026807") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001030502") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001032692") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001034926") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001034927") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001034928") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001037090") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001037091") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001038220") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001040890") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001040918") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001042100") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001042252") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001042272") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001044776") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001045755") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001046118") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001047345") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001047375") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001047545") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001048710") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001049360") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001051372") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001052965") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001053526") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001054103") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001054168") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001054526") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001054644") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001055299") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001055551") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001055559") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001056529") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001056554") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001056567") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001056588") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001056596") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001057509") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001057533") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001058295") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001058344") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001058421") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001058458") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001058468") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001058561") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001058566") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001058567") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001058585") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001058628") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001058678") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001059484") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001059538") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001059818") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001059914") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001059920") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001060181") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001060493") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001060495") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001060921") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001061120") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001062028") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001062176") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001062482") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001062508") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001062741") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001062794") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001063160") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001063359") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001063692") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001063826") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001065287") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001066465") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001066959") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001067435") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("www.ftchinese.com/story/001067479") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001067545") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001067648") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001067650") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001068248") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001068278") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001068379") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001068483") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001069373") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001069516") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001069517") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001070307") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001070809") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001070990") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001071042") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001071106") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001071181") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("ftchinese.com/story/001071200") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001071208") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001071238") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001072895") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001073408") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/story/001074110") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/video/1437") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/video/1882") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftchinese.com/comments") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ftv.com.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("fucd.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".fuckcnnic.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)fuckcnnic\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("fuckgfw.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)fullerconsideration\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("fulue.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".funf.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("funp.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".fuq.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".furhhdl.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)furinkan\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".futurechinaforum.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)futuremessage\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".fux.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".fuyin.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".fuyindiantai.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".fuyu.org.tw") >= 0) return "+Optimized";
-        if (/(?:^|\.)fw\.cm$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("fzh999.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("fzh999.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("fzlm.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".g6hentai.com") >= 0) return "+Optimized";
-        if (/^http:\/\/g6hentai\.com/.test(url)) return "+Optimized";
-        if (/(?:^|\.)g-queen\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)gabocorp\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".gaeproxy.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".gaforum.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".galaxymacau.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)galenwu\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".galstars.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)game735\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("gamebase.com.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("gamejolt.com") >= 0) return "+Optimized";
-        if (/^http:\/\/wiki\.gamerp\.jp/.test(url)) return "+Optimized";
-        if (/(?:^|\.)gamer\.com\.tw$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".gamer.com.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".gamez.com.tw") >= 0) return "+Optimized";
-        if (/(?:^|\.)gamez\.com\.tw$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".gamousa.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".gaoming.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)gaoming\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("ganges.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".gaopi.net") >= 0) return "+Optimized";
-        if (/^http:\/\/gaopi\.net/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".gaozhisheng.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".gaozhisheng.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("gardennetworks.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)gardennetworks\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("72.52.81.22") >= 0) return "+Optimized";
-        if (/(?:^|\.)gartlive\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)gate-project\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)gather\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("gati.org.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".gaybubble.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".gaycn.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)gaymap\.cc$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".gaytube.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)images-gaytube\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".gaywatch.com") >= 0) return "+Optimized";
-        if (/^http:\/\/gaywatch\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".gazotube.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)gazotube\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)gcc\.org\.hk$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)gclooney\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".gcpnews.com") >= 0) return "+Optimized";
-        if (/^http:\/\/gcpnews\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".gdbt.net/forum") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("gdzf.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)geek-art\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("geekerhome.com/2010/03/xixiang-project-cross-gfw") >= 0) return "+Optimized";
-        if (/(?:^|\.)geekheart\.info$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)geekmanuals\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".gekikame.com") >= 0) return "+Optimized";
-        if (/^http:\/\/gekikame\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".gelbooru.com") >= 0) return "+Optimized";
-        if (/^http:\/\/gelbooru\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".geocities.co.jp") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".geocities.com/SiliconValley/Circuit/5683/download.html") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("hk.geocities.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("geocities.jp") >= 0) return "+Optimized";
-        if (/(?:^|\.)geohot\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)geometrictools\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".gerefoundation.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)getastrill\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".getchu.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".getcloak.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)getcloak\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)getfoxyproxy\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".getfreedur.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)getgom\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".geti2p.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)geti2p\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".getlantern.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)getlantern\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".getjetso.com/forum") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("getiton.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".getsocialscope.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)getsync\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("gfbv.de") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".gfgold.com.hk") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".gfsale.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)gfsale\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("gfw.org.ua") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".gfw.press") >= 0) return "+Optimized";
-        if (/(?:^|\.)gfw\.press$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ggssl.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)ggssl\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)ghost\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ghostpath.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)ghostpath\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)ghut\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".giantessnight.com") >= 0) return "+Optimized";
-        if (/^http:\/\/giantessnight\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".gifree.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)giga-web\.jp$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("tw.gigacircle.com") >= 0) return "+Optimized";
-        if (/^http:\/\/cn\.giganews\.com\//.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("gigporno.ru") >= 0) return "+Optimized";
-        if (/(?:^|\.)girlbanker\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".git.io") >= 0) return "+Optimized";
-        if (/(?:^|\.)git\.io$/.test(host)) return "+Optimized";
-        if (/^http:\/\/softwaredownload\.gitbooks\.io/.test(url)) return "+Optimized";
-        if (/^https:\/\/gist\.github\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("http://cthlo.github.io/hktv") >= 0) return "+Optimized";
-        if (/(?:^|\.)haoel\.github\.io$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)sodatea\.github\.io$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("wsgzao.github.io") >= 0) return "+Optimized";
-        if (/^https:\/\/wsgzao\.github\.io/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".gizlen.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)gizlen\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".gjczz.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("globaljihad.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("globalmediaoutreach.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("globalmuseumoncommunism.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)globalrescue\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".globaltm.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".globalvoicesonline.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)globalvoicesonline\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)globalvpn\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".glock.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("gluckman.com/DalaiLama") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("gmbd.cn") >= 0) return "+Optimized";
-        if (/(?:^|\.)gmhz\.org$/.test(host)) return "+Optimized";
-        if (/^http:\/\/www\.gmiddle\.com/.test(url)) return "+Optimized";
-        if (/^http:\/\/www\.gmiddle\.net/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".gmll.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)gnci\.org\.hk$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("go-pki.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)goagent\.biz$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)goagentplus\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("gobet.cc") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("godfootsteps.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)godfootsteps\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("godns.work") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("godsdirectcontact.co.uk") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".godsdirectcontact.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("godsdirectcontact.org.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".godsimmediatecontact.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".gogotunnel.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)gohappy\.com\.tw$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".gokbayrak.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".goldbet.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)goldbetsports\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)goldeneyevault\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".goldenfrog.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)goldenfrog\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".goldjizz.com") >= 0) return "+Optimized";
-        if (/^http:\/\/goldjizz\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".goldstep.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)goldwave\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("gongmeng.info") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("gongm.in") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("gongminliliang.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".gongwt.com") >= 0) return "+Optimized";
-        if (/^http:\/\/gongwt\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("blog.goo.ne.jp/duck-tail_2009") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".gooday.xyz") >= 0) return "+Optimized";
-        if (/^http:\/\/gooday\.xyz/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".goodreads.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)goodreads\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".goodreaders.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)goodreaders\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".goodtv.com.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".goodtv.tv") >= 0) return "+Optimized";
-        if (/(?:^|\.)goofind\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".googlesile.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".gopetition.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)gopetition\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".goproxing.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".gotrusted.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)gotrusted\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)gotw\.ca$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)grammaly\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("grandtrial.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".graphis.ne.jp") >= 0) return "+Optimized";
-        if (/(?:^|\.)graphis\.ne\.jp$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)graphql\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("greatfirewall.biz") >= 0) return "+Optimized";
-        if (/(?:^|\.)greatfirewallofchina\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".greatfirewallofchina.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)greatfirewallofchina\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)greenfieldbookstore\.com\.hk$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".greenparty.org.tw") >= 0) return "+Optimized";
-        if (/(?:^|\.)greenpeace\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".greenreadings.com/forum") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("great-firewall.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("great-roc.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("greatroc.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("greatzhonghua.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".greenpeace.com.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".greenvpn.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)greenvpn\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".greenvpn.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("gs-discuss.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)gtricks\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("guancha.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".guardster.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".gun-world.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("gunsandammo.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)gutteruncensored\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)gvm\.com\.tw$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".gzm.tv") >= 0) return "+Optimized";
-        if (/(?:^|\.)gzone-anime\.info$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)clementine-player\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("echofon.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)greasespot\.net$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)www\.klip\.me$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)stephaniered\.com$/.test(host)) return "+Optimized";
-        if (/^http:\/\/ub0\.cc/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("wozy.in") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("gospelherald.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)gospelherald\.com$/.test(host)) return "+Optimized";
-        if (/^http:\/\/hk\.gradconnection\.com\//.test(url)) return "+Optimized";
-        if (/(?:^|\.)grangorz\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)graylog2\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("greatfire.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)greatfire\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("greatfirewallofchina.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)greatroc\.tw$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".gts-vpn.com") >= 0) return "+Optimized";
-        if (/^http:\/\/gts-vpn\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".gu-chu-sum.org") >= 0) return "+Optimized";
-        if (/^http:\/\/gu-chu-sum\.org/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".guaguass.com") >= 0) return "+Optimized";
-        if (/^http:\/\/guaguass\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".guaguass.org") >= 0) return "+Optimized";
-        if (/^http:\/\/guaguass\.org/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("guishan.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)guishan\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)gunsamerica\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("guruonline.hk") >= 0) return "+Optimized";
-        if (/^http:\/\/gvlib\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".gyalwarinpoche.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".gyatsostudio.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".h528.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".h5dm.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".h5galgame.me") >= 0) return "+Optimized";
-        if (/(?:^|\.)h-china\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".h-moe.com") >= 0) return "+Optimized";
-        if (/^http:\/\/h-moe\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("h1n1china.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hacg.club") >= 0) return "+Optimized";
-        if (/(?:^|\.)hacg\.club$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hacg.in") >= 0) return "+Optimized";
-        if (/^http:\/\/hacg\.in/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hacg.li") >= 0) return "+Optimized";
-        if (/^http:\/\/hacg\.li/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hacg.red") >= 0) return "+Optimized";
-        if (/^http:\/\/hacg\.red/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hacken.cc/bbs") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hacker.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)hackthatphone\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("hahlo.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)hakkatv\.org\.tw$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".handcraftedsoftware.org") >= 0) return "+Optimized";
-        if (/^http:\/\/bbs\.hanminzu\.org\//.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hanunyi.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hao.news/news") >= 0) return "+Optimized";
-        if (/^http:\/\/ae\.hao123\.com/.test(url)) return "+Optimized";
-        if (/^http:\/\/ar\.hao123\.com/.test(url)) return "+Optimized";
-        if (/^http:\/\/br\.hao123\.com/.test(url)) return "+Optimized";
-        if (/^http:\/\/en\.hao123\.com/.test(url)) return "+Optimized";
-        if (/^http:\/\/id\.hao123\.com/.test(url)) return "+Optimized";
-        if (/^http:\/\/jp\.hao123\.com/.test(url)) return "+Optimized";
-        if (/^http:\/\/ma\.hao123\.com/.test(url)) return "+Optimized";
-        if (/^http:\/\/mx\.hao123\.com/.test(url)) return "+Optimized";
-        if (/^http:\/\/sa\.hao123\.com/.test(url)) return "+Optimized";
-        if (/^http:\/\/th\.hao123\.com/.test(url)) return "+Optimized";
-        if (/^http:\/\/tw\.hao123\.com/.test(url)) return "+Optimized";
-        if (/^http:\/\/vn\.hao123\.com/.test(url)) return "+Optimized";
-        if (/^http:\/\/hk\.hao123img\.com/.test(url)) return "+Optimized";
-        if (/^http:\/\/ld\.hao123img\.com/.test(url)) return "+Optimized";
-        if (/(?:^|\.)happy-vpn\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)hardsextube\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".harunyahya.com") >= 0) return "+Optimized";
-        if (/^http:\/\/harunyahya\.com/.test(url)) return "+Optimized";
-        if (/(?:^|\.)hasaowall\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("bbs.hasi.wang") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("have8.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hclips.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)hdtvb\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hdzog.com") >= 0) return "+Optimized";
-        if (/^http:\/\/hdzog\.com/.test(url)) return "+Optimized";
-        if (/(?:^|\.)heartyit\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hec.su") >= 0) return "+Optimized";
-        if (/^http:\/\/hec\.su/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hecaitou.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)hecaitou\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hechaji.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)hechaji\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)heeact\.edu\.tw$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hegre-art.com") >= 0) return "+Optimized";
-        if (/^http:\/\/hegre-art\.com/.test(url)) return "+Optimized";
-        if (/(?:^|\.)cdn\.helixstudios\.net$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)helplinfen\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)helloandroid\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)helloqueer\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".helloss.pw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("hellotxt.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)hellotxt\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hentai.to") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hellouk.org/forum/lofiversion") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".helpeachpeople.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)helpeachpeople\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)helpster\.de$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".helpzhuling.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("hentaitube.tv") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hentaivideoworld.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)getcloudapp\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)cl\.ly$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)getsmartlinks\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)git-scm\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("heqinglian.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)heungkongdiscuss\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hexieshe.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)hexxeh\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("app.heywire.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".heyzo.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hgseav.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hhdcb3office.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hhthesakyatrizin.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("hi-on.org.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("hidden-advent.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)hidden-advent\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("hidecloud.com/blog/2008/07/29/fuck-beijing-olympics.html") >= 0) return "+Optimized";
-        if (/(?:^|\.)hide\.me$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hideipvpn.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)hideipvpn\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hideman.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)hideman\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("hideme.nl") >= 0) return "+Optimized";
-        if (/(?:^|\.)hidemy\.name$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hidemyass.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)hidemyass\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("hidemycomp.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)hidemycomp\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hihiforum.com") >= 0) return "+Optimized";
-        if (/^http:\/\/hihiforum\.com/.test(url)) return "+Optimized";
-        if (/(?:^|\.)hihistory\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".higfw.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("highpeakspureearth.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)highrockmedia\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)hiitch\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)hikinggfw\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hilive.tv") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".himalayan-foundation.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("himalayanglacier.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".himemix.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)himemix\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".himemix.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("times.hinet.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hitomi.la") >= 0) return "+Optimized";
-        if (/^http:\/\/hitomi\.la/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hiwifi.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("hizbuttahrir.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("hizb-ut-tahrir.info") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("hizb-ut-tahrir.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hjclub.info") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hk-pub.com/forum") >= 0) return "+Optimized";
-        if (/^http:\/\/hk-pub\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hk01.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)hk01\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hk32168.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)hk32168\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)hkacg\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)hkacg\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hkatvnews.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("hkbc.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hkbf.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hkbookcity.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)hkbookcity\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hkchurch.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("hkci.org.hk") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hkcmi.edu") >= 0) return "+Optimized";
-        if (/(?:^|\.)hkcnews\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)hkcoc\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("hkday.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hkdailynews.com.hk/china.php") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("hkdf.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hkej.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hkepc.com/forum/viewthread.php?tid=1153322") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("china.hket.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)hkfaa\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("hkfreezone.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("hkfront.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("m.hkgalden.com") >= 0) return "+Optimized";
-        if (/^https:\/\/m\.hkgalden\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("hkgolden.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hkgreenradio.org/home") >= 0) return "+Optimized";
-        if (/^http:\/\/.*\.hkheadline\.com.*blog/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hkheadline.com/instantnews") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("hkhkhk.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("hkhrc.org.hk") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("hkhrm.org.hk") >= 0) return "+Optimized";
-        if (/(?:^|\.)hkip\.org\.uk$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("1989report.hkja.org.hk") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("hkjc.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hkjp.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hklft.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hklts.org.hk") >= 0) return "+Optimized";
-        if (/(?:^|\.)hklts\.org\.hk$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("news.hkpeanut.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("hkptu.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hkreporter.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)hkreporter\.com$/.test(host)) return "+Optimized";
-        if (/^http:\/\/hkupop\.hku\.hk\//.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hkusu.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)hkusu\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hkvwet.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hkwcc.org.hk") >= 0) return "+Optimized";
-        if (/(?:^|\.)hkzone\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hmonghot.com") >= 0) return "+Optimized";
-        if (/^http:\/\/hmonghot\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("hnjhj.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)hnjhj\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hnntube.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)hola\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)hola\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("holymountaincn.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("holyspiritspeaks.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)holyspiritspeaks\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)derekhsu\.homeip\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".homeperversion.com") >= 0) return "+Optimized";
-        if (/^http:\/\/homeservershow\.com/.test(url)) return "+Optimized";
-        if (/^http:\/\/old\.honeynet\.org\/scans\/scan31\/sub\/doug_eric\/spam_translation\.html/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hongkongfp.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)hongkongfp\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("hongmeimei.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)hongzhi\.li$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("hootsuite.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)hootsuite\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hopedialogue.org") >= 0) return "+Optimized";
-        if (/^http:\/\/hopedialogue\.org/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hopto.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hornygamer.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hornytrip.com") >= 0) return "+Optimized";
-        if (/^http:\/\/hornytrip\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hotav.tv") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hotels.cn") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("hotfrog.com.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("hotgoo.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hotpornshow.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("hotpot.hk") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hotshame.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)hotspotshield\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hotvpn.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)hotvpn\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)hougaige\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)howtoforge\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hqcdp.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)hqcdp\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)hqjapanesesex\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("hqmovies.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hrcir.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hrcchina.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hrea.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hrichina.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)hrichina\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hrw.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)hrw\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("hrweb.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)hsjp\.net$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)hsselite\.com$/.test(host)) return "+Optimized";
-        if (/^http:\/\/hst\.net\.tw/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hstern.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hstt.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".htkou.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)htkou\.net$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)htmldog\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hua-yue.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".huaglad.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)huaglad\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".huanghuagang.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)huanghuagang\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".huangyiyu.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".huaren.us") >= 0) return "+Optimized";
-        if (/(?:^|\.)huaren\.us$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("bbs.huasing.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("huaxia-news.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("huaxiabao.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("huaxin.ph") >= 0) return "+Optimized";
-        if (/(?:^|\.)huayuworld\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".huffingtonpost.com/rebiya-kadeer") >= 0) return "+Optimized";
-        if (/(?:^|\.)hugoroy\.eu$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)huhaitai\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)huhamhire\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("huiyi.in") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hulkshare.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("humanrightsbriefing.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)hung-ya\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)hungerstrikeforaids\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)huping\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("hurgokbayrak.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hurriyet.com.tr") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".hut2.ru") >= 0) return "+Optimized";
-        if (/(?:^|\.)hutianyi\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("hutong9.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("huyandex.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)hwayue\.org\.tw$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)hwinfo\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)hxwk\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("hxwq.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)hyperrate\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("ebook.hyread.com.tw") >= 0) return "+Optimized";
-        if (/(?:^|\.)ebook\.hyread\.com\.tw$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)i1\.hk$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)i2p2\.de$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)i2runner\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)i818hk\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".i-cable.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".i-part.com.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".iamtopone.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("iask.ca") >= 0) return "+Optimized";
-        if (/(?:^|\.)iask\.ca$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("iask.bz") >= 0) return "+Optimized";
-        if (/(?:^|\.)iask\.bz$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".iav19.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("ibiblio.org/pub/packages/ccic") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".iblist.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)iblogserv-f\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("ibros.org") >= 0) return "+Optimized";
-        if (/^http:\/\/cn\.ibtimes\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ibvpn.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)ibvpn\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("icams.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("blogs.icerocket.com/tag") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".icij.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)icij\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)icl-fi\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".icoco.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)icoco\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)furbo\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)warbler\.iconfactory\.net$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)iconpaper\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)icu-project\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("w.idaiwan.com/forum") >= 0) return "+Optimized";
-        if (/(?:^|\.)iddddg\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("idemocracy.asia") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".identi.ca") >= 0) return "+Optimized";
-        if (/(?:^|\.)identi\.ca$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)idiomconnection\.com$/.test(host)) return "+Optimized";
-        if (/^http:\/\/www\.idlcoyote\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".idouga.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".idreamx.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("forum.idsam.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".idv.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ieasy5.com") >= 0) return "+Optimized";
-        if (/^http:\/\/ieasy5\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ied2k.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ienergy1.com") >= 0) return "+Optimized";
-        if (/^http:\/\/if\.ttt\//.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("ifanqiang.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ifcss.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)ifcss\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("ifjc.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ift.tt") >= 0) return "+Optimized";
-        if (/^http:\/\/ift\.tt/.test(url)) return "+Optimized";
-        if (/(?:^|\.)ifreewares\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)igcd\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".igfw.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)igfw\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".igmg.de") >= 0) return "+Optimized";
-        if (/(?:^|\.)ignitedetroit\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".igotmail.com.tw") >= 0) return "+Optimized";
-        if (/(?:^|\.)igvita\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)ihakka\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ihao.org/dz5") >= 0) return "+Optimized";
-        if (/(?:^|\.)iicns\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ikstar.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)illusionfactory\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)ilove80\.be$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)im\.tv$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)im88\.tw$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".imgchili.net") >= 0) return "+Optimized";
-        if (/^http:\/\/imgchili\.net/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".imageab.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".imagefap.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)imagefap\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)imageflea\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("imageshack.us") >= 0) return "+Optimized";
-        if (/(?:^|\.)imagevenue\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)imagezilla\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".imb.org") >= 0) return "+Optimized";
-        if (/^http:\/\/imb\.org/.test(url)) return "+Optimized";
-        if (/^http:\/\/www\.imdb\.com\/name\/nm0482730/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".imdb.com/title/tt0819354") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".imdb.com/title/tt1540068") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".imdb.com/title/tt4908644") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".img.ly") >= 0) return "+Optimized";
-        if (/(?:^|\.)img\.ly$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".imkev.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)imkev\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".imlive.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".immoral.jp") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("impact.org.au") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("impp.mn") >= 0) return "+Optimized";
-        if (/^http:\/\/tech2\.in\.com\/video\//.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("in99.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("in-disguise.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".incapdns.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".incloak.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)incloak\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)incredibox\.fr$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)indiandefensenews\.in$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("timesofindia.indiatimes.com/dalai") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("timesofindia.indiatimes.com/defaultinterstitial.cms") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".indiemerch.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)indiemerch\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("info-graf.fr") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("website.informer.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".initiativesforchina.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".inkui.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".inmediahk.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)inmediahk\.net$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)innermongolia\.org$/.test(host)) return "+Optimized";
-        if (/^http:\/\/blog\.inoreader\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".inote.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".insecam.org") >= 0) return "+Optimized";
-        if (/^http:\/\/insecam\.org/.test(url)) return "+Optimized";
-        if (/(?:^|\.)insidevoa\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".instagram.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)instagram\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".institut-tibetain.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)interfaceaddiction\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)internationalrivers\.org$/.test(host)) return "+Optimized";
-        if (/^http:\/\/internet\.org\//.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("internetdefenseleague.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("internetfreedom.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)internetpopculture\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("inxian.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)inxian\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("ipalter.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)iphone4hongkong\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)iphonehacks\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)iphonetaiwan\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)iphonix\.fr$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)ipicture\.ru$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ipjetable.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)ipjetable\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ipobar.com/read.php?") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("ipoock.com/img") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".iportal.me") >= 0) return "+Optimized";
-        if (/^http:\/\/iportal\.me/.test(url)) return "+Optimized";
-        if (/(?:^|\.)ippotv\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ipredator.se") >= 0) return "+Optimized";
-        if (/(?:^|\.)ipredator\.se$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".iptv.com.tw") >= 0) return "+Optimized";
-        if (/(?:^|\.)iptvbin\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)ipvanish\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("iredmail.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("chinese.irib.ir") >= 0) return "+Optimized";
-        if (/(?:^|\.)ironicsoftware\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)ironbigfools\.compython\.net$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)ironpython\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ironsocket.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)ironsocket\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".is.gd") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".islahhaber.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".islam.org.hk") >= 0) return "+Optimized";
-        if (/^http:\/\/islam\.org\.hk/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".islamawareness.net/Asia/China") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".islamhouse.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)islamhouse\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".islamicity.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".islamicpluralism.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".islamtoday.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".isaacmao.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)isaacmao\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)isgreat\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)ismaelan\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ismalltits.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)ismprofessional\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("isohunt.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)israbox\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".issuu.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)issuu\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".istars.co.nz") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("oversea.istarshine.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)oversea\.istarshine\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("blog.istef.info/2007/10/21/myentunnel") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".istiqlalhewer.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".istockphoto.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("isunaffairs.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("isuntv.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("itaboo.info") >= 0) return "+Optimized";
-        if (/(?:^|\.)itaboo\.info$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".italiatibet.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("download.ithome.com.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("ithelp.ithome.com.tw") >= 0) return "+Optimized";
-        if (/(?:^|\.)itshidden\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".itsky.it") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".itweet.net") >= 0) return "+Optimized";
-        if (/^http:\/\/itweet\.net/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".iu45.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)iuhrdf\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".iuksky.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ivacy.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)ivacy\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".iverycd.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ivpn.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)ixquick\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ixxx.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("iyouport.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)iyouport\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".izaobao.us") >= 0) return "+Optimized";
-        if (/(?:^|\.)gmozomg\.izihost\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".izles.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".izlesem.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)j\.mp$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("blog.jackjia.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("jamaat.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".jamyangnorbu.com") >= 0) return "+Optimized";
-        if (/^http:\/\/jamyangnorbu\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".jandyx.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)janwongphoto\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)japan-whores\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".jav101.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".jav2be.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)jav2be\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".jav68.tv") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".javakiba.org") >= 0) return "+Optimized";
-        if (/^http:\/\/javakiba\.org/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".javbus.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)javfor\.me$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".javhd.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".javhip.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".javmobile.net") >= 0) return "+Optimized";
-        if (/^http:\/\/javmobile\.net/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".javmoo.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".javseen.com") >= 0) return "+Optimized";
-        if (/^http:\/\/javseen\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("jbtalks.cc") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("jbtalks.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("jbtalks.my") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".jdwsy.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("jeanyim.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)jfqu36\.club$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)jfqu37\.xyz$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)jgoodies\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".jiangweiping.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)jiangweiping\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)jiaoyou8\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".jiehua.cz") >= 0) return "+Optimized";
-        if (/(?:^|\.)hk\.jiepang\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)tw\.jiepang\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("jieshibaobao.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".jigglegifs.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("56cun04.jigsy.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("jigong1024.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("daodu14.jigsy.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("specxinzl.jigsy.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("wlcnew.jigsy.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".jihadology.net") >= 0) return "+Optimized";
-        if (/^http:\/\/jihadology\.net/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("jinbushe.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)jinbushe\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".jingsim.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("zhao.jinhai.de") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("jingpin.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)jingpin\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("jinpianwang.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".jinroukong.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("ac.jiruan.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)jitouch\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".jizzthis.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("jjgirls.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".jkb.cc") >= 0) return "+Optimized";
-        if (/^http:\/\/jkb\.cc/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("jkforum.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)jma\.go\.jp$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("research.jmsc.hku.hk/social") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("weiboscope.jmsc.hku.hk") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".jmscult.com") >= 0) return "+Optimized";
-        if (/^http:\/\/jmscult\.com/.test(url)) return "+Optimized";
-        if (/(?:^|\.)joachims\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)jobso\.tv$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)joeedelman\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".journalchretien.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)journalofdemocracy\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".joymiihub.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("jpopforum.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".jubushoushen.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)jubushoushen\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".juhuaren.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)juliereyc\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)junauza\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".june4commemoration.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".junefourth-20.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)junefourth-20\.net$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)bbs\.junglobal\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".juoaa.com") >= 0) return "+Optimized";
-        if (/^http:\/\/juoaa\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("justfreevpn.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".justicefortenzin.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("justpaste.it") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("justtristan.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("juyuange.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("juziyue.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)juziyue\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)jwmusic\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".jyxf.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)k-doujin\.net$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)ka-wai\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".kagyu.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)kagyu\.org\.za$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".kagyumonlam.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".kagyunews.com.hk") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".kagyuoffice.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)kagyuoffice\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)kagyuoffice\.org\.tw$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".kaiyuan.de") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".kakao.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)kakao\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".kalachakralugano.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".kankan.today") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".kannewyork.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)kannewyork\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".kanshifang.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)kanshifang\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("kanzhongguo.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("kanzhongguo.eu") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".kaotic.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)karayou\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("karkhung.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".karmapa.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".karmapa-teachings.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".kba-tx.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".kcoolonline.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)kcsoftwares\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".kebrum.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)kebrum\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".kechara.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".keepandshare.com/visit/visit_page.php?i=688154") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".keezmovies.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".kendincos.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".kenengba.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)kenengba\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)keontech\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".kepard.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)kepard\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("wiki.keso.cn/Home") >= 0) return "+Optimized";
-        if (/(?:^|\.)keycdn\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".khabdha.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".khmusic.com.tw") >= 0) return "+Optimized";
-        if (/(?:^|\.)kichiku-doujinko\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("bbs.kimy.com.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".kindleren.com") >= 0) return "+Optimized";
-        if (/^http:\/\/kindleren\.com/.test(url)) return "+Optimized";
-        if (/^http:\/\/www\.kindleren\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".kingdomsalvation.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)kingdomsalvation\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("kinghost.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)kingstone\.com\.tw$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".kink.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("killwall.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)killwall\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".kir.jp") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".kissbbao.cn") >= 0) return "+Optimized";
-        if (/^http:\/\/kiwi\.kz/.test(url)) return "+Optimized";
-        if (/(?:^|\.)kk-whys\.co\.jp$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".kmuh.org.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".knowledgerush.com/kr/encyclopedia") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".kobo.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)kobo\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".kobobooks.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)kobobooks\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)kodingen\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)kompozer\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".konachan.com") >= 0) return "+Optimized";
-        if (/^http:\/\/konachan\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".kone.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)koolsolutions\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".koornk.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)koornk\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)koranmandarin\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".korenan2.com") >= 0) return "+Optimized";
-        if (/^http:\/\/gojet\.krtco\.com\.tw/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ksdl.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ksnews.com.tw") >= 0) return "+Optimized";
-        if (/(?:^|\.)ktzhk\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".kui.name/event") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("kun.im") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".kurashsultan.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)kurtmunger\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("kusocity.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)kwcg\.ca$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("kwongwah.com.my") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".kxsw.life") >= 0) return "+Optimized";
-        if (/(?:^|\.)kxsw\.life$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".kyofun.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("kyohk.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)kyoyue\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".kyzyhello.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)kyzyhello\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".kzeng.info") >= 0) return "+Optimized";
-        if (/(?:^|\.)kzeng\.info$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("la-forum.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("ladbrokes.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)labiennale\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".lagranepoca.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)lagranepoca\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".lalulalu.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".lama.com.tw") >= 0) return "+Optimized";
-        if (/(?:^|\.)lama\.com\.tw$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".lamayeshe.com") >= 0) return "+Optimized";
-        if (/^http:\/\/lamayeshe\.com/.test(url)) return "+Optimized";
-        if (/^http:\/\/www\.lamenhu\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".lamnia.co.uk") >= 0) return "+Optimized";
-        if (/(?:^|\.)lamnia\.co\.uk$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("lamrim.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".lanterncn.cn") >= 0) return "+Optimized";
-        if (/^http:\/\/lanterncn\.cn/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".lantosfoundation.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".laod.cn") >= 0) return "+Optimized";
-        if (/^http:\/\/laod\.cn/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("laogai.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)laogai\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("laomiu.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".laoyang.info") >= 0) return "+Optimized";
-        if (/^http:\/\/laoyang\.info/.test(url)) return "+Optimized";
-        if (/(?:^|\.)laptoplockdown\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".laqingdan.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)laqingdan\.net$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)larsgeorge\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".lastcombat.com") >= 0) return "+Optimized";
-        if (/^http:\/\/lastcombat\.com/.test(url)) return "+Optimized";
-        if (/(?:^|\.)lastfm\.es$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("latelinenews.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".latibet.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)le-vpn\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".leafyvpn.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)leafyvpn\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("leeao.com.cn/bbs/forum.php") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("lefora.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)left21\.hk$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".legalporno.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".legsjapan.com") >= 0) return "+Optimized";
-        if (/^http:\/\/leirentv\.ca/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("leisurecafe.ca") >= 0) return "+Optimized";
-        if (/(?:^|\.)lematin\.ch$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".lemonde.fr") >= 0) return "+Optimized";
-        if (/(?:^|\.)lenwhite\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("lerosua.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)lerosua\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("blog.lester850.info") >= 0) return "+Optimized";
-        if (/(?:^|\.)lesoir\.be$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".letou.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("letscorp.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)letscorp\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".lhakar.org") >= 0) return "+Optimized";
-        if (/^http:\/\/lhakar\.org/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".lhasocialwork.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".liangyou.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)liangyou\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".lianyue.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)liaowangxizang\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".liaowangxizang.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)liberal\.org\.hk$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".libertytimes.com.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("blogs.libraryinformationtechnology.com/jxyz") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".lidecheng.com/blog/fucking-gfw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".lighten.org.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("limiao.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("linkuswell.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("abitno.linpie.com/use-ipv6-to-fuck-gfw") >= 0) return "+Optimized";
-        if (/(?:^|\.)line\.me$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)line-apps\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".linglingfa.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)lingvodics\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".link-o-rama.com") >= 0) return "+Optimized";
-        if (/^http:\/\/link-o-rama\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".linkideo.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)api\.linksalpha\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)apidocs\.linksalpha\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)www\.linksalpha\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)help\.linksalpha\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)linux\.org\.hk$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("linuxtoy.org/archives/installing-west-chamber-on-ubuntu") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".lionsroar.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".lipuman.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)liquidvpn\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)greatfire\.us7\.list-manage\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)listentoyoutube\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("listorious.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)liudejun\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".liuhanyu.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".liujianshu.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)liujianshu\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".liuxiaobo.net") >= 0) return "+Optimized";
-        if (/^http:\/\/liuxiaobo\.net/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("liuxiaotong.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)liuxiaotong\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".livedoor.jp") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".liveleak.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)liveleak\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".livestation.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("livestream.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)livestream\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)livingonline\.us$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)livingstream\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)livevideo\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".livevideo.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".liwangyang.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("lizhizhuangbi.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("lkcn.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".load.to") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".lobsangwangyal.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".localdomain.ws") >= 0) return "+Optimized";
-        if (/(?:^|\.)localdomain\.ws$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("localpresshk.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)lockdown\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)lockestek\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("logbot.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)logiqx\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("secure.logmein.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)secure\.logmein\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)logmike\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".londonchinese.ca") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".longhair.hk") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("longmusic.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)longtermly\.net$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)lookingglasstheatre\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)lookpic\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".looktoronto.com") >= 0) return "+Optimized";
-        if (/^http:\/\/looktoronto\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".lotsawahouse.org/tibetan-masters/fourteenth-dalai-lama") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".lotuslight.org.hk") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".lotuslight.org.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("hkreporter.loved.hk") >= 0) return "+Optimized";
-        if (/(?:^|\.)lpsg\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)lrfz\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".lrip.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)lrip\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".lsd.org.hk") >= 0) return "+Optimized";
-        if (/(?:^|\.)lsd\.org\.hk$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("lsforum.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".lsm.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)lsm\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".lsmchinese.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)lsmchinese\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".lsmkorean.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)lsmkorean\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".lsmradio.com/rad_archives") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".lsmwebcast.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ltn.com.tw") >= 0) return "+Optimized";
-        if (/^http:\/\/ltn\.com\.tw/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".luke54.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".luke54.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".lupm.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)lupm\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)lushstories\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("luxebc.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("lvhai.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)lvhai\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)lvv2\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".lyfhk.net") >= 0) return "+Optimized";
-        if (/^http:\/\/lyfhk\.net/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".m-team.cc") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".macrovpn.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("macts.com.tw") >= 0) return "+Optimized";
-        if (/(?:^|\.)mad-ar\.ch$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)madthumbs\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)magic-net\.info$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("mahabodhi.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("my.mail.ru") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".maiplus.com") >= 0) return "+Optimized";
-        if (/^http:\/\/maiplus\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".maizhong.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("makkahnewspaper.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("manicur4ik.ru") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".maplew.com") >= 0) return "+Optimized";
-        if (/^http:\/\/maplew\.com/.test(url)) return "+Optimized";
-        if (/(?:^|\.)marc\.info$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("marguerite.su") >= 0) return "+Optimized";
-        if (/(?:^|\.)martincartoons\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("maskedip.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".maiio.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("mail-archive.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".malaysiakini.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)makemymood\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".maniash.com") >= 0) return "+Optimized";
-        if (/^http:\/\/maniash\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".mansion.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".mansionpoker.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)martau\.com$/.test(host)) return "+Optimized";
-        if (/^http:\/\/blog\.martinoei\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".martsangkagyuofficial.org") >= 0) return "+Optimized";
-        if (/^http:\/\/martsangkagyuofficial\.org/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("maruta.be/forget") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".marxist.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)marxist\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".marxists.org/chinese") >= 0) return "+Optimized";
-        if (/(?:^|\.)matainja\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)mathable\.io$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)mathiew-badimon\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)matsushimakaede\.com$/.test(host)) return "+Optimized";
-        if (/^http:\/\/maturejp\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("mayimayi.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".maxing.jp") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".mcaf.ee") >= 0) return "+Optimized";
-        if (/^http:\/\/mcaf\.ee/.test(url)) return "+Optimized";
-        if (/(?:^|\.)mcadforums\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("mcfog.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("mcreasite.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".md-t.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)md-t\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)meansys\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".media.org.hk") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".mediachinese.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)mediachinese\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".mediafire.com/?") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".mediafire.com/download") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".mediafreakcity.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)mediafreakcity\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".medium.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)medium\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".meetav.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)meetup\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("mefeedia.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)mega\.nz$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)megaproxy\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)megarotic\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("megavideo.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)megurineluka\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("meirixiaochao.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)melon-peach\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".meltoday.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".memehk.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)memehk\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("memorybbs.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".memri.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".memrijttm.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".mercyprophet.org") >= 0) return "+Optimized";
-        if (/^http:\/\/mercyprophet\.org/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".meridian-trust.org") >= 0) return "+Optimized";
-        if (/^http:\/\/meridian-trust\.org/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".meripet.biz") >= 0) return "+Optimized";
-        if (/^http:\/\/meripet\.biz/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".meripet.com") >= 0) return "+Optimized";
-        if (/^http:\/\/meripet\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("merit-times.com.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("meshrep.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".mesotw.com/bbs") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("metacafe.com/watch") >= 0) return "+Optimized";
-        if (/(?:^|\.)meteorshowersonline\.com$/.test(host)) return "+Optimized";
-        if (/^http:\/\/www\.metro\.taipei\//.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".metrohk.com.hk/?cmd=detail&categoryID=2") >= 0) return "+Optimized";
-        if (/(?:^|\.)metrolife\.ca$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".metroradio.com.hk") >= 0) return "+Optimized";
-        if (/^http:\/\/metroradio\.com\.hk/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("meyou.jp") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".meyul.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)mgoon\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)mgstage\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)mh4u\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("mhradio.org") >= 0) return "+Optimized";
-        if (/^http:\/\/michaelanti\.com/.test(url)) return "+Optimized";
-        if (/(?:^|\.)michaelmarketl\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".microvpn.com") >= 0) return "+Optimized";
-        if (/^http:\/\/microvpn\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("middle-way.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".mihk.hk/forum") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".mihr.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("mihua.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)mikesoltys\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".milph.net") >= 0) return "+Optimized";
-        if (/^http:\/\/milph\.net/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".milsurps.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("mimiai.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".mimivip.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".mimivv.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".mindrolling.org") >= 0) return "+Optimized";
-        if (/^http:\/\/mindrolling\.org/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".minghui.or.kr") >= 0) return "+Optimized";
-        if (/^http:\/\/minghui\.or\.kr/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("minghui.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)minghui\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("minghui-a.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("minghui-b.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("minghui-school.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".mingjinglishi.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)mingjinglishi\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("mingjingnews.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)mingjingtimes\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".mingpao.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)mingpao\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".mingpaocanada.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".mingpaomonthly.com") >= 0) return "+Optimized";
-        if (/^http:\/\/mingpaomonthly\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("mingpaonews.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".mingpaony.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".mingpaosf.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".mingpaotor.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".mingpaovan.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".mingshengbao.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".minhhue.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".miniforum.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ministrybooks.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".minzhuhua.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)minzhuhua\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("minzhuzhanxian.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("minzhuzhongguo.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)miroguide\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("mirrorbooks.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("thecenter.mit.edu") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".mitao.com.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".mitbbs.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)mitbbs\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".mixero.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)mixero\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("mixpod.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".mixx.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)mixx\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)mizzmona\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".mk5000.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".mlcool.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)mmaaxx\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".mmmca.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)mobatek\.net$/.test(host)) return "+Optimized";
-        if (/^http:\/\/mobile01\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".mobile01.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)mobileways\.de$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".mobypicture.com") >= 0) return "+Optimized";
-        if (/^http:\/\/moby\.to/.test(url)) return "+Optimized";
-        if (/(?:^|\.)moeerolibrary\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("wiki.moegirl.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".mofaxiehui.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".mofos.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)mog\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("molihua.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)mondex\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".money-link.com.tw") >= 0) return "+Optimized";
-        if (/^http:\/\/money-link\.com\.tw/.test(url)) return "+Optimized";
-        if (/^http:\/\/www\.monlamit\.org/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".moonbbs.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)moonbbs\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("c1522.mooo.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)monitorchina\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("bbs.morbell.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)morningsun\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)moroneta\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".motherless.com") >= 0) return "+Optimized";
-        if (/^http:\/\/motherless\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("motor4ik.ru") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".mousebreaker.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".movements.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)movements\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)moviefap\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)www\.moztw\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".mp3buscador.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("mp3ye.eu") >= 0) return "+Optimized";
-        if (/(?:^|\.)mpettis\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("mpfinance.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("mpinews.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("mponline.hk") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".mqxd.org") >= 0) return "+Optimized";
-        if (/^http:\/\/mqxd\.org/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("mrtweet.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)mrtweet\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("news.hk.msn.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("news.msn.com.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("msguancha.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".mswe1.org") >= 0) return "+Optimized";
-        if (/^http:\/\/mswe1\.org/.test(url)) return "+Optimized";
-        if (/(?:^|\.)mthruf\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("muchosucko.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)multiply\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("multiproxy.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("multiupload.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".mullvad.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)mullvad\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".mummysgold.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".murmur.tw") >= 0) return "+Optimized";
-        if (/^http:\/\/murmur\.tw/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".musicade.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".muslimvideo.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)muzi\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)muzi\.net$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)mx981\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".my-formosa.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".my-proxy.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".my-private-network.co.uk") >= 0) return "+Optimized";
-        if (/(?:^|\.)my-private-network\.co\.uk$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("forum.my903.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".myactimes.com/actimes") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".myaudiocast.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)myaudiocast\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".myav.com.tw/bbs") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".mybbs.us") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".myca168.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".mycanadanow.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)bbs\.mychat\.to$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)mychinamyhome\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".mychinamyhome.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".mychinanet.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".mychinanews.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)mychinanews\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".mychinese.news") >= 0) return "+Optimized";
-        if (/(?:^|\.)mycnnews\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)mykomica\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("mycould.com/discuz") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".myeasytv.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)myeclipseide\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".myforum.com.hk") >= 0) return "+Optimized";
-        if (/(?:^|\.)myforum\.com\.hk$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)myforum\.com\.uk$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".myfreecams.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".myfreepaysite.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".myfreshnet.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".myiphide.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)myiphide\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("forum.mymaji.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("mymediarom.com/files/box") >= 0) return "+Optimized";
-        if (/(?:^|\.)mymoe\.moe$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)mymusic\.net\.tw$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)myparagliding\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)mypopescu\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("myradio.hk/podcast") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("mysinablog.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".myspace.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".mytalkbox.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".mytizi.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)naacoalition\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("old.nabble.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)naitik\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".nakuz.com/bbs") >= 0) return "+Optimized";
-        if (/(?:^|\.)nalandabodhi\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)nalandawest\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".namgyal.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("namgyalmonastery.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)namsisi\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".nanyang.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)nanyang\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".nanyangpost.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)nanyangpost\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".nanzao.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)jpl\.nasa\.gov$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)pds\.nasa\.gov$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)solarsystem\.nasa\.gov$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".nakido.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)nakido\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".naol.ca") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".naol.cc") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("uighur.narod.ru") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".nat.moe") >= 0) return "+Optimized";
-        if (/(?:^|\.)nat\.moe$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("cyberghost.natado.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)national-lottery\.co\.uk$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("news.nationalgeographic.com/news/2014/06/140603-tiananmen-square") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".nationsonline.org/oneworld/tibet") >= 0) return "+Optimized";
-        if (/(?:^|\.)line\.naver\.jp$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)navyfamily\.navy\.mil$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)navyreserve\.navy\.mil$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)nko\.navy\.mil$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)usno\.navy\.mil$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".nbtvpn.com") >= 0) return "+Optimized";
-        if (/^http:\/\/nbtvpn\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("nccwatch.org.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".nch.com.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ncn.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)ncn\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)etools\.ncol\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".nde.de") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ndr.de") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ned.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)nekoslovakia\.net$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)nepusoku\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("bbs.netbig.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".netbirds.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("netcolony.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("bolin.netfirms.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)netme\.cc$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("netsneak.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".network54.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("networkedblogs.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".networktunnel.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("neverforget8964.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("new-3lunch.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".new-akiba.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".new96.ca") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".newcenturymc.com") >= 0) return "+Optimized";
-        if (/^http:\/\/newcenturymc\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("newcenturynews.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)newchen\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".newchen.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".newgrounds.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("newipnow.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".newlandmagazine.com.au") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".newnews.ca") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("news100.com.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("newschinacomment.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".newscn.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)newscn\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("newspeak.cc/story") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".newsancai.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)newsancai\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".newsdh.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)newstamago\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)newstapa\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("newstarnet.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".newtaiwan.com.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("newtalk.tw") >= 0) return "+Optimized";
-        if (/(?:^|\.)newtalk\.tw$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("newyorktimes.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)nexon\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".next11.co.jp") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".nextmag.com.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".nextmedia.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)nexton-net\.jp$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("nexttv.com.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".nfjtyd.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)co\.ng\.mil$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)nga\.mil$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("ngensis.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".nhentai.net") >= 0) return "+Optimized";
-        if (/^http:\/\/nhentai\.net/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".nhk-ondemand.jp") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".nicovideo.jp/watch") >= 0) return "+Optimized";
-        if (/(?:^|\.)nighost\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("av.nightlife141.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("ninecommentaries.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ninjacloak.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)ninjaproxy\.ninja$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("nintendium.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("taiwanyes.ning.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("usmgtcg.ning.com/forum") >= 0) return "+Optimized";
-        if (/(?:^|\.)niusnews\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)njactb\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("njuice.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)njuice\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("nlfreevpn.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".gooddns.info") >= 0) return "+Optimized";
-        if (/(?:^|\.)gotdns\.ch$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".maildns.xyz") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".no-ip.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".opendn.xyz") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".servehttp.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("sytes.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".whodns.xyz") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".zapto.org") >= 0) return "+Optimized";
-        if (/^http:\/\/dynupdate\.no-ip\.com\//.test(url)) return "+Optimized";
-        if (/(?:^|\.)nobel\.se$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("nobelprize.org/nobel_prizes/peace/laureates/1989") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("nobelprize.org/nobel_prizes/peace/laureates/2010") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("nobodycanstop.us") >= 0) return "+Optimized";
-        if (/(?:^|\.)nobodycanstop\.us$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)nokogiri\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)nokola\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("noodlevpn.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".norbulingka.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("nordvpn.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)nordvpn\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)novelasia\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".news.now.com") >= 0) return "+Optimized";
-        if (/^http:\/\/news\.now\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("news.now.com%2Fhome") >= 0) return "+Optimized";
-        if (/(?:^|\.)nownews\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".nowtorrents.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".noypf.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)noypf\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)npa\.go\.jp$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".npnt.me") >= 0) return "+Optimized";
-        if (/^http:\/\/npnt\.me/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".nps.gov") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".nrk.no") >= 0) return "+Optimized";
-        if (/(?:^|\.)nrk\.no$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ntd.tv") >= 0) return "+Optimized";
-        if (/(?:^|\.)ntd\.tv$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("ntdtv.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ntdtv.co.kr") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("ntdtv.ca") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("ntdtv.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("ntdtv.ru") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("ntdtvla.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ntrfun.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)cbs\.ntu\.edu\.tw$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".nubiles.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)nuexpo\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".nukistream.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)nurgo-software\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)nutaku\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".nuvid.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)nvdst\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("nuzcom.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".nvquan.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".nvtongzhisheng.org") >= 0) return "+Optimized";
-        if (/^http:\/\/nvtongzhisheng\.org/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".nwtca.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)nyaa\.eu$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)nyaa\.se$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".nydus.ca") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("nylon-angel.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("nylonstockingsonline.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)a1\.nyt\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)int\.nyt\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)s1\.nyt\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("static01.nyt.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)static01\.nyt\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)typeface\.nyt\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("nytchina.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("nytcn.me") >= 0) return "+Optimized";
-        if (/(?:^|\.)nytcn\.me$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)nytco\.com$/.test(host)) return "+Optimized";
-        if (/^http:\/\/nyti\.ms\//.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".nytimes.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)nytimes\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)nytimg\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("userapi.nytlog.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("cn.nytstyle.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)nytstyle\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".nzchinese.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)nzchinese\.net\.nz$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("observechina.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".obutu.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("ocaspro.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("occupytiananmen.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("oclp.hk") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ocreampies.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)october-review\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("offbeatchina.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("officeoftibet.com") >= 0) return "+Optimized";
-        if (/^http:\/\/ofile\.org/.test(url)) return "+Optimized";
-        if (/(?:^|\.)ogaoga\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("twtr2src.ogaoga.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ogate.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)ogate\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("www2.ohchr.org/english/bodies/cat/docs/ngos/II_China_41.pdf") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".oikos.com.tw/v4") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".oiktv.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("oizoblog.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ok.ru") >= 0) return "+Optimized";
-        if (/(?:^|\.)ok\.ru$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".okayfreedom.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)okayfreedom\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("okk.tw") >= 0) return "+Optimized";
-        if (/^http:\/\/filmy\.olabloga\.pl\/player/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("old-cat.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)olumpo\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".olympicwatch.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("omgili.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)omnitalk\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)omnitalk\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("cling.omy.sg") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("forum.omy.sg") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("news.omy.sg") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("showbiz.omy.sg") >= 0) return "+Optimized";
-        if (/(?:^|\.)on\.cc$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)onedrive\.live\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)onion\.city$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".onlinecha.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)onlineyoutube\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("onmoon.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("onmoon.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".onthehunt.com") >= 0) return "+Optimized";
-        if (/^http:\/\/onthehunt\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".oopsforum.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("open.com.hk") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("openallweb.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("opendemocracy.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)opendemocracy\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".openervpn.in") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("openid.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)openid\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".openleaks.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)openleaks\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("openvpn.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)openvpn\.net$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)openwebster\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".openwrt.org.cn") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("my.opera.com/dahema") >= 0) return "+Optimized";
-        if (/(?:^|\.)demo\.opera-mini\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("www.orchidbbs.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".organcare.org.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("organharvestinvestigation.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".orgfree.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)orient-doll\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("orientaldaily.com.my") >= 0) return "+Optimized";
-        if (/(?:^|\.)orientaldaily\.com\.my$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)orn\.jp$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("t.orzdream.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)t\.orzdream\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("tui.orzdream.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)orzistic\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)osfoora\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".otnd.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)otnd\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)otto\.de$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)ourdearamy\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("oursogo.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("oursteps.com.au") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".oursweb.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)ourtv\.hk$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("xinqimeng.over-blog.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)overplay\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("share.ovi.com/media") >= 0) return "+Optimized";
-        if (/^http:\/\/owl\.li/.test(url)) return "+Optimized";
-        if (/^http:\/\/ht\.ly/.test(url)) return "+Optimized";
-        if (/^http:\/\/htl\.li/.test(url)) return "+Optimized";
-        if (/^http:\/\/mash\.to/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("www.owind.com") >= 0) return "+Optimized";
-        if (/^http:\/\/www\.oxid\.it/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("oyax.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("oyghan.com/wps") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ozchinese.com/bbs") >= 0) return "+Optimized";
-        if (/(?:^|\.)ow\.ly$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("bbs.ozchinese.com") >= 0) return "+Optimized";
-        if (/^https:\/\/ozvoice\.org/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ozxw.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ozyoyo.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)pachosting\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".pacificpoker.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".packetix.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)pacopacomama\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".padmanet.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("page2rss.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)pagodabox\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".palacemoon.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("forum.palmislife.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)eriversoft\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".paldengyal.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("paljorpublications.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".paltalk.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)pangci\.net$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)panacom\.co\.jp$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)pandapow\.co$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".pandapow.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".pandavpn-jp.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".panluan.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)panluan\.net$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)pao-pao\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("paper.li") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("paperb.us") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".paradisepoker.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".partycasino.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".partypoker.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".passion.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)passion\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".passiontimes.hk") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("pastebin.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".pastie.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)pastie\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)blog\.pathtosharepoint\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("pbs.org/wgbh/pages/frontline/gate") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("pbs.org/wgbh/pages/frontline/tankman") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("pbs.org/wgbh/pages/frontline/tibet") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("pbwiki.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)pbworks\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)developers\.box\.net$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)wiki\.oauth\.net$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)wiki\.phonegap\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)wiki\.jqueryui\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)pbxes\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)pbxes\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("pcdvd.com.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".pchome.com.tw") >= 0) return "+Optimized";
-        if (/^http:\/\/pcij\.org/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".pcstore.com.tw/ntdtvapshop") >= 0) return "+Optimized";
-        if (/(?:^|\.)pct\.org\.tw$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("pdetails.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)pdproxy\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)peace\.ca$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("peacefire.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("peacehall.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)peacehall\.com$/.test(host)) return "+Optimized";
-        if (/^http:\/\/pearlher\.org/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".peeasian.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".pekingduck.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)pekingduck\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".pemulihan.or.id") >= 0) return "+Optimized";
-        if (/^http:\/\/pemulihan\.or\.id/.test(url)) return "+Optimized";
-        if (/(?:^|\.)pen\.io$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("penchinese.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)penchinese\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".penchinese.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("pengyulong.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("penisbot.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)blog\.pentalogic\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".penthouse.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".pentoy.hk/%E4%B8%AD%E5%9C%8B") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".pentoy.hk/%E6%99%82%E4%BA%8B") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".peoplebookcafe.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".peoplenews.tw") >= 0) return "+Optimized";
-        if (/(?:^|\.)peoplenews\.tw$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".peopo.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)peopo\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".percy.in") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".perfectgirls.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("perfectvpn.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".persecutionblog.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".persiankitty.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("pfd.org.hk") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("phapluan.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("phayul.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("philborges.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("philly.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)phncdn\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)photodharma\.net$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)photofocus\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)phuquocservices\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".picidae.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)img.*\.picturedip\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("picturesocial.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".pin6.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)pin6\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ping.fm") >= 0) return "+Optimized";
-        if (/(?:^|\.)ping\.fm$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)pinimg\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".pinkrod.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)pinoy-n\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)pinterest\.at$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)pinterest\.co\.kr$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)pinterest\.co\.uk$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".pinterest.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)pinterest\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)pinterest\.de$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)pinterest\.dk$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)pinterest\.fr$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)pinterest\.jp$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)pinterest\.nl$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)pinterest\.se$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".pipii.tv") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".piposay.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("piraattilahti.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".piring.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)pixelqi\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)css\.pixnet\.in$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)pixnet\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".pixnet.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".pk.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)placemix\.com$/.test(host)) return "+Optimized";
-        if (/^http:\/\/pictures\.playboy\.com/.test(url)) return "+Optimized";
-        if (/(?:^|\.)playboy\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".playboyplus.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)playboyplus\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".playno1.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)playno1\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)playpcesor\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("plays.com.tw") >= 0) return "+Optimized";
-        if (/(?:^|\.)m\.plixi\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("plm.org.hk") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("plunder.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".plus28.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".plusbb.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".pmatehunter.com") >= 0) return "+Optimized";
-        if (/^http:\/\/pmatehunter\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".pmates.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)po2b\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("pobieramy.top") >= 0) return "+Optimized";
-        if (/(?:^|\.)podictionary\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".pokerstars.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("zh.pokerstrategy.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("politicalchina.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("politicalconsultation.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".polymerhk.com") >= 0) return "+Optimized";
-        if (/^http:\/\/polymerhk\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".popo.tw") >= 0) return "+Optimized";
-        if (/(?:^|\.)popvote\.hk$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("popyard.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)popyard\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".porn.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".porn2.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".porn5.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".pornbase.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".pornerbros.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)pornhd\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".pornhost.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".pornhub.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)pornhub\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".pornhubdeutsch.net") >= 0) return "+Optimized";
-        if (/^http:\/\/pornhubdeutsch\.net/.test(url)) return "+Optimized";
-        if (/(?:^|\.)pornmm\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".pornoxo.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".pornrapidshare.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)pornrapidshare\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".pornsharing.com") >= 0) return "+Optimized";
-        if (/^http:\/\/pornsharing\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".pornsocket.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".pornstarclub.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)pornstarclub\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".porntube.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".porntubenews.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".porntvblog.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)porntvblog\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".pornvisit.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".portablevpn.nl") >= 0) return "+Optimized";
-        if (/(?:^|\.)poskotanews\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".post01.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".post76.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)post76\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".post852.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("postadult.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".postimg.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)potvpn\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)powercx\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".powerphoto.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)www\.powerpointninja\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)presidentlee\.tw$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)cdn\.printfriendly\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".pritunl.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("provpnaccounts.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".proxfree.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)proxfree\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("proxyanonimo.es") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".proxynetwork.org.uk") >= 0) return "+Optimized";
-        if (/(?:^|\.)proxynetwork\.org\.uk$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".pscp.tv") >= 0) return "+Optimized";
-        if (/(?:^|\.)pscp\.tv$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)pts\.org\.tw$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".pttvan.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("pubu.com.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("puffinbrowser.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("pureinsight.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".putty.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)putty\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)calebelston\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)blog\.fizzik\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)nf\.id\.au$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)sogrady\.me$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)vatn\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)ventureswell\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)whereiswerner\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".power.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)power\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("powerapple.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)powerapple\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)abc\.pp\.ru$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("heix.pp.ru") >= 0) return "+Optimized";
-        if (/(?:^|\.)prayforchina\.net$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)premeforwindows7\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)presentationzen\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)prestige-av\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("prisoner-state-secret-journal-premier") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".prisoneralert.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)pritunl\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)privacybox\.de$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".private.com/home") >= 0) return "+Optimized";
-        if (/(?:^|\.)privateinternetaccess\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("privatepaste.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)privatepaste\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("privatetunnel.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)privatetunnel\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)privatevpn\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)procopytips\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("provideocoalition.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)prosiben\.de$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("proxifier.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("api.proxlet.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)proxomitron\.info$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".proxpn.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)proxpn\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("proxy.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".proxylist.org.uk") >= 0) return "+Optimized";
-        if (/(?:^|\.)proxylist\.org\.uk$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".proxypy.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)proxypy\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("proxyroad.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".proxytunnel.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)proyectoclubes\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("prozz.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("psblog.name") >= 0) return "+Optimized";
-        if (/(?:^|\.)psblog\.name$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)psiphon\.ca$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".psiphon3.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)psiphon3\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".psiphontoday.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ptt.cc") >= 0) return "+Optimized";
-        if (/(?:^|\.)ptt\.cc$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".puffstore.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".puuko.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)pullfolio\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".punyu.com/puny") >= 0) return "+Optimized";
-        if (/(?:^|\.)pureconcepts\.net$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)pureinsight\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)purepdf\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)purevpn\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".purplelotus.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".pursuestar.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)pursuestar\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".pussyspace.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".putihome.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".putlocker.com/file") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("pwned.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("python.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".python.com.tw") >= 0) return "+Optimized";
-        if (/^http:\/\/python\.com\.tw/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("pythonhackers.com/p") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".qanote.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)qanote\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".qgirl.com.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".qi-gong.me") >= 0) return "+Optimized";
-        if (/(?:^|\.)qi-gong\.me$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".qidian.ca") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".qienkuen.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)qienkuen\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)qiwen\.lu$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("qixianglu.cn") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("bbs.qmzdd.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".qkshare.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("qoos.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)qoos\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("blog.qooza.hk/dafengqixi") >= 0) return "+Optimized";
-        if (/(?:^|\.)efksoft\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)qstatus\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)qtweeter\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)qtrac\.eu$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".quannengshen.org") >= 0) return "+Optimized";
-        if (/^http:\/\/quannengshen\.org/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("quantumbooter.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)quitccp\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".quitccp.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)quitccp\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".quitccp.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".quran.com") >= 0) return "+Optimized";
-        if (/^http:\/\/quran\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".quranexplorer.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("qusi8.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".qvodzy.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("nemesis2.qx.net/pages/MyEnTunnel") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("qxbbs.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ra.gg") >= 0) return "+Optimized";
-        if (/^http:\/\/ra\.gg\//.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".radicalparty.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)rael\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("radicalparty.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("radioaustralia.net.au") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".radiohilight.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)radiohilight\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("opml.radiotime.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)radiovaticana\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)radiovncr\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)raggedbanner\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)raidcall\.com\.tw$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".raidtalk.com.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".rainbowplan.org/bbs") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".raizoji.or.jp") >= 0) return "+Optimized";
-        if (/^http:\/\/raizoji\.or\.jp/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("rangwang.biz") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("rangzen.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("rangzen.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("rangzen.org") >= 0) return "+Optimized";
-        if (/^http:\/\/blog\.ranxiang\.com\//.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("ranyunfei.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)ranyunfei\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".rapbull.net") >= 0) return "+Optimized";
-        if (/^http:\/\/rapidgator\.net\//.test(url)) return "+Optimized";
-        if (/(?:^|\.)rapidmoviez\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("rapidvpn.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)rapidvpn\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".raremovie.cc") >= 0) return "+Optimized";
-        if (/^http:\/\/raremovie\.cc/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".raremovie.net") >= 0) return "+Optimized";
-        if (/^http:\/\/raremovie\.net/.test(url)) return "+Optimized";
-        if (/(?:^|\.)rawgit\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)rawgithub\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)razyboard\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("rcinet.ca") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".read100.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".readingtimes.com.tw") >= 0) return "+Optimized";
-        if (/(?:^|\.)readingtimes\.com\.tw$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)readmoo\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".readydown.com") >= 0) return "+Optimized";
-        if (/^http:\/\/readydown\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".realcourage.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".realraptalk.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".realsexpass.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".recordhistory.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".recovery.org.tw") >= 0) return "+Optimized";
-        if (/^http:\/\/online\.recoveryversion\.org/.test(url)) return "+Optimized";
-        if (/(?:^|\.)recoveryversion\.com\.tw$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)red-lang\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".redchinacn.net") >= 0) return "+Optimized";
-        if (/^http:\/\/redchinacn\.net/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("redchinacn.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("redtube.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("referer.us") >= 0) return "+Optimized";
-        if (/(?:^|\.)referer\.us$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)reflectivecode\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("relaxbbs.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".relay.com.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".releaseinternational.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("religioustolerance.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("renminbao.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".renyurenquan.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)renyurenquan\.org$/.test(host)) return "+Optimized";
-        if (/^http:\/\/certificate\.revocationcheck\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("subacme.rerouted.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)resilio\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".reuters.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)reuters\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)reutersmedia\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".revleft.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("retweetist.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)retweetrank\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("revver.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".rfa.org") >= 0) return "+Optimized";
-        if (/^http:\/\/rfa\.org/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".rfachina.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".rfamobile.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("rfaweb.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)rferl\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".rfi.fr") >= 0) return "+Optimized";
-        if (/(?:^|\.)rfi\.fr$/.test(host)) return "+Optimized";
-        if (/^http:\/\/rfi\.my\//.test(url)) return "+Optimized";
-        if (/^http:\/\/vds\.rightster\.com\//.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".rigpa.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".rileyguide.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("riku.me/") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ritouki.jp") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".rlwlw.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)rlwlw\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".rmjdw.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".rmjdw132.info") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".roadshow.hk") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("robtex.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)robustnessiskey\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)roc-taiwan\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)rocket-inc\.net$/.test(host)) return "+Optimized";
-        if (/^http:\/\/www2\.rocketbbs\.com\/11\/bbs\.cgi.id=5mus/.test(url)) return "+Optimized";
-        if (/^http:\/\/www2\.rocketbbs\.com\/11\/bbs\.cgi.id=freemgl/.test(url)) return "+Optimized";
-        if (/(?:^|\.)rojo\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)ronjoneswriter\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)rolia\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".roodo.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".rosechina.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".rotten.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".rsf.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)rsf\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".rsf-chinese.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)rsf-chinese\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".rsgamen.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)phosphation13\.rssing\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".rssmeme.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)rssmeme\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)rtalabel\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".rthk.hk") >= 0) return "+Optimized";
-        if (/^http:\/\/rthk\.hk/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".rthk.org.hk") >= 0) return "+Optimized";
-        if (/^http:\/\/rthk\.org\.hk/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("rti.org.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".rtycminnesota.org") >= 0) return "+Optimized";
-        if (/^http:\/\/.*\.ruanyifeng\.com\/blog.*some_ways_to_break_the_great_firewall/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("rukor.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".rushbee.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("rutube.ru") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ruyiseek.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".rxhj.net") >= 0) return "+Optimized";
-        if (/^http:\/\/rxhj\.net/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".s1s1s1.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)s-cute\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".s-dragon.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)s1heng\.com$/.test(host)) return "+Optimized";
-        if (/^http:\/\/www\.s4miniarchive\.com/.test(url)) return "+Optimized";
-        if (/(?:^|\.)s8forum\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("cdn1.lp.saboom.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)sacks\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("sacom.hk") >= 0) return "+Optimized";
-        if (/(?:^|\.)sacom\.hk$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)sadpanda\.us$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".safervpn.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)safervpn\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".saintyculture.com") >= 0) return "+Optimized";
-        if (/^http:\/\/saintyculture\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".saiq.me") >= 0) return "+Optimized";
-        if (/(?:^|\.)saiq\.me$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)sakuralive\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".sakya.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".salvation.org.hk") >= 0) return "+Optimized";
-        if (/(?:^|\.)salvation\.org\.hk$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".samair.ru/proxy/type-01") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".sambhota.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".cn.sandscotaicentral.com") >= 0) return "+Optimized";
-        if (/^http:\/\/cn\.sandscotaicentral\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".sanmin.com.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("sapikachu.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("savemedia.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("savetibet.de") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("savetibet.fr") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("savetibet.nl") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".savetibet.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)savetibet\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("savetibet.ru") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".savetibetstore.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)savetibetstore\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("savevid.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)say2\.info$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".sbme.me") >= 0) return "+Optimized";
-        if (/^http:\/\/sbme\.me/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".sbs.com.au/yourlanguage") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".scasino.com") >= 0) return "+Optimized";
-        if (/^http:\/\/www\.sciencemag\.org\/content\/344\/6187\/953/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".sciencenets.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".scmp.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".scmpchinese.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)scramble\.io$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".scribd.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)scriptspot\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("seapuff.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("domainhelp.search.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".searchtruth.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("secretchina.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)secretgarden\.no$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".secretsline.biz") >= 0) return "+Optimized";
-        if (/(?:^|\.)secretsline\.biz$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)securetunnel\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".securitykiss.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)securitykiss\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)seed4\.me$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("news.seehua.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("seesmic.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)seevpn\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)seezone\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("sejie.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".sendspace.com") >= 0) return "+Optimized";
-        if (/^http:\/\/tweets\.seraph\.me\//.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("sesawe.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)sesawe\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".sesawe.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)sethwklein\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".setn.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("forum.setty.com.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".sevenload.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)sevenload\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".sex.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".sex-11.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)sex3\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)sex8\.cc$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".sexandsubmission.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".sexbot.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".sexhu.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".sexhuang.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("sexinsex.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)sexinsex\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".sextvx.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("67.220.91.15") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("67.220.91.18") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("67.220.91.23") >= 0) return "+Optimized";
-        if (/^http:\/\/.*\.sf\.net/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".sfileydy.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)sfshibao\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".sftindia.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".sftuk.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)sftuk\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)shadeyouvpn\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("shadow.ma") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".shadowsky.xyz") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".shadowsocks.asia") >= 0) return "+Optimized";
-        if (/(?:^|\.)www\.shadowsocks\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".shadowsocks.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".shadowsocks.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)shadowsocks\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)shadowsocks-r\.com$/.test(host)) return "+Optimized";
-        if (/^http:\/\/cn\.shafaqna\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".shambalapost.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".shambhalasun.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".shangfang.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)shangfang\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("shapeservices.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".sharebee.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)sharecool\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("sharpdaily.com.hk") >= 0) return "+Optimized";
-        if (/(?:^|\.)sharpdaily\.com\.hk$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".sharpdaily.hk") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".sharpdaily.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".shat-tibet.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("sheikyermami.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".shellfire.de") >= 0) return "+Optimized";
-        if (/(?:^|\.)shellfire\.de$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".shenshou.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("shenyun.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("shenyunperformingarts.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)shenyunperformingarts\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("shenzhoufilm.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)shenzhoufilm\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)sherabgyaltsen\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".shiatv.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".shicheng.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("shinychan.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("shipcamouflage.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".shitaotv.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)shixiao\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)shizhao\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("shizhao.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("shkspr.mobi/dabr") >= 0) return "+Optimized";
-        if (/(?:^|\.)shodanhq\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)shooshtime\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".shop2000.com.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".shopping.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".showhaotu.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".showtime.jp") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("ch.shvoong.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".shwchurch.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)www\.shwchurch\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".shwchurch3.com") >= 0) return "+Optimized";
-        if (/^http:\/\/shwchurch3\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".siddharthasintent.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)sidelinesnews\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".sidelinessportseatery.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".sijihuisuo.club") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".sijihuisuo.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".silkbook.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)simbolostwitter\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("simplecd.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)simplecd\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("simpleproductivityblog.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("bbs.sina.com/") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("bbs.sina.com%2F") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("blog.sina.com.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("dailynews.sina.com/") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("dailynews.sina.com%2F") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("forum.sina.com.hk") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("home.sina.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)magazines\.sina\.com\.tw$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("news.sina.com.hk") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("news.sina.com.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("news.sinchew.com.my") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".sinchew.com.my/node/") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".sinchew.com.my/taxonomy/term") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".singaporepools.com.sg") >= 0) return "+Optimized";
-        if (/(?:^|\.)singaporepools\.com\.sg$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".singfortibet.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".singpao.com.hk") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("singtao.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)singtao\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("news.singtao.ca") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("sino-monthly.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)sinocast\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("sinocism.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("sinomontreal.ca") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".sinonet.ca") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".sinopitt.info") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".sinoants.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)sinoants\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".sinoquebec.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".sierrafriendsoftibet.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("sis.xxx") >= 0) return "+Optimized";
-        if (/(?:^|\.)sis001\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("sis001.us") >= 0) return "+Optimized";
-        if (/(?:^|\.)site90\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".sitebro.tw") >= 0) return "+Optimized";
-        if (/(?:^|\.)sitekreator\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)siteks\.uk\.to$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)sitemaps\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".sjrt.org") >= 0) return "+Optimized";
-        if (/^http:\/\/sjrt\.org/.test(url)) return "+Optimized";
-        if (/(?:^|\.)sjum\.cn$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)sketchappsources\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)skimtube\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)skybet\.com$/.test(host)) return "+Optimized";
-        if (/^http:\/\/users\.skynet\.be\/reves\/tibethome\.html/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("bbs.skykiwi.com") >= 0) return "+Optimized";
-        if (/^http:\/\/www\.skype\.com\/intl\//.test(url)) return "+Optimized";
-        if (/^http:\/\/www\.skype\.com\/zh-Hant/.test(url)) return "+Optimized";
-        if (/(?:^|\.)skyvegas\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".xskywalker.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)xskywalker\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)skyxvpn\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("m.slandr.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".slaytizle.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".sleazydream.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)slheng\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)slideshare\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("forum.slime.com.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".slinkset.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)slickvpn\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".slutload.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)smartdnsproxy\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".smarthide.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("smchbooks.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".smh.com.au/world/death-of-chinese-playboy-leaves-fresh-scratches-in-party-paintwork-20120903-25a8v") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("smhric.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".smith.edu/dalailama") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".smyxy.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)snapchat\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".snaptu.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)snaptu\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)sndcdn\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("sneakme.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("snowlionpub.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("home.so-net.net.tw/yisa_tsai") >= 0) return "+Optimized";
-        if (/(?:^|\.)soc\.mil$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".sockscap64.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)sockslist\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".socrec.org") >= 0) return "+Optimized";
-        if (/^http:\/\/socrec\.org/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".sod.co.jp") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".softether.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)softether\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".softether-download.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)softether-download\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)cdn\.softlayer\.net$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)sogclub\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("sohcradio.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)sohcradio\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".sokmil.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)sorting-algorithms\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".sostibet.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".soumo.info") >= 0) return "+Optimized";
-        if (/(?:^|\.)soup\.io$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".sobees.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)sobees\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("socialwhale.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".softether.co.jp") >= 0) return "+Optimized";
-        if (/(?:^|\.)softwarebychuck\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("blog.sogoo.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("soh.tw") >= 0) return "+Optimized";
-        if (/(?:^|\.)soh\.tw$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("sohfrance.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)sohfrance\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("chinese.soifind.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("sokamonline.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".solidaritetibet.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".solidfiles.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)somee\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".songjianjun.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)songjianjun\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".sonicbbs.cc") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".sonidodelaesperanza.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".sopcast.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".sopcast.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".sorazone.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)sos\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("bbs.sou-tong.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".soubory.com") >= 0) return "+Optimized";
-        if (/^http:\/\/soubory\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".soul-plus.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".soulcaliburhentai.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)soulcaliburhentai\.net$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)soundcloud\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".soundofhope.kr") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("soundofhope.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)soundofhope\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)soupofmedia\.com$/.test(host)) return "+Optimized";
-        if (/^http:\/\/sourceforge\.net\/p.*\/shadowsocksgui\//.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".sourcewadio.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("southnews.com.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("sowers.org.hk") >= 0) return "+Optimized";
-        if (/(?:^|\.)wlx\.sowiki\.net$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)spankbang\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".spankingtube.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".spankwire.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)spb\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)speakerdeck\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("spem.at") >= 0) return "+Optimized";
-        if (/(?:^|\.)spencertipping\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)spicevpn\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".spideroak.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)spideroak\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".spike.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".spotflux.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)spotflux\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".spring4u.info") >= 0) return "+Optimized";
-        if (/^http:\/\/spring4u\.info/.test(url)) return "+Optimized";
-        if (/(?:^|\.)sproutcore\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)sproxy\.info$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)srocket\.us$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ss-link.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)ss-link\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ssglobal.me") >= 0) return "+Optimized";
-        if (/(?:^|\.)ssh91\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".sspro.ml") >= 0) return "+Optimized";
-        if (/^http:\/\/sspro\.ml/.test(url)) return "+Optimized";
-        if (/(?:^|\.)sss\.camp$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)sstmlt\.moe$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("sstmlt.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)sstmlt\.net$/.test(host)) return "+Optimized";
-        if (/^http:\/\/stackoverflow\.com\/users\/895245/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".stage64.hk") >= 0) return "+Optimized";
-        if (/(?:^|\.)stage64\.hk$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)standupfortibet\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("stanford.edu/group/falun") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("usinfo.state.gov") >= 0) return "+Optimized";
-        if (/(?:^|\.)statueofdemocracy\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".starfishfx.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".starp2p.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)starp2p\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".startpage.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)startpage\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)static-economist\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)stc\.com\.sa$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("steamcommunity.com/groups/LibetTibet") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("steamcommunity.com/groups/zhonggong") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("steamcommunity.com/id/CJT_Jackton") >= 0) return "+Optimized";
-        if (/(?:^|\.)steel-storm\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".steganos.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)steganos\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".steganos.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".stepchina.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("ny.stgloballink.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("hd.stheadline.com/news/realtime") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("sthoo.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)sthoo\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".stickam.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("stickeraction.com/sesawe") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".stileproject.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".sto.cc") >= 0) return "+Optimized";
-        if (/(?:^|\.)stoneip\.info$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)storagenewsletter\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".storm.mg") >= 0) return "+Optimized";
-        if (/(?:^|\.)storm\.mg$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".stoptibetcrisis.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)stoptibetcrisis\.net$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)storify\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".stormmediagroup.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)stoweboyd\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("stranabg.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)streamingthe\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("streema.com/tv/NTDTV_Chinese") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("cn.streetvoice.com/article") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("cn.streetvoice.com/diary") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("cn2.streetvoice.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("tw.streetvoice.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".strikingly.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)strongvpn\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".strongwindpress.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".student.tw/db") >= 0) return "+Optimized";
-        if (/(?:^|\.)studentsforafreetibet\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)stumbleupon\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("stupidvideos.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".successfn.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("panamapapers.sueddeutsche.de") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".sugarsync.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)sugarsync\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".sugobbs.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)sugumiru18\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)suissl\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("summify.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".sumrando.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)sumrando\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("sun1911.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".sunporno.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)sunmedia\.ca$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)sunporno\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".sunskyforum.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".sunta.com.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".sunvpn.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".suoluo.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".superfreevpn.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".supervpn.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)supervpn\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".suppig.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".suprememastertv.com") >= 0) return "+Optimized";
-        if (/^http:\/\/suprememastertv\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".surfeasy.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)surfeasy\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".surfeasy.com.au") >= 0) return "+Optimized";
-        if (/^http:\/\/surfeasy\.com\.au/.test(url)) return "+Optimized";
-        if (/(?:^|\.)surrenderat20\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".suyangg.com") >= 0) return "+Optimized";
-        if (/^http:\/\/suyangg\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".swissvpn.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)swissvpn\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("switchvpn.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)switchvpn\.net$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)swift-tools\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".sydneytoday.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".sylfoundation.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)syncback\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("sysresccd.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".sytes.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("blog.syx86.com/2009/09/puff") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("blog.syx86.cn/2009/09/puff") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".szbbs.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)szetowah\.org\.hk$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".t35.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".t66y.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)t66y\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".taa-usa.org") >= 0) return "+Optimized";
-        if (/^http:\/\/taa-usa\.org/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".taaze.tw") >= 0) return "+Optimized";
-        if (/(?:^|\.)taaze\.tw$/.test(host)) return "+Optimized";
-        if (/^http:\/\/www\.tablesgenerator\.com\//.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("tabtter.jp") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tacem.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".taconet.com.tw") >= 0) return "+Optimized";
-        if (/(?:^|\.)taedp\.org\.tw$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tafm.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tagwa.org.au") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("tagwalk.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)tagwalk\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("tahr.org.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".taipeisociety.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)taipeisociety\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".taiwanbible.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".taiwancon.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".taiwandaily.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)taiwandaily\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".taiwandc.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)taiwanembassy\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".taiwanjustice.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("taiwankiss.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("taiwannation.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("taiwannation.com.tw") >= 0) return "+Optimized";
-        if (/(?:^|\.)taiwanncf\.org\.tw$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)taiwannews\.com\.tw$/.test(host)) return "+Optimized";
-        if (/^http:\/\/www\.taiwanonline\.cc\//.test(url)) return "+Optimized";
-        if (/(?:^|\.)taiwantoday\.tw$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("taiwantp.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)taiwantt\.org\.tw$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("taiwanus.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("taiwanyes.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("taiwan-sex.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".talk853.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".talkboxapp.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)talkboxapp\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".talkonly.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)talkonly\.net$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)tamiaode\.tk$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)tanc\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("tangben.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tangren.us") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".taoism.net") >= 0) return "+Optimized";
-        if (/^http:\/\/taoism\.net/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".taolun.info") >= 0) return "+Optimized";
-        if (/(?:^|\.)taolun\.info$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tapatalk.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)tapatalk\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("blog.taragana.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tascn.com.au") >= 0) return "+Optimized";
-        if (/(?:^|\.)taup\.net$/.test(host)) return "+Optimized";
-        if (/^http:\/\/www\.taup\.org\.tw/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".taweet.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)taweet\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tbcollege.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)tbcollege\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tbi.org.hk") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tbicn.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tbjyt.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)tbpic\.info$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tbrc.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("tbs-rainbow.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tbsec.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)tbsec\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("tbskkinabalu.page.tl") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tbsmalaysia.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tbsn.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)tbsn\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tbsseattle.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tbssqh.org") >= 0) return "+Optimized";
-        if (/^http:\/\/tbssqh\.org/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("tbswd.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tbtemple.org.uk") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tbthouston.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tccwonline.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tcewf.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("tchrd.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("tcnynj.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tcsofbc.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tcsovi.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("teamamericany.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)teck\.in$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".teeniefuck.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("teensinasia.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".telecomspace.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)telegram\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".telegramdownload.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)telegraph\.co\.uk$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tenacy.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)tenzinpalmo\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tew.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".thaicn.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)theatrum-belli\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("theblemish.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)thebcomplex\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".thebobs.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)thebobs\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".thechinabeat.org") >= 0) return "+Optimized";
-        if (/^http:\/\/www\.thechinastory\.org\/yearbooks\/yearbook-2012\//.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".thedalailamamovie.com") >= 0) return "+Optimized";
-        if (/^http:\/\/thedalailamamovie\.com/.test(url)) return "+Optimized";
-        if (/(?:^|\.)thedw\.us$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("thefrontier.hk/tf") >= 0) return "+Optimized";
-        if (/^http:\/\/thegioitinhoc\.vn\//.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".thegly.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".thehots.info") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("thehousenews.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)thehun\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".theinitium.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)theinitium\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".thenewslens.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)thenewslens\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".thepiratebay.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)thepiratebay\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)theportalwiki\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("thereallove.kr") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("therock.net.nz") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("thespeeder.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)thestandnews\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("thetibetcenter.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("thetibetconnection.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".thetibetmuseum.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".thetibetpost.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)thetibetpost\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("thetrotskymovie.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("thevivekspot.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)thewgo\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".thinkingtaiwan.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".thisav.com") >= 0) return "+Optimized";
-        if (/^http:\/\/thisav\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".thlib.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)thomasbernhard\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".thongdreams.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("threatchaos.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)throughnightsfire\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".thumbzilla.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)thywords\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".thywords.com.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("tiananmenmother.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tiananmenduizhi.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)tiananmenduizhi\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)tiananmenuniv\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)tiananmenuniv\.net$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)tiandixing\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tianhuayuan.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tianlawoffice.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)tianti\.io$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("tiantibooks.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)tiantibooks\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tianzhu.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tibet.at") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("tibet.ca") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tibet.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)tibet\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("tibet.fr") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tibet.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)tibet\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("tibet.nu") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tibet.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)tibet\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tibet.sk") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("tibet.org.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tibet.to") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tibet-envoy.eu") >= 0) return "+Optimized";
-        if (/(?:^|\.)tibet-envoy\.eu$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tibet-foundation.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tibet-house-trust.co.uk") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("tibet-info.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("tibet-initiative.de") >= 0) return "+Optimized";
-        if (/(?:^|\.)tibet-initiative\.de$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tibet-munich.de") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tibet3rdpole.org") >= 0) return "+Optimized";
-        if (/^http:\/\/tibet3rdpole\.org/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("tibetaction.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)tibetaction\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tibetaid.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("tibetalk.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tibetan.fr") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("tibetan-alliance.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tibetanarts.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tibetanbuddhistinstitute.org") >= 0) return "+Optimized";
-        if (/^http:\/\/tibetanbuddhistinstitute\.org/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("tibetancommunity.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tibetanjournal.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tibetanlanguage.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tibetanliberation.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)tibetanliberation\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tibetcollection.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tibetanaidproject.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tibetancommunityuk.net") >= 0) return "+Optimized";
-        if (/^http:\/\/tibetancommunityuk\.net/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("tibetanculture.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("tibetanfeministcollective.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tibetanpaintings.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tibetanphotoproject.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tibetanpoliticalreview.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tibetanreview.net") >= 0) return "+Optimized";
-        if (/^http:\/\/tibetansports\.org/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tibetanwomen.org") >= 0) return "+Optimized";
-        if (/^http:\/\/tibetanwomen\.org/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tibetanyouth.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tibetanyouthcongress.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)tibetanyouthcongress\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tibetcharity.dk") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("tibetcharity.in") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tibetchild.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tibetcity.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tibetcorps.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tibetexpress.net") >= 0) return "+Optimized";
-        if (/^http:\/\/tibetexpress\.net/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("tibetfocus.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("tibetfund.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tibetgermany.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)tibetgermany\.de$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tibethaus.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tibetheritagefund.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("tibethouse.jp") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("tibethouse.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)tibethouse\.us$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tibetinfonet.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tibetjustice.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tibetkomite.dk") >= 0) return "+Optimized";
-        if (/^http:\/\/tibetmuseum\.org/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("tibetnetwork.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)tibetnetwork\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tibetoffice.ch") >= 0) return "+Optimized";
-        if (/^http:\/\/tibetoffice\.ch/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("tibetoffice.eu") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("tibetoffice.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("tibetonline.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)tibetonline\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tibetoffice.com.au") >= 0) return "+Optimized";
-        if (/^http:\/\/tibetoffice\.com\.au/.test(url)) return "+Optimized";
-        if (/(?:^|\.)tibetonline\.tv$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tibetonline.tv") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tibetoralhistory.org") >= 0) return "+Optimized";
-        if (/^http:\/\/tibetoralhistory\.org/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tibetpolicy.eu") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tibetrelieffund.co.uk") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("tibetsites.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tibetsociety.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)tibetsociety\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tibetsun.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tibetsupportgroup.org") >= 0) return "+Optimized";
-        if (/^http:\/\/tibetsupportgroup\.org/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tibetswiss.ch") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tibettelegraph.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("tibettimes.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)tibetwrites\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ticket.com.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tigervpn.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)tigervpn\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".timdir.com") >= 0) return "+Optimized";
-        if (/^http:\/\/timdir\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".time.com") >= 0) return "+Optimized";
-        if (/^http:\/\/time\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".timsah.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)blog\.tiney\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("tintuc101.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tiny.cc") >= 0) return "+Optimized";
-        if (/^http:\/\/tiny\.cc/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("tinychat.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)tinypaste\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tistory.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)tkcs-collins\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tmagazine.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)tmagazine\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tmdfish.com") >= 0) return "+Optimized";
-        if (/^http:\/\/tmi\.me/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tmpp.org") >= 0) return "+Optimized";
-        if (/^http:\/\/tmpp\.org/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tnaflix.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)tnaflix\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tngrnow.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tngrnow.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tnp.org") >= 0) return "+Optimized";
-        if (/^http:\/\/tnp\.org/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".to-porno.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)to-porno\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("togetter.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tokyo-247.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tokyo-hot.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)tokyo-porn-tube\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)tokyocn\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("tw.tomonews.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tongil.or.kr") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tono-oka.jp") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("tonyyan.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".toodoc.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("toonel.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("top81.ws") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".topnews.in") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".torguard.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)torguard\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".topshareware.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".topsy.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)topsy\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)toptip\.ca$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("tora.to") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".torcn.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".torproject.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)torproject\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("torrentcrazy.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)torrentcrazy\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("torrentprivacy.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)torrentprivacy\.com$/.test(host)) return "+Optimized";
-        if (/^http:\/\/torrentproject\.se/.test(url)) return "+Optimized";
-        if (/(?:^|\.)torrenty\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)torrentz\.eu$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)torvpn\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)totalvpn\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("towngain.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("toypark.in") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("toytractorshow.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tparents.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tpi.org.tw") >= 0) return "+Optimized";
-        if (/(?:^|\.)tpi\.org\.tw$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("traffichaus.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)transparency\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)treemall\.com\.tw$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("trendsmap.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)trendsmap\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".trialofccp.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)trialofccp\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".trimondi.de/SDLE") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".trouw.nl") >= 0) return "+Optimized";
-        if (/^http:\/\/trouw\.nl/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".trt.net.tr") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("trtc.com.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".truebuddha-md.org") >= 0) return "+Optimized";
-        if (/^http:\/\/truebuddha-md\.org/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("trulyergonomic.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".truth101.co.tv") >= 0) return "+Optimized";
-        if (/^http:\/\/truth101\.co\.tv/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".truthontour.org") >= 0) return "+Optimized";
-        if (/^http:\/\/truthontour\.org/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".truveo.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tsctv.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tsemtulku.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("tsquare.tv") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tsu.org.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("tsunagarumon.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tsctv.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)tt-rss\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)tt1069\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tttan.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)tttan\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("bb.ttv.com.tw/bb") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("tu8964.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tubaholic.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tube.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("tube8.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)tube8\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tube911.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)tube911\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tubecup.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tubegals.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tubeislam.com") >= 0) return "+Optimized";
-        if (/^http:\/\/tubeislam\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tubestack.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)tubewolf\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("tuidang.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("tuidang.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tuidang.se") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("bbs.tuitui.info") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tumutanzi.com") >= 0) return "+Optimized";
-        if (/^http:\/\/tumutanzi\.com/.test(url)) return "+Optimized";
-        if (/(?:^|\.)tumview\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tunein.com") >= 0) return "+Optimized";
-        if (/^http:\/\/tunein\.com/.test(url)) return "+Optimized";
-        if (/(?:^|\.)tunnelbear\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tunnelr.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)tunnelr\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tuo8.blue") >= 0) return "+Optimized";
-        if (/(?:^|\.)tuo8\.blue$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tuo8.cc") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tuo8.club") >= 0) return "+Optimized";
-        if (/(?:^|\.)tuo8\.club$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tuo8.fit") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tuo8.hk") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tuo8.in") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tuo8.ninja") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tuo8.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)tuo8\.fit$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)tuo8\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tuo8.pw") >= 0) return "+Optimized";
-        if (/^http:\/\/tuo8\.pw/.test(url)) return "+Optimized";
-        if (/(?:^|\.)tuo8\.red$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tuo8.space") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("tuitwit.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".turansam.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".turbobit.net") >= 0) return "+Optimized";
-        if (/^http:\/\/turbobit\.net/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".turbohide.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)turbohide\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tushycash.com") >= 0) return "+Optimized";
-        if (/^http:\/\/tushycash\.com/.test(url)) return "+Optimized";
-        if (/(?:^|\.)app\.tutanota\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tuvpn.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)tuvpn\.com$/.test(host)) return "+Optimized";
-        if (/^http:\/\/tuzaijidi\.com/.test(url)) return "+Optimized";
-        if (/^http:\/\/.*\.tuzaijidi\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tw01.org") >= 0) return "+Optimized";
-        if (/^http:\/\/tw01\.org/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tumblr.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)tumblr\.com$/.test(host)) return "+Optimized";
-        if (/^http:\/\/blog\.soylent\.com\//.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tv.com") >= 0) return "+Optimized";
-        if (/^http:\/\/tv\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("tvants.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("forum.tvb.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("news.tvb.com/list/world") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("news.tvb.com/local") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("news.tvbs.com.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tvboxnow.com") >= 0) return "+Optimized";
-        if (/^http:\/\/tvboxnow\.com\//.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("tvider.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tvmost.com.hk") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tvplayvideos.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)tvunetworks\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tw-blog.com") >= 0) return "+Optimized";
-        if (/^https:\/\/tw-blog\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tw-npo.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".twaitter.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("twapperkeeper.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)twapperkeeper\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)twaud\.io$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".twaud.io") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".twavi.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".twbbs.net.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("twbbs.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("twbbs.tw") >= 0) return "+Optimized";
-        if (/(?:^|\.)twblogger\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("tweepmag.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tweepml.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)tweepml\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tweetbackup.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)tweetbackup\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("tweetboard.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)tweetboard\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tweetboner.biz") >= 0) return "+Optimized";
-        if (/(?:^|\.)tweetboner\.biz$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tweetcs.com") >= 0) return "+Optimized";
-        if (/^http:\/\/tweetcs\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tweetdeck.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)tweetdeck\.com$/.test(host)) return "+Optimized";
-        if (/^http:\/\/deck\.ly/.test(url)) return "+Optimized";
-        if (/(?:^|\.)mtw\.tl$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)tweetedtimes\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)tweetmylast\.fm$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("tweetphoto.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)tweetphoto\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)tweetrans\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("tweetree.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)tweetree\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tweettunnel.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)tweettunnel\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)tweetwally\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("tweetymail.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)twelve\.today$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)twftp\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("twibase.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".twibble.de") >= 0) return "+Optimized";
-        if (/(?:^|\.)twibble\.de$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("twibbon.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)twibs\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("twicsy.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".twiends.com") >= 0) return "+Optimized";
-        if (/^http:\/\/twiends\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".twifan.com") >= 0) return "+Optimized";
-        if (/^http:\/\/twifan\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("twiffo.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)twiffo\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".twilightsex.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("twilog.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("twimbow.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)twindexx\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("twipple.jp") >= 0) return "+Optimized";
-        if (/(?:^|\.)twipple\.jp$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)twip\.me$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("twishort.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)twishort\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("twistar.cc") >= 0) return "+Optimized";
-        if (/(?:^|\.)twister\.net\.co$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)twisterio\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("twisternow.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("twistory.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("twitbrowser.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)twitcause\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)twitgether\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)twiggit\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("twitgoo.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("twitiq.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)twitiq\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".twitlonger.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)twitlonger\.com$/.test(host)) return "+Optimized";
-        if (/^http:\/\/tl\.gd\//.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("twitmania.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("twitoaster.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)twitoaster\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)twitonmsn\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".twitpic.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)twitpic\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".twit2d.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)twit2d\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".twitstat.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)twitstat\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)firstfivefollowers\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)retweeteffect\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)tweeplike\.me$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)tweepguide\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)turbotwitter\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".twitvid.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)twitvid\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("199.59.148.20") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".t.co") >= 0) return "+Optimized";
-        if (/(?:^|\.)t\.co$/.test(host)) return "+Optimized";
-        if (/^http:\/\/twt\.tl/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("twittbot.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)ads-twitter\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".twitter.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)twitter\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)twitter\.jp$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)twttr\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)twitter4j\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".twittercounter.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)twittercounter\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("twitterfeed.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".twittergadget.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)twittergadget\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".twitterkr.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)twitterkr\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)twittermail\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)twitterrific\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("twittertim.es") >= 0) return "+Optimized";
-        if (/(?:^|\.)twittertim\.es$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("twitthat.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)twitturk\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".twitturly.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)twitturly\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".twitzap.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("twiyia.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)twstar\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".twtkr.com") >= 0) return "+Optimized";
-        if (/^http:\/\/twtkr\.com/.test(url)) return "+Optimized";
-        if (/(?:^|\.)twimg\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".twnorth.org.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("twskype.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("twtrland.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("twurl.nl") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".twyac.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)twyac\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".txxx.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".tycool.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)tycool\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)tzangms\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)typepad\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)blog\.expofutures\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)legaltech\.law\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)blogs\.tampabay\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)contests\.twilio\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".embr.in") >= 0) return "+Optimized";
-        if (/(?:^|\.)embr\.in$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".u9un.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)u9un\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ubddns.org") >= 0) return "+Optimized";
-        if (/^http:\/\/ubddns\.org/.test(url)) return "+Optimized";
-        if (/(?:^|\.)uberproxy\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".uc-japan.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)uc-japan\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".srcf.ucam.org/salon/") >= 0) return "+Optimized";
-        if (/^http:\/\/china\.ucanews\.com\//.test(url)) return "+Optimized";
-        if (/(?:^|\.)ucdc1998\.org$/.test(host)) return "+Optimized";
-        if (/^http:\/\/hum.*\.uchicago\.edu\/faculty\/ywang\/history/.test(url)) return "+Optimized";
-        if (/(?:^|\.)uderzo\.it$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".udn.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)udn\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)udn\.com\.tw$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("udnbkk.com/bbs") >= 0) return "+Optimized";
-        if (/(?:^|\.)uforadio\.com\.tw$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("ufreevpn.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ugo.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)uhdwallpapers\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)uhrp\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".uighur.nl") >= 0) return "+Optimized";
-        if (/(?:^|\.)uighur\.nl$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("uighurbiz.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ulike.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("ukcdp.co.uk") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("ukliferadio.co.uk") >= 0) return "+Optimized";
-        if (/(?:^|\.)ukliferadio\.co\.uk$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("ultravpn.fr") >= 0) return "+Optimized";
-        if (/(?:^|\.)ultravpn\.fr$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("ultraxs.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("umich.edu/~falun") >= 0) return "+Optimized";
-        if (/(?:^|\.)unblock\.cn\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".unblocker.yt") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("unblock-us.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)unblock-us\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".unblockdmm.com") >= 0) return "+Optimized";
-        if (/^http:\/\/unblockdmm\.com/.test(url)) return "+Optimized";
-        if (/(?:^|\.)unblocksit\.es$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("uncyclomedia.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".uncyclopedia.hk/wiki") >= 0) return "+Optimized";
-        if (/^http:\/\/uncyclopedia\.hk/.test(url)) return "+Optimized";
-        if (/^http:\/\/uncyclopedia\.tw/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("underwoodammo.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)underwoodammo\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)unholyknight\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".uni.cc") >= 0) return "+Optimized";
-        if (/(?:^|\.)cldr\.unicode\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".unification.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".unification.org.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".unitedsocialpress.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".unix100.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)unknownspace\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".unodedos.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("unpo.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".untraceable.us") >= 0) return "+Optimized";
-        if (/^http:\/\/untraceable\.us/.test(url)) return "+Optimized";
-        if (/(?:^|\.)uocn\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("tor.updatestar.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".upholdjustice.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".upload4u.info") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("uploaded.net/file") >= 0) return "+Optimized";
-        if (/^http:\/\/uploaded\.net\/file/.test(url)) return "+Optimized";
-        if (/^http:\/\/uploaded\.to\/file/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".uploadstation.com/file") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".upornia.com") >= 0) return "+Optimized";
-        if (/^http:\/\/upornia\.com/.test(url)) return "+Optimized";
-        if (/(?:^|\.)uproxy\.org$/.test(host)) return "+Optimized";
-        if (/^http:\/\/tor\.cn\.uptodown\.com\//.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".upwill.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("ur7s.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)urbansurvival\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("myshare.url.com.tw/") >= 0) return "+Optimized";
-        if (/(?:^|\.)urlborg\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)urlparser\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("us.to") >= 0) return "+Optimized";
-        if (/(?:^|\.)usacn\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".usaip.eu") >= 0) return "+Optimized";
-        if (/(?:^|\.)usaip\.eu$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("dalailama.usc.edu") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("beta.usejump.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)usfk\.mil$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)usma\.edu$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)usmc\.mil$/.test(host)) return "+Optimized";
-        if (/^http:\/\/tarr\.uspto\.gov\//.test(url)) return "+Optimized";
-        if (/(?:^|\.)tsdr\.uspto\.gov$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ustream.tv") >= 0) return "+Optimized";
-        if (/(?:^|\.)ustream\.tv$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".usunitednews.com") >= 0) return "+Optimized";
-        if (/^http:\/\/usunitednews\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("usus.cc") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".utopianpal.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)utopianpal\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".uu-gg.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".uvwxyz.xyz") >= 0) return "+Optimized";
-        if (/(?:^|\.)uvwxyz\.xyz$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".uwants.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".uwants.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("uyghur.co.uk") >= 0) return "+Optimized";
-        if (/^http:\/\/uyghur-j\.org/.test(url)) return "+Optimized";
-        if (/(?:^|\.)uyghuramerican\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".uyghurcanadiansociety.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".uyghurensemble.co.uk") >= 0) return "+Optimized";
-        if (/(?:^|\.)uyghurcongress\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".uyghurpen.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".uyghurpress.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".uyghurstudies.org") >= 0) return "+Optimized";
-        if (/^http:\/\/uyghurstudies\.org/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("uygur.org") >= 0) return "+Optimized";
-        if (/^http:\/\/uymaarip\.com\//.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".v2ray.com") >= 0) return "+Optimized";
-        if (/^http:\/\/v2ray\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".van001.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".van698.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".vanemu.cn") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".vanilla-jp.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".vanpeople.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("vansky.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)vcf-online\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)vcfbuilder\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".vegasred.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".velkaepocha.sk") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".venbbs.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".venchina.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".venetianmacao.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)venetianmacao\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("veoh.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("mysite.verizon.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("vermonttibet.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".versavpn.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)versavpn\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)verybs\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".vft.com.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".viber.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)viber\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".vica.info") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".victimsofcommunism.org") >= 0) return "+Optimized";
-        if (/^http:\/\/victimsofcommunism\.org/.test(url)) return "+Optimized";
-        if (/(?:^|\.)vid\.me$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)vidble\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("videobam.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)videobam\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".videodetective.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".videomega.tv") >= 0) return "+Optimized";
-        if (/(?:^|\.)videomega\.tv$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".videomo.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("videopediaworld.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".videopress.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".vidinfo.org/video") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("vietdaikynguyen.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".vijayatemple.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("vimeo.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)vimeo\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)vimperator\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)vincnd\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)vinniev\.com$/.test(host)) return "+Optimized";
-        if (/^http:\/\/www\.lib\.virginia\.edu\/area-studies\/Tibet\/tibet\.html/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("visibletweets.com") >= 0) return "+Optimized";
-        if (/^http:\/\/ny\.visiontimes\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".vital247.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)viu\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".vivahentai4u.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".vivatube.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".vivthomas.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)vivthomas\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".vjmedia.com.hk") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".vllcs.org") >= 0) return "+Optimized";
-        if (/^http:\/\/vllcs\.org/.test(url)) return "+Optimized";
-        if (/(?:^|\.)vmixcore\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("cn.voa.mobi") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("tw.voa.mobi") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".voachineseblog.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)voachineseblog\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("voagd.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".voacantonese.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)voacantonese\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("voachinese.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)voachinese\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".voanews.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)voanews\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("voatibetan.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)voatibetan\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".voatibetanenglish.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)voatibetanenglish\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".vocativ.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("vocn.tv") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".vot.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)vot\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".vovo2000.com") >= 0) return "+Optimized";
-        if (/^http:\/\/vovo2000\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".voxer.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)voxer\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".voy.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)vpn\.ac$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".vpn4all.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)vpn4all\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".vpnaccount.org") >= 0) return "+Optimized";
-        if (/^http:\/\/vpnaccount\.org/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".vpnaccounts.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)vpnaccounts\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".vpncomparison.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".vpncup.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)vpncup\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("vpnbook.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".vpncoupons.com") >= 0) return "+Optimized";
-        if (/^http:\/\/vpncoupons\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".vpndada.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)vpndada\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".vpnfan.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("vpnfire.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".vpnforgame.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)vpnforgame\.net$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)vpnunlimitedapp\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)vpngate\.jp$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".vpngate.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)vpngate\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".vpngratis.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("vpnhq.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".vpnmaster.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)vpnmaster\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".vpninja.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)vpninja\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".vpnintouch.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)vpnintouch\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("vpnjack.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)vpnjack\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".vpnpick.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)vpnpick\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)vpnpop\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)vpnpronet\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".vpnreactor.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)vpnreactor\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)vpnreviewz\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".vpnsecure.me") >= 0) return "+Optimized";
-        if (/(?:^|\.)vpnsecure\.me$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".vpnshazam.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)vpnshazam\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".vpnshieldapp.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)vpnshieldapp\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".vpnsp.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".vpntraffic.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".vpntunnel.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)vpntunnel\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".vpnuk.info") >= 0) return "+Optimized";
-        if (/(?:^|\.)vpnuk\.info$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".vpnvip.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)vpnvip\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".vpnworldwide.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".vporn.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)vporn\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".vpser.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("vraiesagesse.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)vtunnel\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)vuku\.cc$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("lists.w3.org/archives/public") >= 0) return "+Optimized";
-        if (/(?:^|\.)w3schools\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)waffle1999\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".wahas.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".waigaobu.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("waikeung.org/php_wind") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".wailaike.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".waiwaier.com") >= 0) return "+Optimized";
-        if (/^http:\/\/waiwaier\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("wallornot.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)wallpapercasa\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".wallproxy.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)waltermartin\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)waltermartin\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)www\.wan-press\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)wanderinghorse\.net$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)wangafu\.net$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)wangjinbo\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".wangjinbo.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("wanglixiong.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".wango.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)wango\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("wangruoshui.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("www.wangruowang.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("want-daily.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("wapedia.mobi/zhsimp") >= 0) return "+Optimized";
-        if (/(?:^|\.)waselpro\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".watchinese.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".wattpad.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)wattpad\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".makzhou.warehouse333.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("washeng.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".watch8x.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)watchmygf\.net$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)wav\.tv$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".wdf5.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".wearehairy.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".wearn.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)wearn\.com$/.test(host)) return "+Optimized";
-        if (/^http:\/\/hkcoc\.weather\.com\.hk/.test(url)) return "+Optimized";
-        if (/(?:^|\.)hudatoriq\.web\.id$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)web2project\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("webbang.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".webevader.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".webfreer.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("weblagu.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".webjb.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".webrush.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("webs-tv.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".websitepulse.com/help/testtools.china-test") >= 0) return "+Optimized";
-        if (/^http:\/\/www\.websnapr\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".webwarper.net") >= 0) return "+Optimized";
-        if (/^http:\/\/webwarper\.net/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("webworkerdaily.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".weekmag.info") >= 0) return "+Optimized";
-        if (/(?:^|\.)wefightcensorship\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".wefong.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("weiboleak.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".weihuo.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("weijingsheng.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".weiming.info") >= 0) return "+Optimized";
-        if (/(?:^|\.)weiming\.info$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("weiquanwang.org") >= 0) return "+Optimized";
-        if (/^http:\/\/weisuo\.ws/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".welovecock.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".wemigrate.org") >= 0) return "+Optimized";
-        if (/^http:\/\/wemigrate\.org/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("wengewang.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)wengewang\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".wenhui.ch") >= 0) return "+Optimized";
-        if (/^http:\/\/trans\.wenweipo\.com\/gb\//.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("wenxuecity.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".wenyunchao.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)wenyunchao\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".westca.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)westca\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)westernwolves\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".westkit.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)westpoint\.edu$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".westernshugdensociety.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("wetpussygames.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".wetplace.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("wexiaobo.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)wexiaobo\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("wezhiyong.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)wezone\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".wforum.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)wforum\.com\/$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".whatblocked.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)whatblocked\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".wheatseeds.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)wheelockslatin\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".whippedass.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("whotalking.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("whylover.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)whyx\.org$/.test(host)) return "+Optimized";
-        if (/^http:\/\/zh\.ecdm\.wikia\.com/.test(url)) return "+Optimized";
-        if (/^http:\/\/evchk\.wikia\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("fq.wikia.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("cn.uncyclopedia.wikia.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("zh.uncyclopedia.wikia.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)wikileaks\.ch$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)wikileaks\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)wikileaks\.de$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)wikileaks\.eu$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)wikileaks\.lu$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".wikileaks.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)wikileaks\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)wikileaks\.pl$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".wikileaks-forum.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("wildammo.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)collateralmurder\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)collateralmurder\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("wikilivres.info/wiki/%E9%9B%B6%E5%85%AB%E5%AE%AA%E7%AB%A0") >= 0) return "+Optimized";
-        if (/(?:^|\.)wikimapia\.org$/.test(host)) return "+Optimized";
-        if (/^http:\/\/zh\.wikisource\.org/.test(url)) return "+Optimized";
-        if (/^http:\/\/zh\.wikinews\.org/.test(url)) return "+Optimized";
-        if (/^http:\/\/zh\.wikivoyage\.org/.test(url)) return "+Optimized";
-        if (/^http:\/\/zh\.wiktionary\.org/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("zh.wikipedia.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("zh.m.wikipedia.org") >= 0) return "+Optimized";
-        if (/^https:\/\/zh\.m\.wikipedia\.org/.test(url)) return "+Optimized";
-        if (/^https:\/\/zh\.wikipedia\.org/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("wuu.wikipedia.org") >= 0) return "+Optimized";
-        if (/^https:\/\/wuu\.wikipedia\.org/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("zh-yue.wikipedia.org") >= 0) return "+Optimized";
-        if (/^https:\/\/zh-yue\.wikipedia\.org/.test(url)) return "+Optimized";
-        if (/(?:^|\.)wikiwiki\.jp$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)casino\.williamhill\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)sports\.williamhill\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)vegas\.williamhill\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)willw\.net$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)windowsphoneme\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".windscribe.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)windscribe\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)wingy\.site$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("winning11.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("winwhispers.info") >= 0) return "+Optimized";
-        if (/(?:^|\.)wiredbytes\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)wiredpen\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)wireshark\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".wisdompubs.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".wisevid.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)wisevid\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".witnessleeteaching.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".witopia.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".wjbk.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)wjbk\.org$/.test(host)) return "+Optimized";
-        if (/^http:\/\/wn\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".wnacg.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".wnacg.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".wo.tc") >= 0) return "+Optimized";
-        if (/(?:^|\.)woeser\.com$/.test(host)) return "+Optimized";
-        if (/^http:\/\/woesermiddle-way\.net\//.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".wokar.org") >= 0) return "+Optimized";
-        if (/^http:\/\/wokar\.org/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("wolfax.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)wolfax\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)woolyss\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("woopie.jp") >= 0) return "+Optimized";
-        if (/(?:^|\.)woopie\.jp$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("woopie.tv") >= 0) return "+Optimized";
-        if (/(?:^|\.)woopie\.tv$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)workatruna\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".workerdemo.org.hk") >= 0) return "+Optimized";
-        if (/(?:^|\.)workersthebig\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".worldcat.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("worldjournal.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".worldvpn.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)worldvpn\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".wordpress.com") >= 0) return "+Optimized";
-        if (/^http:\/\/.*\.wordpress\.com/.test(url)) return "+Optimized";
-        if (/(?:^|\.)cnbbnews\.wordpress\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)chenshan20042005\.wordpress\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)hka8964\.wordpress\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)hkanews\.wordpress\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)jobnewera\.wordpress\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)sujiatun\.wordpress\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)wp\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".wow.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".wow-life.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)wowlegacy\.ml$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)wowporn\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)wowgirls\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".wowrk.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("woxinghuiguo.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".woyaolian.org") >= 0) return "+Optimized";
-        if (/^http:\/\/woyaolian\.org/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".wpoforum.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)wpoforum\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".wqyd.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)wqyd\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("wrchina.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("wretch.cc") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".wsj.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)wsj\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".wsj.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".wsjhk.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".wtbn.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".wtfpeople.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("wuerkaixi.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)wufafangwen\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("wufi.org.tw") >= 0) return "+Optimized";
-        if (/(?:^|\.)wuguoguang\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("wujie.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("wujieliulan.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)wujieliulan\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("wukangrui.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".wwitv.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)wwitv\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("wzyboy.im/post/160") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".x-berry.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)x-berry\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)x-art\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)x-wall\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("x1949x.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("x365x.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("xanga.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)xbabe\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".xbookcn.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)xbookcn\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)xcafe\.in$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)xcity\.jp$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".xcritic.com") >= 0) return "+Optimized";
-        if (/^http:\/\/cdn.*\.xda-developers\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".xerotica.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("destiny.xfiles.to/ubbthreads") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".xfm.pp.ru") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("xgmyd.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("xhamster.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)xhamster\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".xianchawang.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".xianjian.tw") >= 0) return "+Optimized";
-        if (/^http:\/\/xianjian\.tw/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".xianqiao.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".xiaobaiwu.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".xiaochuncnjp.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".xiaod.in") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".xiaohexie.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)xiaolan\.me$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)xiaoma\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)xiaohexie\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("xiezhua.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".xihua.es") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("forum.xinbao.de/forum") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".xing.com") >= 0) return "+Optimized";
-        if (/^http:\/\/xing\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".xinmiao.com.hk") >= 0) return "+Optimized";
-        if (/(?:^|\.)xinmiao\.com\.hk$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("xinsheng.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("xinshijue.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("xinhuanet.org") >= 0) return "+Optimized";
-        if (/^http:\/\/xinyubbs\.net/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".xiongpian.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".xiuren.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("xizang-zhiye.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("xjp.cc") >= 0) return "+Optimized";
-        if (/(?:^|\.)xjp\.cc$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)xjtravelguide\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("xlfmtalk.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)xlfmwz\.info$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)xml-training-guide\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("xmovies.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)xnxx\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("xpdo.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)xpud\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".xrentdvd.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".xskywalker.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)xtube\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("blog.xuite.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("vlog.xuite.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("xuzhiyong.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)xuchao\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("xuchao.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)xuchao\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("xvideo.cc") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".xvideos.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)xvideos\.es$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".xxbbx.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".xxlmovies.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)xxx\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".xxxfuckmom.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)xxxx\.com\.au$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".xxxymovies.com") >= 0) return "+Optimized";
-        if (/^http:\/\/xxxymovies\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("xys.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("xysblogs.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("xyy69.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("xyy69.info") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("page.bid.yahoo.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("tw.bid.yahoo.com") >= 0) return "+Optimized";
-        if (/^https:\/\/tw\.bid\.yahoo\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("blogs.yahoo.co.jp") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("buy.yahoo.com.tw/gdsale") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("hk.yahoo.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("hk.knowledge.yahoo.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("hk.myblog.yahoo.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("news.yahoo.com/china-blocks-bbc") >= 0) return "+Optimized";
-        if (/(?:^|\.)hk\.news\.yahoo\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("hk.rd.yahoo.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("hk.search.yahoo.com/search") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("hk.video.news.yahoo.com/video") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("meme.yahoo.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("tw.answers.yahoo.com") >= 0) return "+Optimized";
-        if (/^https:\/\/tw\.answers\.yahoo\.com/.test(url)) return "+Optimized";
-        if (/(?:^|\.)tw\.knowledge\.yahoo\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)tw\.mall\.yahoo\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("tw.yahoo.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)tw\.mobi\.yahoo\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("tw.myblog.yahoo.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)tw\.news\.yahoo\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("pulse.yahoo.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("upcoming.yahoo.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("video.yahoo.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)yahoo\.com\.hk$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)duckduckgo-owned-server\.yahoo\.net$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)yakbutterblues\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("yam.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)yam\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)yam\.org\.tw$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".yanghengjun.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("yangjianli.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".yasni.co.uk") >= 0) return "+Optimized";
-        if (/(?:^|\.)yasni\.co\.uk$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)yasukuni\.or\.jp$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".yayabay.com/forum") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ydy.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".yeahteentube.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)yeahteentube\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)yecl\.net$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)yeelou\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("yeeyi.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("yegle.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)yegle\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".yes.xxx") >= 0) return "+Optimized";
-        if (/(?:^|\.)yes123\.com\.tw$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)yesasia\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)yesasia\.com\.hk$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".yes-news.com") >= 0) return "+Optimized";
-        if (/^http:\/\/yes-news\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".yespornplease.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)yespornplease\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)yhcw\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".yibada.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".yibaochina.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".yidio.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)yidio\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("yilubbs.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("xa.yimg.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".yingsuoss.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".yipub.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)yipub\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("yinlei.org/mt") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".yizhihongxing.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".yobt.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".yogichen.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)yogichen\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("yong.hu") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".yorkbbs.ca") >= 0) return "+Optimized";
-        if (/(?:^|\.)youxu\.info$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".youjizz.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)youjizz\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("youmaker.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("youngspiration.hk") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".youpai.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)youpai\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".your-freedom.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)yourepeat\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".yourprivatevpn.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)yourprivatevpn\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".yousendit.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)yousendit\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".youthnetradio.org/tmit/forum") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("blog.youthwant.com.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("share.youthwant.com.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("topic.youthwant.com.tw") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".youporn.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)youporn\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".youporngay.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)youporngay\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".yourlisten.com") >= 0) return "+Optimized";
-        if (/^http:\/\/yourlisten\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".yourlust.com") >= 0) return "+Optimized";
-        if (/^http:\/\/yourlust\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("youshun12.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".youtubecn.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("youversion.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)youversion\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("blog.youxu.info/2010/03/14/west-chamber") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("ytht.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("yuanming.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".yuanzhengtang.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".yulghun.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)yunchao\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".yuvutu.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)yvesgeleyn\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ywpw.com/forums/history/post/A0/p0/html/227") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("yx51.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".yyii.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)yyii\.org$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".yzzk.com") >= 0) return "+Optimized";
-        if (/^http:\/\/yzzk\.com/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("zacebook.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".zalmos.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)zalmos\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)zannel\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".zaobao.com.sg") >= 0) return "+Optimized";
-        if (/(?:^|\.)zaobao\.com\.sg$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".zaozon.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)zdnet\.com\.tw$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".zello.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)zello\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".zengjinyan.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".zenmate.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)zenmate\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)zenmate\.com\.ru$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)zeutch\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".zfreet.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".zgsddh.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("zgzcjj.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".zhanbin.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)zhanbin\.net$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".zhangboli.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)zhangtianliang\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("zhenghui.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("zhengwunet.org") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("zhenlibu.info") >= 0) return "+Optimized";
-        if (/(?:^|\.)zhenlibu\.info$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".zhenlibu1984.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)zhenlibu1984\.com$/.test(host)) return "+Optimized";
-        if (/^http:\/\/zhenxiang\.biz/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".zhinengluyou.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("zhongguo.ca") >= 0) return "+Optimized";
-        if (/^http:\/\/zhongguorenquan\.org/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("zhongguotese.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)zhongguotese\.net$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)zhongmeng\.org$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)zhreader\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".zhuangbi.me") >= 0) return "+Optimized";
-        if (/(?:^|\.)zhuangbi\.me$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".zhuanxing.cn") >= 0) return "+Optimized";
-        if (/(?:^|\.)zhuatieba\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("zhuichaguoji.org") >= 0) return "+Optimized";
-        if (/(?:^|\.)zhuichaguoji\.org$/.test(host)) return "+Optimized";
-        if (/^http:\/\/book\.zi5\.me/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ziddu.com/download") >= 0) return "+Optimized";
-        if (/(?:^|\.)zillionk\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".zinio.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)zinio\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)ziplib\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".ziporn.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".zkaip.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)zkaip\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("realforum.zkiz.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)zmw\.cn$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".zodgame.us") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("zomobo.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".zonaeuropa.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)zonaeuropa\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)zonghexinwen\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".zonghexinwen.net") >= 0) return "+Optimized";
-        if (/(?:^|\.)zootool\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".zoozle.net") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("writer.zoho.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)zpn\.im$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".zshare.net/download") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".zsrhao.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".zuo.la") >= 0) return "+Optimized";
-        if (/(?:^|\.)zuo\.la$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)zuobiao\.me$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".zuola.com") >= 0) return "+Optimized";
-        if (/(?:^|\.)zuola\.com$/.test(host)) return "+Optimized";
-        if (/(?:^|\.)zvereff\.com$/.test(host)) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".zynaima.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("zyzc9.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf(".zzcartoon.com") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("64memo") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("aHR0cHM6Ly95ZWNsLm5ldA") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("freenet") >= 0) return "+Optimized";
-        if (/^http:\/\/.*\.google\..*\/falun/.test(url)) return "+Optimized";
-        if (/^http:\/\/.*phobos\.apple\.com.*\/video/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("q=freedom") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("q%3Dfreedom") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("remembering_tiananmen_20_years") >= 0) return "+Optimized";
-        if (/^http:\/\/.*search.*safeweb/.test(url)) return "+Optimized";
-        if (scheme === "http" && url.indexOf("q=triangle") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("q%3DTriangle") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("ultrareach") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("ultrasurf") >= 0) return "+Optimized";
-        if (scheme === "http" && url.indexOf("zhengjian") >= 0) return "+Optimized";
-        return "DIRECT";
-    },
-    "+Optimized": function(url, host, scheme) {
-        "use strict";
-        if (/^127\.0\.0\.1$/.test(host) || /^::1$/.test(host) || /^localhost$/.test(host)) return "DIRECT";
-        return "HTTPS optimized.se-proxy.net:443";
+// Generated by autoproxy2pac
+// https://github.com/jo32/autoproxy2pac
+
+var proxy = "HTTPS optimized.se-proxy.net:443";
+
+var domains = {
+  "2dbook.com": 1,
+  "4tern.com": 1,
+  "adorama.com": 1,
+  "agnesb.fr": 1,
+  "akiba-web.com": 1,
+  "alien-ufos.com": 1,
+  "altrec.com": 1,
+  "asianspiss.com": 1,
+  "assimp.org": 1,
+  "athenaeizou.com": 1,
+  "azubu.tv": 1,
+  "banorte.com": 1,
+  "bash-hackers.org": 1,
+  "beeg.com": 1,
+  "bing.com": 1,
+  "bloombergview.com": 1,
+  "boysmaster.com": 1,
+  "carfax.com": 1,
+  "casinobellini.com": 1,
+  "centauro.com.br": 1,
+  "comico.tw": 1,
+  "crossfire.co.kr": 1,
+  "d2pass.com": 1,
+  "darpa.mil": 1,
+  "dawangidc.com": 1,
+  "deezer.com": 1,
+  "desipro.de": 1,
+  "dingchin.com.tw": 1,
+  "dish.com": 1,
+  "dlsite.jp": 1,
+  "dm530.net": 1,
+  "dmhy.org": 1,
+  "dmm.co.jp": 1,
+  "dmm.com": 1,
+  "eesti.ee": 1,
+  "expekt.com": 1,
+  "extmatrix.com": 1,
+  "fakku.net": 1,
+  "fastpic.ru": 1,
+  "filesor.com": 1,
+  "financetwitter.com": 1,
+  "findmima.com": 1,
+  "flipboard.com": 1,
+  "flitto.com": 1,
+  "funkyimg.com": 1,
+  "fxnetworks.com": 1,
+  "g-area.org": 1,
+  "gettyimages.com": 1,
+  "getuploader.com": 1,
+  "glass8.eu": 1,
+  "glype.com": 1,
+  "go141.com": 1,
+  "hautelook.com": 1,
+  "hautelookcdn.com": 1,
+  "hmvdigital.ca": 1,
+  "hmvdigital.com": 1,
+  "homedepot.com": 1,
+  "hoovers.com": 1,
+  "hulu.com": 1,
+  "huluim.com": 1,
+  "hustler.com": 1,
+  "hustlercash.com": 1,
+  "hybrid-analysis.com": 1,
+  "ilovelongtoes.com": 1,
+  "imgmega.com": 1,
+  "imgur.com": 1,
+  "javhub.net": 1,
+  "javhuge.com": 1,
+  "javlibrary.com": 1,
+  "jcpenney.com": 1,
+  "jims.net": 1,
+  "jukujo-club.com": 1,
+  "juliepost.com": 1,
+  "kawaiikawaii.jp": 1,
+  "kendatire.com": 1,
+  "khatrimaza.org": 1,
+  "kkbox.com": 1,
+  "leisurepro.com": 1,
+  "longtoes.com": 1,
+  "lovetvshow.com": 1,
+  "co.uk": 1,
+  "macgamestore.com": 1,
+  "madonna-av.com": 1,
+  "mangafox.com": 1,
+  "mangafox.me": 1,
+  "manta.com": 1,
+  "matome-plus.com": 1,
+  "matome-plus.net": 1,
+  "mattwilcox.net": 1,
+  "metarthunter.com": 1,
+  "mfxmedia.com": 1,
+  "monitorware.com": 1,
+  "monster.com": 1,
+  "moodyz.com": 1,
+  "mos.ru": 1,
+  "msha.gov": 1,
+  "muzu.tv": 1,
+  "mvg.jp": 1,
+  "mybet.com": 1,
+  "nationwide.com": 1,
+  "nbc.com": 1,
+  "neo-miracle.com": 1,
+  "netflix.com": 1,
+  "nflximg.com": 1,
+  "nflximg.net": 1,
+  "nflxext.com": 1,
+  "nflxso.net": 1,
+  "nflxvideo.net": 1,
+  "nightlife141.com": 1,
+  "nordstrom.com": 1,
+  "nordstromimage.com": 1,
+  "nordstromrack.com": 1,
+  "nottinghampost.com": 1,
+  "ntdtv.cz": 1,
+  "nudezz.com": 1,
+  "nusatrip.com": 1,
+  "nuuvem.com": 1,
+  "omni7.jp": 1,
+  "onapp.com": 1,
+  "ontrac.com": 1,
+  "pandora.com": 1,
+  "pandora.tv": 1,
+  "parkansky.com": 1,
+  "phmsociety.org": 1,
+  "pure18.com": 1,
+  "r18.com": 1,
+  "radiko.jp": 1,
+  "ramcity.com.au": 1,
+  "rd.com": 1,
+  "rdio.com": 1,
+  "sadistic-v.com": 1,
+  "shutterstock.com": 1,
+  "slacker.com": 1,
+  "sm-miracle.com": 1,
+  "spotify.com": 1,
+  "springboardplatform.com": 1,
+  "sprite.org": 1,
+  "superokayama.com": 1,
+  "superpages.com": 1,
+  "swagbucks.com": 1,
+  "switch1.jp": 1,
+  "tapanwap.com": 1,
+  "target.com": 1,
+  "thebodyshop-usa.com": 1,
+  "tma.co.jp": 1,
+  "tracfone.com": 1,
+  "tryheart.jp": 1,
+  "turntable.fm": 1,
+  "twerkingbutt.com": 1,
+  "ulop.net": 1,
+  "vegasred.com": 1,
+  "vevo.com": 1,
+  "vip-enterprise.com": 1,
+  "viu.tv": 1,
+  "vs.com": 1,
+  "wanz-factory.com": 1,
+  "webpack.de": 1,
+  "wheretowatch.com": 1,
+  "wingamestore.com": 1,
+  "wizcrafts.net": 1,
+  "wwe.com": 1,
+  "xfinity.com": 1,
+  "ytn.co.kr": 1,
+  "zattoo.com": 1,
+  "zim.vn": 1,
+  "zozotown.com": 1,
+  "xn--4gq171p.com": 1,
+  "xn--i2ru8q2qg.com": 1,
+  "china-mmm.jp.net": 1,
+  "lsxszzg.com": 1,
+  "china-mmm.net": 1,
+  "china-mmm.sa.com": 1,
+  "now.im": 1,
+  "amazon.com": 1,
+  "amazonaws.com": 1,
+  "avmo.pw": 1,
+  "avmoo.com": 1,
+  "avmoo.net": 1,
+  "avmoo.pw": 1,
+  "javmoo.xyz": 1,
+  "javtag.com": 1,
+  "javzoo.com": 1,
+  "1dumb.com": 1,
+  "25u.com": 1,
+  "2waky.com": 1,
+  "3-a.net": 1,
+  "4dq.com": 1,
+  "4mydomain.com": 1,
+  "4pu.com": 1,
+  "acmetoy.com": 1,
+  "almostmy.com": 1,
+  "americanunfinished.com": 1,
+  "authorizeddns.net": 1,
+  "authorizeddns.org": 1,
+  "authorizeddns.us": 1,
+  "bigmoney.biz": 1,
+  "changeip.name": 1,
+  "changeip.net": 1,
+  "changeip.org": 1,
+  "cleansite.biz": 1,
+  "cleansite.info": 1,
+  "cleansite.us": 1,
+  "compress.to": 1,
+  "ddns.info": 1,
+  "me.uk": 1,
+  "ddns.mobi": 1,
+  "ddns.ms": 1,
+  "ddns.name": 1,
+  "ddns.us": 1,
+  "dhcp.biz": 1,
+  "dns-dns.com": 1,
+  "dns-stuff.com": 1,
+  "dns04.com": 1,
+  "dns05.com": 1,
+  "dns1.us": 1,
+  "dns2.us": 1,
+  "dnset.com": 1,
+  "dnsrd.com": 1,
+  "dsmtp.com": 1,
+  "dumb1.com": 1,
+  "dynamic-dns.net": 1,
+  "dynamicdns.biz": 1,
+  "org.uk": 1,
+  "dyndns.pro": 1,
+  "dynssl.com": 1,
+  "edns.biz": 1,
+  "epac.to": 1,
+  "esmtp.biz": 1,
+  "ezua.com": 1,
+  "faqserv.com": 1,
+  "fartit.com": 1,
+  "freeddns.com": 1,
+  "freetcp.com": 1,
+  "freewww.biz": 1,
+  "freewww.info": 1,
+  "ftp1.biz": 1,
+  "ftpserver.biz": 1,
+  "gettrials.com": 1,
+  "got-game.org": 1,
+  "gr8domain.biz": 1,
+  "gr8name.biz": 1,
+  "https443.net": 1,
+  "https443.org": 1,
+  "ikwb.com": 1,
+  "instanthq.com": 1,
+  "iownyour.biz": 1,
+  "iownyour.org": 1,
+  "isasecret.com": 1,
+  "itemdb.com": 1,
+  "itsaol.com": 1,
+  "jetos.com": 1,
+  "jkub.com": 1,
+  "jungleheart.com": 1,
+  "justdied.com": 1,
+  "lflink.com": 1,
+  "lflinkup.com": 1,
+  "lflinkup.net": 1,
+  "lflinkup.org": 1,
+  "longmusic.com": 1,
+  "mefound.com": 1,
+  "moneyhome.biz": 1,
+  "mrbasic.com": 1,
+  "mrbonus.com": 1,
+  "mrface.com": 1,
+  "mrslove.com": 1,
+  "my03.com": 1,
+  "mydad.info": 1,
+  "myddns.com": 1,
+  "myftp.info": 1,
+  "myftp.name": 1,
+  "mylftv.com": 1,
+  "mymom.info": 1,
+  "mynetav.net": 1,
+  "mynetav.org": 1,
+  "mynumber.org": 1,
+  "mypicture.info": 1,
+  "mypop3.net": 1,
+  "mypop3.org": 1,
+  "mysecondarydns.com": 1,
+  "mywww.biz": 1,
+  "myz.info": 1,
+  "ninth.biz": 1,
+  "ns01.biz": 1,
+  "ns01.info": 1,
+  "ns01.us": 1,
+  "ns02.biz": 1,
+  "ns02.info": 1,
+  "ns02.us": 1,
+  "ns1.name": 1,
+  "ns2.name": 1,
+  "ns3.name": 1,
+  "ocry.com": 1,
+  "onedumb.com": 1,
+  "onmypc.biz": 1,
+  "onmypc.info": 1,
+  "onmypc.net": 1,
+  "onmypc.org": 1,
+  "onmypc.us": 1,
+  "organiccrap.com": 1,
+  "otzo.com": 1,
+  "ourhobby.com": 1,
+  "pcanywhere.net": 1,
+  "port25.biz": 1,
+  "proxydns.com": 1,
+  "qhigh.com": 1,
+  "qpoe.com": 1,
+  "rebatesrule.net": 1,
+  "sellclassics.com": 1,
+  "sendsmtp.com": 1,
+  "serveuser.com": 1,
+  "serveusers.com": 1,
+  "sexidude.com": 1,
+  "sexxxy.biz": 1,
+  "sixth.biz": 1,
+  "squirly.info": 1,
+  "ssl443.org": 1,
+  "toh.info": 1,
+  "toythieves.com": 1,
+  "trickip.net": 1,
+  "trickip.org": 1,
+  "vizvaz.com": 1,
+  "wha.la": 1,
+  "wikaba.com": 1,
+  "www1.biz": 1,
+  "wwwhost.biz": 1,
+  "x24hr.com": 1,
+  "xxuz.com": 1,
+  "xxxy.biz": 1,
+  "xxxy.info": 1,
+  "ygto.com": 1,
+  "youdontcare.com": 1,
+  "yourtrap.com": 1,
+  "zyns.com": 1,
+  "zzux.com": 1,
+  "d1b183sg0nvnuh.cloudfront.net": 1,
+  "d1c37gjwa26taa.cloudfront.net": 1,
+  "d3c33hcgiwev3.cloudfront.net": 1,
+  "d3rhr7kgmtrq1v.cloudfront.net": 1,
+  "3d-game.com": 1,
+  "4irc.com": 1,
+  "b0ne.com": 1,
+  "chatnook.com": 1,
+  "darktech.org": 1,
+  "deaftone.com": 1,
+  "dtdns.net": 1,
+  "effers.com": 1,
+  "etowns.net": 1,
+  "etowns.org": 1,
+  "flnet.org": 1,
+  "gotgeeks.com": 1,
+  "scieron.com": 1,
+  "slyip.com": 1,
+  "slyip.net": 1,
+  "suroot.com": 1,
+  "blogdns.org": 1,
+  "dyndns.org": 1,
+  "dyndns-ip.com": 1,
+  "dyndns-pics.com": 1,
+  "from-sd.com": 1,
+  "from-pr.com": 1,
+  "is-a-hunter.com": 1,
+  "dynu.com": 1,
+  "dynu.net": 1,
+  "freeddns.org": 1,
+  "facebook.br": 1,
+  "facebook.com": 1,
+  "facebook.net": 1,
+  "facebook.hu": 1,
+  "facebook.in": 1,
+  "facebook.nl": 1,
+  "facebook.se": 1,
+  "fb.com": 1,
+  "fb.me": 1,
+  "m.me": 1,
+  "messenger.com": 1,
+  "oculus.com": 1,
+  "oculuscdn.com": 1,
+  "rocksdb.org": 1,
+  "whatsapp.net": 1,
+  "1e100.net": 1,
+  "abc.xyz": 1,
+  "admob.com": 1,
+  "adsense.com": 1,
+  "agoogleaday.com": 1,
+  "ampproject.org": 1,
+  "android.com": 1,
+  "androidify.com": 1,
+  "api.ai": 1,
+  "appspot.com": 1,
+  "blogspot.com": 1,
+  "blogspot.hk": 1,
+  "blogspot.jp": 1,
+  "certificate-transparency.org": 1,
+  "chrome.com": 1,
+  "chromecast.com": 1,
+  "chromeexperiments.com": 1,
+  "chromercise.com": 1,
+  "chromestatus.com": 1,
+  "chromium.org": 1,
+  "creativelab5.com": 1,
+  "data-vocabulary.org": 1,
+  "debug.com": 1,
+  "deepmind.com": 1,
+  "deja.com": 1,
+  "digisfera.com": 1,
+  "feedburner.com": 1,
+  "g.co": 1,
+  "gcr.io": 1,
+  "get.how": 1,
+  "getmdl.io": 1,
+  "ggpht.com": 1,
+  "gmail.com": 1,
+  "gmodules.com": 1,
+  "godoc.org": 1,
+  "golang.org": 1,
+  "goo.gl": 1,
+  "google.ae": 1,
+  "google.as": 1,
+  "google.am": 1,
+  "google.at": 1,
+  "google.az": 1,
+  "google.ba": 1,
+  "google.be": 1,
+  "google.bg": 1,
+  "google.cat": 1,
+  "google.cd": 1,
+  "google.ci": 1,
+  "google.co.id": 1,
+  "google.co.jp": 1,
+  "google.co.kr": 1,
+  "google.co.ma": 1,
+  "google.com": 1,
+  "google.de": 1,
+  "google.dj": 1,
+  "google.dk": 1,
+  "google.es": 1,
+  "google.fi": 1,
+  "google.fm": 1,
+  "google.fr": 1,
+  "google.gg": 1,
+  "google.gl": 1,
+  "google.gr": 1,
+  "google.ie": 1,
+  "google.is": 1,
+  "google.it": 1,
+  "google.jo": 1,
+  "google.kz": 1,
+  "google.lv": 1,
+  "google.mn": 1,
+  "google.ms": 1,
+  "google.nl": 1,
+  "google.nu": 1,
+  "google.no": 1,
+  "google.ro": 1,
+  "google.ru": 1,
+  "google.rw": 1,
+  "google.sc": 1,
+  "google.sh": 1,
+  "google.sk": 1,
+  "google.sm": 1,
+  "google.sn": 1,
+  "google.tk": 1,
+  "google.tm": 1,
+  "google.to": 1,
+  "google.tt": 1,
+  "google.vu": 1,
+  "google.ws": 1,
+  "googleapis.cn": 1,
+  "googleapis.com": 1,
+  "googleapps.com": 1,
+  "googleartproject.com": 1,
+  "googleblog.com": 1,
+  "googlebot.com": 1,
+  "googlecapital.com": 1,
+  "googlecode.com": 1,
+  "googlecommerce.com": 1,
+  "googledomains.com": 1,
+  "googleearth.com": 1,
+  "googledrive.com": 1,
+  "googlegroups.com": 1,
+  "googlehosted.com": 1,
+  "googleideas.com": 1,
+  "googleinsidesearch.com": 1,
+  "googlelabs.com": 1,
+  "googlemail.com": 1,
+  "googleplay.com": 1,
+  "googleplus.com": 1,
+  "googlesource.com": 1,
+  "googlesyndication.com": 1,
+  "googleusercontent.com": 1,
+  "googlevideo.com": 1,
+  "googleweblight.com": 1,
+  "googlezip.net": 1,
+  "google.cn": 1,
+  "gstatic.com": 1,
+  "gvt0.com": 1,
+  "gvt1.com": 1,
+  "gvt3.com": 1,
+  "gwtproject.org": 1,
+  "html5rocks.com": 1,
+  "iam.soy": 1,
+  "igoogle.com": 1,
+  "itasoftware.com": 1,
+  "like.com": 1,
+  "madewithcode.com": 1,
+  "material.io": 1,
+  "on2.com": 1,
+  "panoramio.com": 1,
+  "picasaweb.com": 1,
+  "polymer-project.org": 1,
+  "questvisual.com": 1,
+  "recaptcha.net": 1,
+  "redhotlabs.com": 1,
+  "savethedate.foo": 1,
+  "schema.org": 1,
+  "shattered.io": 1,
+  "sipml5.org": 1,
+  "synergyse.com": 1,
+  "teachparentstech.org": 1,
+  "tensorflow.org": 1,
+  "thinkwithgoogle.com": 1,
+  "tiltbrush.com": 1,
+  "waveprotocol.org": 1,
+  "waymo.com": 1,
+  "webmproject.org": 1,
+  "webrtc.org": 1,
+  "whatbrowser.org": 1,
+  "withgoogle.com": 1,
+  "xn--ngstr-lra8j.com": 1,
+  "youtu.be": 1,
+  "youtube.com": 1,
+  "youtube-nocookie.com": 1,
+  "youtubeeducation.com": 1,
+  "youtubegaming.com": 1,
+  "ytimg.com": 1,
+  "zynamics.com": 1,
+  "naughtyamerica.com": 1,
+  "v2ex.com": 1,
+  "gov.tw": 1,
+  "030buy.com": 1,
+  "0rz.tw": 1,
+  "1-apple.com.tw": 1,
+  "100ke.org": 1,
+  "1000giri.net": 1,
+  "10conditionsoflove.com": 1,
+  "10musume.com": 1,
+  "123rf.com": 1,
+  "12bet.com": 1,
+  "12vpn.com": 1,
+  "12vpn.net": 1,
+  "141hongkong.com": 1,
+  "141tube.com": 1,
+  "1688.com.au": 1,
+  "173ng.com": 1,
+  "177pic.info": 1,
+  "17t17p.com": 1,
+  "18board.com": 1,
+  "18board.info": 1,
+  "18onlygirls.com": 1,
+  "18p2p.com": 1,
+  "18virginsex.com": 1,
+  "1949er.org": 1,
+  "1984bbs.com": 1,
+  "1984bbs.org": 1,
+  "1991way.com": 1,
+  "1998cdp.org": 1,
+  "1bao.org": 1,
+  "1eew.com": 1,
+  "1mobile.com": 1,
+  "1pondo.tv": 1,
+  "2-hand.info": 1,
+  "2000fun.com": 1,
+  "2008xianzhang.info": 1,
+  "2017.hk": 1,
+  "21andy.com": 1,
+  "21pron.com": 1,
+  "21sextury.com": 1,
+  "228.net.tw": 1,
+  "24hrs.ca": 1,
+  "24smile.org": 1,
+  "2lipstube.com": 1,
+  "2shared.com": 1,
+  "30boxes.com": 1,
+  "315lz.com": 1,
+  "32red.com": 1,
+  "36rain.com": 1,
+  "3a5a.com": 1,
+  "3arabtv.com": 1,
+  "3boys2girls.com": 1,
+  "3proxy.ru": 1,
+  "3ren.ca": 1,
+  "3tui.net": 1,
+  "4bluestones.biz": 1,
+  "4everproxy.com": 1,
+  "4rbtv.com": 1,
+  "4shared.com": 1,
+  "50webs.com": 1,
+  "51.ca": 1,
+  "51jav.org": 1,
+  "51luoben.com": 1,
+  "5278.cc": 1,
+  "5aimiku.com": 1,
+  "5i01.com": 1,
+  "5isotoi5.org": 1,
+  "5maodang.com": 1,
+  "63i.com": 1,
+  "64museum.org": 1,
+  "64tianwang.com": 1,
+  "64wiki.com": 1,
+  "66.ca": 1,
+  "666kb.com": 1,
+  "6park.com": 1,
+  "7capture.com": 1,
+  "7cow.com": 1,
+  "8-d.com": 1,
+  "85cc.net": 1,
+  "85cc.us": 1,
+  "85st.com": 1,
+  "881903.com": 1,
+  "888.com": 1,
+  "888poker.com": 1,
+  "89-64.org": 1,
+  "8news.com.tw": 1,
+  "8z1.net": 1,
+  "9001700.com": 1,
+  "908taiwan.org": 1,
+  "91porn.com": 1,
+  "92ccav.com": 1,
+  "991.com": 1,
+  "99btgc01.com": 1,
+  "99cn.info": 1,
+  "9bis.com": 1,
+  "9bis.net": 1,
+  "tibet.a.se": 1,
+  "a-normal-day.com": 1,
+  "a5.com.ru": 1,
+  "aamacau.com": 1,
+  "abc.com": 1,
+  "abchinese.com": 1,
+  "ablwang.com": 1,
+  "aboluowang.com": 1,
+  "aboutgfw.com": 1,
+  "abs.edu": 1,
+  "accim.org": 1,
+  "aceros-de-hispania.com": 1,
+  "acevpn.com": 1,
+  "acg18.me": 1,
+  "acgkj.com": 1,
+  "acnw.com.au": 1,
+  "actfortibet.org": 1,
+  "actimes.com.au": 1,
+  "activpn.com": 1,
+  "aculo.us": 1,
+  "addictedtocoffee.de": 1,
+  "adelaidebbs.com": 1,
+  "adpl.org.hk": 1,
+  "adult-sex-games.com": 1,
+  "adultfriendfinder.com": 1,
+  "adultkeep.net": 1,
+  "advanscene.com": 1,
+  "advertfan.com": 1,
+  "ae.org": 1,
+  "aenhancers.com": 1,
+  "af.mil": 1,
+  "afantibbs.com": 1,
+  "ai-kan.net": 1,
+  "ai-wen.net": 1,
+  "aiph.net": 1,
+  "airconsole.com": 1,
+  "aircrack-ng.org": 1,
+  "airvpn.org": 1,
+  "aisex.com": 1,
+  "ait.org.tw": 1,
+  "aiweiwei.com": 1,
+  "aiweiweiblog.com": 1,
+  "ajsands.com": 1,
+  "akamai.net": 1,
+  "akamaistream.net": 1,
+  "akademiye.org": 1,
+  "akiba-online.com": 1,
+  "al-islam.com": 1,
+  "al-qimmah.net": 1,
+  "alabout.com": 1,
+  "alanhou.com": 1,
+  "alarab.qa": 1,
+  "alasbarricadas.org": 1,
+  "alexlur.org": 1,
+  "alforattv.net": 1,
+  "alhayat.com": 1,
+  "alicejapan.co.jp": 1,
+  "aliengu.com": 1,
+  "alkasir.com": 1,
+  "allconnected.co": 1,
+  "alldrawnsex.com": 1,
+  "allervpn.com": 1,
+  "allfinegirls.com": 1,
+  "allgirlmassage.com": 1,
+  "allgirlsallowed.org": 1,
+  "allgravure.com": 1,
+  "alliance.org.hk": 1,
+  "allinfa.com": 1,
+  "alljackpotscasino.com": 1,
+  "allmovie.com": 1,
+  "alphaporno.com": 1,
+  "alternate-tools.com": 1,
+  "alternativeto.net": 1,
+  "alvinalexander.com": 1,
+  "alwaysdata.com": 1,
+  "alwaysdata.net": 1,
+  "alwaysvpn.com": 1,
+  "am730.com.hk": 1,
+  "ameblo.jp": 1,
+  "american.edu": 1,
+  "americangreencard.com": 1,
+  "americorps.gov": 1,
+  "amiblockedornot.com": 1,
+  "amigobbs.net": 1,
+  "amitabhafoundation.us": 1,
+  "amnesty.org": 1,
+  "amnesty.org.hk": 1,
+  "amnesty.tw": 1,
+  "amnestyusa.org": 1,
+  "amnyemachen.org": 1,
+  "amoiist.com": 1,
+  "androidplus.co": 1,
+  "andygod.com": 1,
+  "annatam.com": 1,
+  "anchorfree.com": 1,
+  "ancsconf.org": 1,
+  "andfaraway.net": 1,
+  "android-x86.org": 1,
+  "angelfire.com": 1,
+  "angularjs.org": 1,
+  "animecrazy.net": 1,
+  "animeshippuuden.com": 1,
+  "aniscartujo.com": 1,
+  "anobii.com": 1,
+  "anonymise.us": 1,
+  "anonymitynetwork.com": 1,
+  "anonymizer.com": 1,
+  "anontext.com": 1,
+  "anpopo.com": 1,
+  "answering-islam.org": 1,
+  "antd.org": 1,
+  "anthonycalzadilla.com": 1,
+  "anti1984.com": 1,
+  "antichristendom.com": 1,
+  "antiwave.net": 1,
+  "anysex.com": 1,
+  "aobo.com.au": 1,
+  "aofriend.com": 1,
+  "aofriend.com.au": 1,
+  "aojiao.org": 1,
+  "aol.com": 1,
+  "aol.ca": 1,
+  "aolnews.com": 1,
+  "aomiwang.com": 1,
+  "ap.org": 1,
+  "apetube.com": 1,
+  "apiary.io": 1,
+  "apigee.com": 1,
+  "apk-dl.com": 1,
+  "apkdler.com": 1,
+  "apkmonk.com": 1,
+  "apkplz.com": 1,
+  "apkpure.com": 1,
+  "aplusvpn.com": 1,
+  "appdownloader.net": 1,
+  "appledaily.com": 1,
+  "appshopper.com": 1,
+  "appsocks.net": 1,
+  "appsto.re": 1,
+  "archives.gov": 1,
+  "archive.is": 1,
+  "archive.fo": 1,
+  "archive.org": 1,
+  "arctosia.com": 1,
+  "areca-backup.org": 1,
+  "arethusa.su": 1,
+  "arlingtoncemetery.mil": 1,
+  "army.mil": 1,
+  "arstechnica.com": 1,
+  "art4tibet1998.org": 1,
+  "artofpeacefoundation.org": 1,
+  "artsy.net": 1,
+  "asacp.org": 1,
+  "asahichinese.com": 1,
+  "asdfg.jp": 1,
+  "asg.to": 1,
+  "asia-gaming.com": 1,
+  "asiaharvest.org": 1,
+  "asianews.it": 1,
+  "asianfreeforum.com": 1,
+  "asiansexdiary.com": 1,
+  "asianwomensfilm.de": 1,
+  "asiatgp.com": 1,
+  "asiatoday.us": 1,
+  "askstudent.com": 1,
+  "askynz.net": 1,
+  "assembla.com": 1,
+  "astrill.com": 1,
+  "atc.org.au": 1,
+  "atchinese.com": 1,
+  "atgfw.org": 1,
+  "atlaspost.com": 1,
+  "atdmt.com": 1,
+  "atnext.com": 1,
+  "audionow.com": 1,
+  "avaaz.org": 1,
+  "avbody.tv": 1,
+  "avcity.tv": 1,
+  "avcool.com": 1,
+  "avdb.in": 1,
+  "avdb.tv": 1,
+  "avfantasy.com": 1,
+  "avidemux.org": 1,
+  "avoision.com": 1,
+  "avyahoo.com": 1,
+  "axureformac.com": 1,
+  "azerbaycan.tv": 1,
+  "azerimix.com": 1,
+  "baby-kingdom.com": 1,
+  "babynet.com.hk": 1,
+  "backchina.com": 1,
+  "backpackers.com.tw": 1,
+  "backtotiananmen.com": 1,
+  "badjojo.com": 1,
+  "badoo.com": 1,
+  "baidu.jp": 1,
+  "bailandaily.com": 1,
+  "baixing.me": 1,
+  "bakgeekhome.tk": 1,
+  "banana-vpn.com": 1,
+  "bandwagonhost.com": 1,
+  "bangbrosnetwork.com": 1,
+  "bangchen.net": 1,
+  "bangyoulater.com": 1,
+  "bannedbook.org": 1,
+  "bannednews.org": 1,
+  "baramangaonline.com": 1,
+  "barenakedislam.com": 1,
+  "bartvpn.com": 1,
+  "bastillepost.com": 1,
+  "bayvoice.net": 1,
+  "baywords.com": 1,
+  "bbchat.tv": 1,
+  "bb-chat.tv": 1,
+  "bbc.com": 1,
+  "bbcchinese.com": 1,
+  "bbc.in": 1,
+  "bbg.gov": 1,
+  "bbkz.com": 1,
+  "bbnradio.org": 1,
+  "bbs-tw.com": 1,
+  "bbsdigest.com": 1,
+  "bbsfeed.com": 1,
+  "bbsland.com": 1,
+  "bbsmo.com": 1,
+  "bbsone.com": 1,
+  "bbtoystore.com": 1,
+  "bcc.com.tw": 1,
+  "bcchinese.net": 1,
+  "bcmorning.com": 1,
+  "bdsmvideos.net": 1,
+  "beaconevents.com": 1,
+  "bebo.com": 1,
+  "beevpn.com": 1,
+  "behindkink.com": 1,
+  "beijing1989.com": 1,
+  "beijingspring.com": 1,
+  "belamionline.com": 1,
+  "bell.wiki": 1,
+  "bemywife.cc": 1,
+  "beric.me": 1,
+  "berlintwitterwall.com": 1,
+  "bestforchina.org": 1,
+  "bestgore.com": 1,
+  "bestvpn.com": 1,
+  "bestvpnserver.com": 1,
+  "bestvpnservice.com": 1,
+  "bestvpnusa.com": 1,
+  "bet365.com": 1,
+  "betfair.com": 1,
+  "betternet.co": 1,
+  "bettervpn.com": 1,
+  "bettween.com": 1,
+  "betvictor.com": 1,
+  "bewww.net": 1,
+  "beyondfirewall.com": 1,
+  "bfnn.org": 1,
+  "bfsh.hk": 1,
+  "bgvpn.com": 1,
+  "bianlei.com": 1,
+  "biantailajiao.com": 1,
+  "biantailajiao.in": 1,
+  "biblesforamerica.org": 1,
+  "bic2011.org": 1,
+  "bigfools.com": 1,
+  "bigjapanesesex.com": 1,
+  "bignews.org": 1,
+  "bigsound.org": 1,
+  "billypan.com": 1,
+  "billywr.com": 1,
+  "bipic.net": 1,
+  "bit.do": 1,
+  "bit.ly": 1,
+  "bitcointalk.org": 1,
+  "bitshare.com": 1,
+  "bitsnoop.com": 1,
+  "bizhat.com": 1,
+  "bl-doujinsouko.com": 1,
+  "bjnewlife.org": 1,
+  "bjs.org": 1,
+  "bjzc.org": 1,
+  "blacklogic.com": 1,
+  "blackvpn.com": 1,
+  "blewpass.com": 1,
+  "blingblingsquad.net": 1,
+  "blinkx.com": 1,
+  "blinw.com": 1,
+  "blip.tv": 1,
+  "blockcn.com": 1,
+  "blockless.com": 1,
+  "blog.de": 1,
+  "blog.jp": 1,
+  "blogblog.com": 1,
+  "blogcatalog.com": 1,
+  "blogcity.me": 1,
+  "blogger.com": 1,
+  "blogimg.jp": 1,
+  "kangye.org": 1,
+  "bloglines.com": 1,
+  "bloglovin.com": 1,
+  "blogs.com": 1,
+  "blogtd.net": 1,
+  "blogtd.org": 1,
+  "bloodshed.net": 1,
+  "bloomberg.cn": 1,
+  "bloomberg.com": 1,
+  "bloomberg.de": 1,
+  "bloomfortune.com": 1,
+  "blueangellive.com": 1,
+  "bmfinn.com": 1,
+  "bnews.co": 1,
+  "bnrmetal.com": 1,
+  "boardreader.com": 1,
+  "bod.asia": 1,
+  "bodog88.com": 1,
+  "bolehvpn.net": 1,
+  "bonbonme.com": 1,
+  "bonbonsex.com": 1,
+  "bonfoundation.org": 1,
+  "bongacams.com": 1,
+  "boobstagram.com": 1,
+  "book.com.tw": 1,
+  "bookepub.com": 1,
+  "books.com.tw": 1,
+  "botanwang.com": 1,
+  "bot.nu": 1,
+  "bowenpress.com": 1,
+  "box.com": 1,
+  "box.net": 1,
+  "boxpn.com": 1,
+  "boxun.com": 1,
+  "boxun.tv": 1,
+  "boxunblog.com": 1,
+  "boxunclub.com": 1,
+  "boyangu.com": 1,
+  "boyfriendtv.com": 1,
+  "boysfood.com": 1,
+  "br.st": 1,
+  "brainyquote.com": 1,
+  "brandonhutchinson.com": 1,
+  "braumeister.org": 1,
+  "bravotube.net": 1,
+  "brazzers.com": 1,
+  "break.com": 1,
+  "breakgfw.com": 1,
+  "breaking911.com": 1,
+  "breakingtweets.com": 1,
+  "breakwall.net": 1,
+  "briian.com": 1,
+  "briefdream.com": 1,
+  "brizzly.com": 1,
+  "brkmd.com": 1,
+  "broadbook.com": 1,
+  "broadpressinc.com": 1,
+  "brockbbs.com": 1,
+  "brucewang.net": 1,
+  "brutaltgp.com": 1,
+  "bt2mag.com": 1,
+  "bt95.com": 1,
+  "btaia.com": 1,
+  "btbtav.com": 1,
+  "btdigg.org": 1,
+  "btku.me": 1,
+  "btku.org": 1,
+  "btspread.com": 1,
+  "budaedu.org": 1,
+  "buddhanet.com.tw": 1,
+  "buddhistchannel.tv": 1,
+  "buffered.com": 1,
+  "bullog.org": 1,
+  "bullogger.com": 1,
+  "bunbunhk.com": 1,
+  "busayari.com": 1,
+  "businessinsider.com": 1,
+  "businessinsider.com.au": 1,
+  "businessweek.com": 1,
+  "busu.org": 1,
+  "busytrade.com": 1,
+  "buugaa.com": 1,
+  "buzzhand.com": 1,
+  "buzzhand.net": 1,
+  "buzzorange.com": 1,
+  "bvpn.com": 1,
+  "bwsj.hk": 1,
+  "bx.tl": 1,
+  "c-spanvideo.org": 1,
+  "c-est-simple.com": 1,
+  "c100tibet.org": 1,
+  "cablegatesearch.net": 1,
+  "cachinese.com": 1,
+  "cacnw.com": 1,
+  "cactusvpn.com": 1,
+  "cafepress.com": 1,
+  "cahr.org.tw": 1,
+  "calameo.com": 1,
+  "calgarychinese.ca": 1,
+  "calgarychinese.com": 1,
+  "calgarychinese.net": 1,
+  "calibre-ebook.com": 1,
+  "calstate.edu": 1,
+  "caltech.edu": 1,
+  "cam4.com": 1,
+  "cam4.jp": 1,
+  "cam4.sg": 1,
+  "camfrog.com": 1,
+  "cams.com": 1,
+  "cams.org.sg": 1,
+  "canadameet.com": 1,
+  "canalporno.com": 1,
+  "cantonese.asia": 1,
+  "canyu.org": 1,
+  "cao.im": 1,
+  "caobian.info": 1,
+  "caochangqing.com": 1,
+  "cap.org.hk": 1,
+  "carabinasypistolas.com": 1,
+  "cardinalkungfoundation.org": 1,
+  "carmotorshow.com": 1,
+  "cartoonmovement.com": 1,
+  "casadeltibetbcn.org": 1,
+  "casatibet.org.mx": 1,
+  "cari.com.my": 1,
+  "caribbeancom.com": 1,
+  "casinoking.com": 1,
+  "casinoriva.com": 1,
+  "catch22.net": 1,
+  "catfightpayperview.xxx": 1,
+  "catholic.org.hk": 1,
+  "catholic.org.tw": 1,
+  "cathvoice.org.tw": 1,
+  "cattt.com": 1,
+  "cbc.ca": 1,
+  "cbsnews.com": 1,
+  "cbtc.org.hk": 1,
+  "cccat.cc": 1,
+  "cccat.co": 1,
+  "ccdtr.org": 1,
+  "cchere.com": 1,
+  "ccim.org": 1,
+  "cclife.ca": 1,
+  "cclife.org": 1,
+  "cclifefl.org": 1,
+  "ccthere.com": 1,
+  "cctongbao.com": 1,
+  "ccue.ca": 1,
+  "ccue.com": 1,
+  "ccvoice.ca": 1,
+  "ccw.org.tw": 1,
+  "cgdepot.org": 1,
+  "cdbook.org": 1,
+  "cdcparty.com": 1,
+  "cdef.org": 1,
+  "cdig.info": 1,
+  "cdjp.org": 1,
+  "cdninstagram.com": 1,
+  "cdnews.com.tw": 1,
+  "cdp1989.org": 1,
+  "cdp1998.org": 1,
+  "cdp2006.org": 1,
+  "url.tw": 1,
+  "cdpeu.org": 1,
+  "cdpusa.org": 1,
+  "cdpweb.org": 1,
+  "cdpwu.org": 1,
+  "cdw.com": 1,
+  "cecc.gov": 1,
+  "cellulo.info": 1,
+  "cenews.eu": 1,
+  "centerforhumanreprod.com": 1,
+  "centralnation.com": 1,
+  "centurys.net": 1,
+  "cfhks.org.hk": 1,
+  "cftfc.com": 1,
+  "cgst.edu": 1,
+  "change.org": 1,
+  "changp.com": 1,
+  "changsa.net": 1,
+  "channel8news.sg": 1,
+  "chapm25.com": 1,
+  "chaturbate.com": 1,
+  "chuang-yen.org": 1,
+  "chengmingmag.com": 1,
+  "chenguangcheng.com": 1,
+  "chenpokong.com": 1,
+  "chenpokong.net": 1,
+  "cherrysave.com": 1,
+  "chhongbi.org": 1,
+  "chicagoncmtv.com": 1,
+  "china-week.com": 1,
+  "china101.com": 1,
+  "china18.org": 1,
+  "china21.com": 1,
+  "china21.org": 1,
+  "china5000.us": 1,
+  "chinaaffairs.org": 1,
+  "chinaaid.me": 1,
+  "chinaaid.us": 1,
+  "chinaaid.org": 1,
+  "chinaaid.net": 1,
+  "chinacomments.org": 1,
+  "chinachange.org": 1,
+  "chinachannel.hk": 1,
+  "chinacitynews.be": 1,
+  "chinadialogue.net": 1,
+  "chinadigitaltimes.net": 1,
+  "chinaelections.org": 1,
+  "chinaeweekly.com": 1,
+  "chinafreepress.org": 1,
+  "chinagate.com": 1,
+  "chinageeks.org": 1,
+  "chinagfw.org": 1,
+  "chinagonet.com": 1,
+  "chinagreenparty.org": 1,
+  "chinahorizon.org": 1,
+  "chinahush.com": 1,
+  "chinainperspective.com": 1,
+  "chinainterimgov.org": 1,
+  "chinalaborwatch.org": 1,
+  "chinalawtranslate.com": 1,
+  "chinapost.com.tw": 1,
+  "chinaxchina.com": 1,
+  "chinalawandpolicy.com": 1,
+  "chinamule.com": 1,
+  "chinamz.org": 1,
+  "chinapress.com.my": 1,
+  "china-review.com.ua": 1,
+  "chinarightsia.org": 1,
+  "chinasmile.net": 1,
+  "chinasocialdemocraticparty.com": 1,
+  "chinasoul.org": 1,
+  "chinasucks.net": 1,
+  "chinatimes.com": 1,
+  "chinatopsex.com": 1,
+  "chinatown.com.au": 1,
+  "chinatweeps.com": 1,
+  "chinaway.org": 1,
+  "chinaworker.info": 1,
+  "chinayouth.org.hk": 1,
+  "chinayuanmin.org": 1,
+  "chinese-hermit.net": 1,
+  "chinese-leaders.org": 1,
+  "chinese-memorial.org": 1,
+  "chinesedaily.com": 1,
+  "chinesedailynews.com": 1,
+  "chinesedemocracy.com": 1,
+  "chinesegay.org": 1,
+  "chinesen.de": 1,
+  "chinesepen.org": 1,
+  "chinesetalks.net": 1,
+  "chingcheong.com": 1,
+  "chinman.net": 1,
+  "chithu.org": 1,
+  "chosun.com": 1,
+  "chrdnet.com": 1,
+  "christianfreedom.org": 1,
+  "christianstudy.com": 1,
+  "christusrex.org": 1,
+  "chromeadblock.com": 1,
+  "chubold.com": 1,
+  "chubun.com": 1,
+  "chuizi.net": 1,
+  "christiantimes.org.hk": 1,
+  "chrlawyers.hk": 1,
+  "churchinhongkong.org": 1,
+  "chushigangdrug.ch": 1,
+  "cienen.com": 1,
+  "cineastentreff.de": 1,
+  "cipfg.org": 1,
+  "circlethebayfortibet.org": 1,
+  "citizencn.com": 1,
+  "citizenlab.org": 1,
+  "citizenscommission.hk": 1,
+  "citizensradio.org": 1,
+  "city365.ca": 1,
+  "city9x.com": 1,
+  "citytalk.tw": 1,
+  "civicparty.hk": 1,
+  "civildisobediencemovement.org": 1,
+  "civilhrfront.org": 1,
+  "civiliangunner.com": 1,
+  "civilmedia.tw": 1,
+  "civisec.org": 1,
+  "cjb.net": 1,
+  "ck101.com": 1,
+  "clarionproject.org": 1,
+  "classicalguitarblog.net": 1,
+  "clb.org.hk": 1,
+  "clearharmony.net": 1,
+  "clearwisdom.net": 1,
+  "clinica-tibet.ru": 1,
+  "clipfish.de": 1,
+  "cloakpoint.com": 1,
+  "club1069.com": 1,
+  "cmi.org.tw": 1,
+  "cmoinc.org": 1,
+  "hku.hk": 1,
+  "cmule.com": 1,
+  "cmule.org": 1,
+  "cms.gov": 1,
+  "cmu.edu": 1,
+  "cn6.eu": 1,
+  "cna.com.tw": 1,
+  "cnabc.com": 1,
+  "cnd.org": 1,
+  "cnet.com": 1,
+  "cnex.org.cn": 1,
+  "cnineu.com": 1,
+  "cnitter.com": 1,
+  "cnn.com": 1,
+  "cnpolitics.org": 1,
+  "cn-proxy.com": 1,
+  "cnproxy.com": 1,
+  "cnyes.com": 1,
+  "coat.co.jp": 1,
+  "cochina.co": 1,
+  "cochina.org": 1,
+  "code1984.com": 1,
+  "codeplex.com": 1,
+  "codeshare.io": 1,
+  "codeskulptor.org": 1,
+  "comedycentral.com": 1,
+  "comefromchina.com": 1,
+  "comic-mega.me": 1,
+  "commandarms.com": 1,
+  "commentshk.com": 1,
+  "communistcrimes.org": 1,
+  "communitychoicecu.com": 1,
+  "compileheart.com": 1,
+  "contactmagazine.net": 1,
+  "convio.net": 1,
+  "coobay.com": 1,
+  "cool18.com": 1,
+  "coolaler.com": 1,
+  "coolder.com": 1,
+  "coolloud.org.tw": 1,
+  "coolncute.com": 1,
+  "corumcollege.com": 1,
+  "cos-moe.com": 1,
+  "cosplayjav.pl": 1,
+  "couchdbwiki.com": 1,
+  "cotweet.com": 1,
+  "cpj.org": 1,
+  "cq99.us": 1,
+  "crackle.com": 1,
+  "crazys.cc": 1,
+  "crchina.org": 1,
+  "crd-net.org": 1,
+  "creaders.net": 1,
+  "creadersnet.com": 1,
+  "cristyli.com": 1,
+  "crocotube.com": 1,
+  "crossthewall.net": 1,
+  "csdparty.com": 1,
+  "csuchen.de": 1,
+  "ct.org.tw": 1,
+  "ctao.org": 1,
+  "ctfriend.net": 1,
+  "ctitv.com.tw": 1,
+  "cts.com.tw": 1,
+  "cuhk.edu.hk": 1,
+  "cuhkacs.org": 1,
+  "cuihua.org": 1,
+  "cuiweiping.net": 1,
+  "culture.tw": 1,
+  "cumlouder.com": 1,
+  "curvefish.com": 1,
+  "cusu.hk": 1,
+  "cw.com.tw": 1,
+  "cyberctm.com": 1,
+  "cyberghostvpn.com": 1,
+  "cynscribe.com": 1,
+  "cytode.us": 1,
+  "cz.cc": 1,
+  "d-fukyu.com": 1,
+  "d0z.net": 1,
+  "d100.net": 1,
+  "d2bay.com": 1,
+  "dabr.eu": 1,
+  "dabr.mobi": 1,
+  "dabr.me": 1,
+  "dadazim.com": 1,
+  "dadi360.com": 1,
+  "dafagood.com": 1,
+  "dafahao.com": 1,
+  "dagelijksestandaard.nl": 1,
+  "daidostup.ru": 1,
+  "dailidaili.com": 1,
+  "dailymotion.com": 1,
+  "daiphapinfo.net": 1,
+  "dajiyuan.com": 1,
+  "dajiyuan.de": 1,
+  "dajiyuan.eu": 1,
+  "dalailama.com": 1,
+  "dalailama.mn": 1,
+  "dalailama.ru": 1,
+  "dalailama80.org": 1,
+  "dalailama-archives.org": 1,
+  "dalailamacenter.org": 1,
+  "dalailamafellows.org": 1,
+  "dalailamafilm.com": 1,
+  "dalailamafoundation.org": 1,
+  "dalailamahindi.com": 1,
+  "dalailamainaustralia.org": 1,
+  "dalailamajapanese.com": 1,
+  "dalailamaprotesters.info": 1,
+  "dalailamaquotes.org": 1,
+  "dalailamatrust.org": 1,
+  "dalailamaworld.com": 1,
+  "dalianmeng.org": 1,
+  "daliulian.org": 1,
+  "danke4china.net": 1,
+  "danwei.org": 1,
+  "daolan.net": 1,
+  "daozhongxing.org": 1,
+  "darktoy.net": 1,
+  "dastrassi.org": 1,
+  "daum.net": 1,
+  "david-kilgour.com": 1,
+  "daxa.cn": 1,
+  "dayabook.com": 1,
+  "daylife.com": 1,
+  "db.tt": 1,
+  "dbc.hk": 1,
+  "dcard.tw": 1,
+  "dcmilitary.com": 1,
+  "ddc.com.tw": 1,
+  "ddhw.info": 1,
+  "ddns.net": 1,
+  "de-sci.org": 1,
+  "debian.org": 1,
+  "decodet.co": 1,
+  "definebabe.com": 1,
+  "delcamp.net": 1,
+  "delicious.com": 1,
+  "democrats.org": 1,
+  "desc.se": 1,
+  "dessci.com": 1,
+  "destroy-china.jp": 1,
+  "deutsche-welle.de": 1,
+  "devio.us": 1,
+  "devpn.com": 1,
+  "dfas.mil": 1,
+  "dfn.org": 1,
+  "dharmakara.net": 1,
+  "dharamsalanet.com": 1,
+  "diaoyuislands.org": 1,
+  "digiland.tw": 1,
+  "digitalnomadsproject.org": 1,
+  "diigo.com": 1,
+  "dilber.se": 1,
+  "furl.net": 1,
+  "dipity.com": 1,
+  "directcreative.com": 1,
+  "discuss.com.hk": 1,
+  "discuss4u.com": 1,
+  "disp.cc": 1,
+  "disqus.com": 1,
+  "dit-inc.us": 1,
+  "dizhidizhi.com": 1,
+  "dizhuzhishang.com": 1,
+  "djangosnippets.org": 1,
+  "djorz.com": 1,
+  "dl-laby.jp": 1,
+  "dlsite.com": 1,
+  "dlyoutube.com": 1,
+  "dmcdn.net": 1,
+  "dnscrypt.org": 1,
+  "dns2go.com": 1,
+  "dnssec.net": 1,
+  "doctorvoice.org": 1,
+  "dogfartnetwork.com": 1,
+  "gloryhole.com": 1,
+  "dojin.com": 1,
+  "dok-forum.net": 1,
+  "dolc.de": 1,
+  "dolf.org.hk": 1,
+  "dollf.com": 1,
+  "domain.club.tw": 1,
+  "domaintoday.com.au": 1,
+  "dongtaiwang.com": 1,
+  "dongtaiwang.net": 1,
+  "dongyangjing.com": 1,
+  "dontfilter.us": 1,
+  "dontmovetochina.com": 1,
+  "dorjeshugden.com": 1,
+  "dotplane.com": 1,
+  "dotsub.com": 1,
+  "dotvpn.com": 1,
+  "doub.io": 1,
+  "dougscripts.com": 1,
+  "douhokanko.net": 1,
+  "doujincafe.com": 1,
+  "dowei.org": 1,
+  "dphk.org": 1,
+  "dpp.org.tw": 1,
+  "dpr.info": 1,
+  "dragonsprings.org": 1,
+  "drepung.org": 1,
+  "drgan.net": 1,
+  "drmingxia.org": 1,
+  "dropbooks.tv": 1,
+  "dropbox.com": 1,
+  "dropboxapi.com": 1,
+  "dropboxusercontent.com": 1,
+  "drsunacademy.com": 1,
+  "drtuber.com": 1,
+  "dscn.info": 1,
+  "dstk.dk": 1,
+  "dtiblog.com": 1,
+  "dtic.mil": 1,
+  "dtwang.org": 1,
+  "duanzhihu.com": 1,
+  "duckdns.org": 1,
+  "duckduckgo.com": 1,
+  "duckload.com": 1,
+  "duckmylife.com": 1,
+  "duga.jp": 1,
+  "duihua.org": 1,
+  "duihuahrjournal.org": 1,
+  "dunyabulteni.net": 1,
+  "duoweitimes.com": 1,
+  "duping.net": 1,
+  "duplicati.com": 1,
+  "dupola.com": 1,
+  "dupola.net": 1,
+  "dushi.ca": 1,
+  "dvorak.org": 1,
+  "dw.com": 1,
+  "dw.de": 1,
+  "dw-world.com": 1,
+  "dw-world.de": 1,
+  "dwheeler.com": 1,
+  "dwnews.com": 1,
+  "dwnews.net": 1,
+  "dxiong.com": 1,
+  "dynawebinc.com": 1,
+  "dzze.com": 1,
+  "e-classical.com.tw": 1,
+  "e-gold.com": 1,
+  "e-hentai.org": 1,
+  "e-hentaidb.com": 1,
+  "e-info.org.tw": 1,
+  "e-traderland.net": 1,
+  "e-zone.com.hk": 1,
+  "e123.hk": 1,
+  "earlytibet.com": 1,
+  "earthcam.com": 1,
+  "earthvpn.com": 1,
+  "eastern-ark.com": 1,
+  "easternlightning.org": 1,
+  "eastturkestan.com": 1,
+  "eastturkistan.net": 1,
+  "eastturkistan-gov.org": 1,
+  "eastturkistancc.org": 1,
+  "eastturkistangovernmentinexile.us": 1,
+  "easyca.ca": 1,
+  "easypic.com": 1,
+  "ebony-beauty.com": 1,
+  "ebookbrowse.com": 1,
+  "ebookee.com": 1,
+  "ecfa.org.tw": 1,
+  "ecimg.tw": 1,
+  "ecministry.net": 1,
+  "economist.com": 1,
+  "ecstart.com": 1,
+  "edgecastcdn.net": 1,
+  "edicypages.com": 1,
+  "edmontonchina.cn": 1,
+  "edmontonservice.com": 1,
+  "edoors.com": 1,
+  "edubridge.com": 1,
+  "edupro.org": 1,
+  "eevpn.com": 1,
+  "efcc.org.hk": 1,
+  "efukt.com": 1,
+  "eic-av.com": 1,
+  "eisbb.com": 1,
+  "eksisozluk.com": 1,
+  "electionsmeter.com": 1,
+  "elgoog.im": 1,
+  "elpais.com": 1,
+  "eltondisney.com": 1,
+  "emaga.com": 1,
+  "emilylau.org.hk": 1,
+  "emanna.com": 1,
+  "empfil.com": 1,
+  "emule-ed2k.com": 1,
+  "emulefans.com": 1,
+  "emuparadise.me": 1,
+  "enanyang.my": 1,
+  "enewstree.com": 1,
+  "enfal.de": 1,
+  "engadget.com": 1,
+  "engagedaily.org": 1,
+  "englishforeveryone.org": 1,
+  "englishpen.org": 1,
+  "enlighten.org.tw": 1,
+  "entermap.com": 1,
+  "entnt.com": 1,
+  "episcopalchurch.org": 1,
+  "epochhk.com": 1,
+  "epochtimes-bg.com": 1,
+  "epochtimes-romania.com": 1,
+  "epochtimes.co.kr": 1,
+  "epochtimes.com": 1,
+  "epochtimes.cz": 1,
+  "epochtimes.de": 1,
+  "epochtimes.fr": 1,
+  "epochtimes.ie": 1,
+  "epochtimes.it": 1,
+  "epochtimes.jp": 1,
+  "epochtimes.ru": 1,
+  "epochtimes.se": 1,
+  "epochtimestr.com": 1,
+  "epochweek.com": 1,
+  "epochweekly.com": 1,
+  "eporner.com": 1,
+  "equinenow.com": 1,
+  "erabaru.net": 1,
+  "erepublik.com": 1,
+  "erights.net": 1,
+  "erktv.com": 1,
+  "ernestmandel.org": 1,
+  "erodaizensyu.com": 1,
+  "erodoujinlog.com": 1,
+  "erodoujinworld.com": 1,
+  "eromanga-kingdom.com": 1,
+  "eromangadouzin.com": 1,
+  "eromon.net": 1,
+  "eroprofile.com": 1,
+  "eroticsaloon.net": 1,
+  "eslite.com": 1,
+  "esu.im": 1,
+  "etaa.org.au": 1,
+  "etadult.com": 1,
+  "etaiwannews.com": 1,
+  "etizer.org": 1,
+  "etokki.com": 1,
+  "ettoday.net": 1,
+  "etvonline.hk": 1,
+  "eu.org": 1,
+  "eucasino.com": 1,
+  "eulam.com": 1,
+  "eurekavpt.com": 1,
+  "europa.eu": 1,
+  "evschool.net": 1,
+  "exblog.jp": 1,
+  "exblog.co.jp": 1,
+  "exchristian.hk": 1,
+  "excite.co.jp": 1,
+  "exmormon.org": 1,
+  "expatshield.com": 1,
+  "expecthim.com": 1,
+  "experts-univers.com": 1,
+  "exploader.net": 1,
+  "expressvpn.com": 1,
+  "extremetube.com": 1,
+  "eyevio.jp": 1,
+  "eyny.com": 1,
+  "ezpc.tk": 1,
+  "ezpeer.com": 1,
+  "facebookquotes4u.com": 1,
+  "faceless.me": 1,
+  "facesoftibetanselfimmolators.info": 1,
+  "facesofnyfw.com": 1,
+  "faith100.org": 1,
+  "faithfuleye.com": 1,
+  "faiththedog.info": 1,
+  "falsefire.com": 1,
+  "falun-co.org": 1,
+  "falunart.org": 1,
+  "falunasia.info": 1,
+  "falunau.org": 1,
+  "falunaz.net": 1,
+  "falundafa.org": 1,
+  "falundafa-dc.org": 1,
+  "falundafa-florida.org": 1,
+  "falundafa-nc.org": 1,
+  "falundafa-pa.net": 1,
+  "falundafa-sacramento.org": 1,
+  "falun-ny.net": 1,
+  "falundafaindia.org": 1,
+  "falundafamuseum.org": 1,
+  "falungong.club": 1,
+  "falungong.de": 1,
+  "falunhr.org": 1,
+  "faluninfo.de": 1,
+  "faluninfo.net": 1,
+  "falunpilipinas.net": 1,
+  "falunworld.net": 1,
+  "familyfed.org": 1,
+  "fanglizhi.info": 1,
+  "fangong.org": 1,
+  "fangongheike.com": 1,
+  "fanqiang.tk": 1,
+  "fanqianghou.com": 1,
+  "fanqiangzhe.com": 1,
+  "fapdu.com": 1,
+  "faproxy.com": 1,
+  "fawanghuihui.org": 1,
+  "fbcdn.net": 1,
+  "fanqiangyakexi.net": 1,
+  "fail.hk": 1,
+  "famunion.com": 1,
+  "fan-qiang.com": 1,
+  "fangbinxing.com": 1,
+  "fangeming.com": 1,
+  "fangmincn.org": 1,
+  "fanhaodang.com": 1,
+  "fanswong.com": 1,
+  "fanyue.info": 1,
+  "farwestchina.com": 1,
+  "favotter.net": 1,
+  "fastly.net": 1,
+  "wistia.com": 1,
+  "fastssh.com": 1,
+  "faststone.org": 1,
+  "favstar.fm": 1,
+  "faydao.com": 1,
+  "fbsbx.com": 1,
+  "fc2.com": 1,
+  "fc2china.com": 1,
+  "fc2cn.com": 1,
+  "fc2blog.net": 1,
+  "fc2web.com": 1,
+  "fdbox.com": 1,
+  "fdc64.de": 1,
+  "fdc64.org": 1,
+  "fdc89.jp": 1,
+  "nodesnoop.com": 1,
+  "feelssh.com": 1,
+  "feer.com": 1,
+  "feifeiss.com": 1,
+  "feitianacademy.org": 1,
+  "feitian-california.org": 1,
+  "feministteacher.com": 1,
+  "fengzhenghu.com": 1,
+  "fengzhenghu.net": 1,
+  "fevernet.com": 1,
+  "ff.im": 1,
+  "fffff.at": 1,
+  "fflick.com": 1,
+  "ffvpn.com": 1,
+  "fgmtv.net": 1,
+  "fgmtv.org": 1,
+  "fhreports.net": 1,
+  "figprayer.com": 1,
+  "fileflyer.com": 1,
+  "fileforum.com": 1,
+  "files2me.com": 1,
+  "fileserve.com": 1,
+  "fillthesquare.org": 1,
+  "filmingfortibet.org": 1,
+  "filthdump.com": 1,
+  "finchvpn.com": 1,
+  "findmespot.com": 1,
+  "findyoutube.com": 1,
+  "fingerdaily.com": 1,
+  "finler.net": 1,
+  "firearmsworld.net": 1,
+  "fireofliberty.org": 1,
+  "firetweet.io": 1,
+  "flagsonline.it": 1,
+  "fleshbot.com": 1,
+  "fleursdeslettres.com": 1,
+  "flgg.us": 1,
+  "flgjustice.org": 1,
+  "flickr.com": 1,
+  "staticflickr.com": 1,
+  "flickrhivemind.net": 1,
+  "flickriver.com": 1,
+  "fling.com": 1,
+  "flipkart.com": 1,
+  "fmnnow.com": 1,
+  "fofldfradio.org": 1,
+  "foolsmountain.com": 1,
+  "forum4hk.com": 1,
+  "forums-free.com": 1,
+  "foxbusiness.com": 1,
+  "foxgay.com": 1,
+  "fringenetwork.com": 1,
+  "flecheinthepeche.fr": 1,
+  "fochk.org": 1,
+  "focustaiwan.tw": 1,
+  "focusvpn.com": 1,
+  "fofg.org": 1,
+  "fofg-europe.net": 1,
+  "fooooo.com": 1,
+  "footwiball.com": 1,
+  "fotile.me": 1,
+  "fourthinternational.org": 1,
+  "foxdie.us": 1,
+  "foxsub.com": 1,
+  "foxtang.com": 1,
+  "fpmt.org": 1,
+  "fpmt.tw": 1,
+  "fpmt-osel.org": 1,
+  "fpmtmexico.org": 1,
+  "fqok.org": 1,
+  "fqrouter.com": 1,
+  "franklc.com": 1,
+  "freakshare.com": 1,
+  "free4u.com.ar": 1,
+  "free-gate.org": 1,
+  "free-hada-now.org": 1,
+  "free-proxy.cz": 1,
+  "free.fr": 1,
+  "freealim.com": 1,
+  "freebearblog.org": 1,
+  "freebrowser.org": 1,
+  "freechal.com": 1,
+  "freedomchina.info": 1,
+  "freedomhouse.org": 1,
+  "freedomsherald.org": 1,
+  "freefq.com": 1,
+  "freefuckvids.com": 1,
+  "freegao.com": 1,
+  "freeilhamtohti.org": 1,
+  "freekwonpyong.org": 1,
+  "saveliuxiaobo.com": 1,
+  "freelotto.com": 1,
+  "freeman2.com": 1,
+  "freeopenvpn.com": 1,
+  "freemoren.com": 1,
+  "freemorenews.com": 1,
+  "freemuse.org": 1,
+  "freenet-china.org": 1,
+  "freenewscn.com": 1,
+  "freeones.com": 1,
+  "freeoz.org": 1,
+  "freessh.us": 1,
+  "free-ssh.com": 1,
+  "freedomcollection.org": 1,
+  "freeforums.org": 1,
+  "freenetproject.org": 1,
+  "freetibet.net": 1,
+  "freetibet.org": 1,
+  "freetibetanheroes.org": 1,
+  "freeviewmovies.com": 1,
+  "freevpn.me": 1,
+  "freewallpaper4.me": 1,
+  "freewebs.com": 1,
+  "freewechat.com": 1,
+  "freeweibo.com": 1,
+  "freexinwen.com": 1,
+  "freeyoutubeproxy.net": 1,
+  "friendfeed.com": 1,
+  "friendfeed-media.com": 1,
+  "friends-of-tibet.org": 1,
+  "friendsoftibet.org": 1,
+  "freechina.net": 1,
+  "freerk.com": 1,
+  "freevpn.nl": 1,
+  "freeyellow.com": 1,
+  "frienddy.com": 1,
+  "friendfinder.com": 1,
+  "fring.com": 1,
+  "fromchinatousa.net": 1,
+  "frommel.net": 1,
+  "frontlinedefenders.org": 1,
+  "frootvpn.com": 1,
+  "fscked.org": 1,
+  "fsurf.com": 1,
+  "ftchinese.com": 1,
+  "ftv.com.tw": 1,
+  "fucd.com": 1,
+  "fuckcnnic.net": 1,
+  "fuckgfw.org": 1,
+  "fullerconsideration.com": 1,
+  "fulue.com": 1,
+  "funf.tw": 1,
+  "funp.com": 1,
+  "fuq.com": 1,
+  "furhhdl.org": 1,
+  "furinkan.com": 1,
+  "futurechinaforum.org": 1,
+  "futuremessage.org": 1,
+  "fux.com": 1,
+  "fuyin.net": 1,
+  "fuyindiantai.org": 1,
+  "fuyu.org.tw": 1,
+  "fw.cm": 1,
+  "fzh999.com": 1,
+  "fzh999.net": 1,
+  "fzlm.com": 1,
+  "g6hentai.com": 1,
+  "g-queen.com": 1,
+  "gabocorp.com": 1,
+  "gaeproxy.com": 1,
+  "gaforum.org": 1,
+  "galaxymacau.com": 1,
+  "galenwu.com": 1,
+  "galstars.net": 1,
+  "game735.com": 1,
+  "gamebase.com.tw": 1,
+  "gamejolt.com": 1,
+  "gamerp.jp": 1,
+  "gamer.com.tw": 1,
+  "gamez.com.tw": 1,
+  "gamousa.com": 1,
+  "gaoming.net": 1,
+  "ganges.com": 1,
+  "gaopi.net": 1,
+  "gaozhisheng.org": 1,
+  "gaozhisheng.net": 1,
+  "gardennetworks.com": 1,
+  "gardennetworks.org": 1,
+  "gartlive.com": 1,
+  "gate-project.com": 1,
+  "gather.com": 1,
+  "gati.org.tw": 1,
+  "gaybubble.com": 1,
+  "gaycn.net": 1,
+  "gaymap.cc": 1,
+  "gaytube.com": 1,
+  "images-gaytube.com": 1,
+  "gaywatch.com": 1,
+  "gazotube.com": 1,
+  "gcc.org.hk": 1,
+  "gclooney.com": 1,
+  "gcpnews.com": 1,
+  "gdbt.net": 1,
+  "gdzf.org": 1,
+  "geek-art.net": 1,
+  "geekerhome.com": 1,
+  "geekheart.info": 1,
+  "geekmanuals.com": 1,
+  "gekikame.com": 1,
+  "gelbooru.com": 1,
+  "geocities.co.jp": 1,
+  "geocities.com": 1,
+  "geocities.jp": 1,
+  "geohot.com": 1,
+  "geometrictools.com": 1,
+  "gerefoundation.org": 1,
+  "getastrill.com": 1,
+  "getchu.com": 1,
+  "getcloak.com": 1,
+  "getfoxyproxy.org": 1,
+  "getfreedur.com": 1,
+  "getgom.com": 1,
+  "geti2p.net": 1,
+  "getlantern.org": 1,
+  "getjetso.com": 1,
+  "getiton.com": 1,
+  "getsocialscope.com": 1,
+  "getsync.com": 1,
+  "gfbv.de": 1,
+  "gfgold.com.hk": 1,
+  "gfsale.com": 1,
+  "gfw.org.ua": 1,
+  "ggssl.com": 1,
+  "ghost.org": 1,
+  "ghostpath.com": 1,
+  "ghut.org": 1,
+  "giantessnight.com": 1,
+  "gifree.com": 1,
+  "giga-web.jp": 1,
+  "gigacircle.com": 1,
+  "giganews.com": 1,
+  "gigporno.ru": 1,
+  "girlbanker.com": 1,
+  "git.io": 1,
+  "gitbooks.io": 1,
+  "cthlo.github.io": 1,
+  "haoel.github.io": 1,
+  "sodatea.github.io": 1,
+  "wsgzao.github.io": 1,
+  "gizlen.net": 1,
+  "gjczz.com": 1,
+  "globaljihad.net": 1,
+  "globalmediaoutreach.com": 1,
+  "globalmuseumoncommunism.org": 1,
+  "globalrescue.net": 1,
+  "globaltm.org": 1,
+  "globalvoicesonline.org": 1,
+  "globalvpn.net": 1,
+  "glock.com": 1,
+  "gluckman.com": 1,
+  "gmbd.cn": 1,
+  "gmhz.org": 1,
+  "gmiddle.com": 1,
+  "gmiddle.net": 1,
+  "gmll.org": 1,
+  "gnci.org.hk": 1,
+  "go-pki.com": 1,
+  "goagent.biz": 1,
+  "goagentplus.com": 1,
+  "gobet.cc": 1,
+  "godfootsteps.org": 1,
+  "godns.work": 1,
+  "godsdirectcontact.org": 1,
+  "godsdirectcontact.org.tw": 1,
+  "godsimmediatecontact.com": 1,
+  "gogotunnel.com": 1,
+  "gohappy.com.tw": 1,
+  "gokbayrak.com": 1,
+  "goldbet.com": 1,
+  "goldbetsports.com": 1,
+  "goldeneyevault.com": 1,
+  "goldenfrog.com": 1,
+  "goldjizz.com": 1,
+  "goldstep.net": 1,
+  "goldwave.com": 1,
+  "gongmeng.info": 1,
+  "gongm.in": 1,
+  "gongminliliang.com": 1,
+  "gongwt.com": 1,
+  "goo.ne.jp": 1,
+  "gooday.xyz": 1,
+  "goodreads.com": 1,
+  "goodreaders.com": 1,
+  "goodtv.com.tw": 1,
+  "goodtv.tv": 1,
+  "goofind.com": 1,
+  "googlesile.com": 1,
+  "gopetition.com": 1,
+  "goproxing.net": 1,
+  "gotrusted.com": 1,
+  "gotw.ca": 1,
+  "grammaly.com": 1,
+  "grandtrial.org": 1,
+  "graphis.ne.jp": 1,
+  "graphql.org": 1,
+  "greatfirewall.biz": 1,
+  "greatfirewallofchina.net": 1,
+  "greatfirewallofchina.org": 1,
+  "greenfieldbookstore.com.hk": 1,
+  "greenparty.org.tw": 1,
+  "greenpeace.org": 1,
+  "greenreadings.com": 1,
+  "great-firewall.com": 1,
+  "great-roc.org": 1,
+  "greatroc.org": 1,
+  "greatzhonghua.org": 1,
+  "greenpeace.com.tw": 1,
+  "greenvpn.net": 1,
+  "greenvpn.org": 1,
+  "gs-discuss.com": 1,
+  "gtricks.com": 1,
+  "guancha.org": 1,
+  "guardster.com": 1,
+  "gun-world.net": 1,
+  "gunsandammo.com": 1,
+  "gutteruncensored.com": 1,
+  "gvm.com.tw": 1,
+  "gzm.tv": 1,
+  "gzone-anime.info": 1,
+  "clementine-player.org": 1,
+  "echofon.com": 1,
+  "greasespot.net": 1,
+  "klip.me": 1,
+  "stephaniered.com": 1,
+  "ub0.cc": 1,
+  "wozy.in": 1,
+  "gospelherald.com": 1,
+  "gradconnection.com": 1,
+  "grangorz.org": 1,
+  "graylog2.org": 1,
+  "greatfire.org": 1,
+  "greatroc.tw": 1,
+  "gts-vpn.com": 1,
+  "gu-chu-sum.org": 1,
+  "guaguass.com": 1,
+  "guaguass.org": 1,
+  "guishan.org": 1,
+  "gunsamerica.com": 1,
+  "guruonline.hk": 1,
+  "gvlib.com": 1,
+  "gyalwarinpoche.com": 1,
+  "gyatsostudio.com": 1,
+  "h528.com": 1,
+  "h5dm.com": 1,
+  "h5galgame.me": 1,
+  "h-china.org": 1,
+  "h-moe.com": 1,
+  "h1n1china.org": 1,
+  "hacg.club": 1,
+  "hacg.in": 1,
+  "hacg.li": 1,
+  "hacg.red": 1,
+  "hacken.cc": 1,
+  "hacker.org": 1,
+  "hackthatphone.net": 1,
+  "hahlo.com": 1,
+  "hakkatv.org.tw": 1,
+  "handcraftedsoftware.org": 1,
+  "hanminzu.org": 1,
+  "hanunyi.com": 1,
+  "hao123.com": 1,
+  "hao123img.com": 1,
+  "happy-vpn.com": 1,
+  "hardsextube.com": 1,
+  "harunyahya.com": 1,
+  "hasaowall.com": 1,
+  "hasi.wang": 1,
+  "have8.com": 1,
+  "hclips.com": 1,
+  "hdtvb.net": 1,
+  "hdzog.com": 1,
+  "heartyit.com": 1,
+  "hec.su": 1,
+  "hecaitou.net": 1,
+  "hechaji.com": 1,
+  "heeact.edu.tw": 1,
+  "hegre-art.com": 1,
+  "helixstudios.net": 1,
+  "helplinfen.com": 1,
+  "helloandroid.com": 1,
+  "helloqueer.com": 1,
+  "helloss.pw": 1,
+  "hellotxt.com": 1,
+  "hentai.to": 1,
+  "hellouk.org": 1,
+  "helpeachpeople.com": 1,
+  "helpster.de": 1,
+  "helpzhuling.org": 1,
+  "hentaitube.tv": 1,
+  "hentaivideoworld.com": 1,
+  "getcloudapp.com": 1,
+  "cl.ly": 1,
+  "getsmartlinks.com": 1,
+  "git-scm.com": 1,
+  "heqinglian.net": 1,
+  "heungkongdiscuss.com": 1,
+  "hexieshe.com": 1,
+  "hexxeh.net": 1,
+  "heywire.com": 1,
+  "heyzo.com": 1,
+  "hgseav.com": 1,
+  "hhdcb3office.org": 1,
+  "hhthesakyatrizin.org": 1,
+  "hi-on.org.tw": 1,
+  "hidden-advent.org": 1,
+  "hidecloud.com": 1,
+  "hide.me": 1,
+  "hideipvpn.com": 1,
+  "hideman.net": 1,
+  "hideme.nl": 1,
+  "hidemy.name": 1,
+  "hidemyass.com": 1,
+  "hidemycomp.com": 1,
+  "hihiforum.com": 1,
+  "hihistory.net": 1,
+  "higfw.com": 1,
+  "highpeakspureearth.com": 1,
+  "highrockmedia.com": 1,
+  "hiitch.com": 1,
+  "hikinggfw.org": 1,
+  "hilive.tv": 1,
+  "himalayan-foundation.org": 1,
+  "himalayanglacier.com": 1,
+  "himemix.com": 1,
+  "himemix.net": 1,
+  "hinet.net": 1,
+  "hitomi.la": 1,
+  "hiwifi.com": 1,
+  "hizbuttahrir.org": 1,
+  "hizb-ut-tahrir.info": 1,
+  "hizb-ut-tahrir.org": 1,
+  "hjclub.info": 1,
+  "hk-pub.com": 1,
+  "hk01.com": 1,
+  "hk32168.com": 1,
+  "hkacg.com": 1,
+  "hkacg.net": 1,
+  "hkatvnews.com": 1,
+  "hkbc.net": 1,
+  "hkbf.org": 1,
+  "hkbookcity.com": 1,
+  "hkchurch.org": 1,
+  "hkci.org.hk": 1,
+  "hkcmi.edu": 1,
+  "hkcnews.com": 1,
+  "hkcoc.com": 1,
+  "hkday.net": 1,
+  "hkdailynews.com.hk": 1,
+  "hkdf.org": 1,
+  "hkej.com": 1,
+  "hkepc.com": 1,
+  "hket.com": 1,
+  "hkfaa.com": 1,
+  "hkfreezone.com": 1,
+  "hkfront.org": 1,
+  "hkgalden.com": 1,
+  "hkgolden.com": 1,
+  "hkgreenradio.org": 1,
+  "hkheadline.com": 1,
+  "hkhkhk.com": 1,
+  "hkhrc.org.hk": 1,
+  "hkhrm.org.hk": 1,
+  "hkja.org.hk": 1,
+  "hkjc.com": 1,
+  "hkjp.org": 1,
+  "hklft.com": 1,
+  "hklts.org.hk": 1,
+  "hkpeanut.com": 1,
+  "hkptu.org": 1,
+  "hkreporter.com": 1,
+  "hkusu.net": 1,
+  "hkvwet.com": 1,
+  "hkwcc.org.hk": 1,
+  "hkzone.org": 1,
+  "hmonghot.com": 1,
+  "hnjhj.com": 1,
+  "hnntube.com": 1,
+  "hola.com": 1,
+  "hola.org": 1,
+  "holymountaincn.com": 1,
+  "holyspiritspeaks.org": 1,
+  "derekhsu.homeip.net": 1,
+  "homeperversion.com": 1,
+  "homeservershow.com": 1,
+  "honeynet.org": 1,
+  "hongkongfp.com": 1,
+  "hongmeimei.com": 1,
+  "hongzhi.li": 1,
+  "hootsuite.com": 1,
+  "hopedialogue.org": 1,
+  "hopto.org": 1,
+  "hornygamer.com": 1,
+  "hornytrip.com": 1,
+  "hotav.tv": 1,
+  "hotels.cn": 1,
+  "hotfrog.com.tw": 1,
+  "hotgoo.com": 1,
+  "hotpornshow.com": 1,
+  "hotpot.hk": 1,
+  "hotshame.com": 1,
+  "hotspotshield.com": 1,
+  "hotvpn.com": 1,
+  "hougaige.com": 1,
+  "howtoforge.com": 1,
+  "hqcdp.org": 1,
+  "hqjapanesesex.com": 1,
+  "hqmovies.com": 1,
+  "hrcir.com": 1,
+  "hrcchina.org": 1,
+  "hrea.org": 1,
+  "hrichina.org": 1,
+  "hrw.org": 1,
+  "hrweb.org": 1,
+  "hsjp.net": 1,
+  "hsselite.com": 1,
+  "hst.net.tw": 1,
+  "hstern.net": 1,
+  "hstt.net": 1,
+  "htkou.net": 1,
+  "htmldog.com": 1,
+  "hua-yue.net": 1,
+  "huaglad.com": 1,
+  "huanghuagang.org": 1,
+  "huangyiyu.com": 1,
+  "huaren.us": 1,
+  "huasing.org": 1,
+  "huaxia-news.com": 1,
+  "huaxiabao.org": 1,
+  "huaxin.ph": 1,
+  "huayuworld.org": 1,
+  "huffingtonpost.com": 1,
+  "hugoroy.eu": 1,
+  "huhaitai.com": 1,
+  "huhamhire.com": 1,
+  "huiyi.in": 1,
+  "hulkshare.com": 1,
+  "humanrightsbriefing.org": 1,
+  "hung-ya.com": 1,
+  "hungerstrikeforaids.org": 1,
+  "huping.net": 1,
+  "hurgokbayrak.com": 1,
+  "hut2.ru": 1,
+  "hutianyi.net": 1,
+  "hutong9.net": 1,
+  "huyandex.com": 1,
+  "hwayue.org.tw": 1,
+  "hwinfo.com": 1,
+  "hxwk.org": 1,
+  "hxwq.org": 1,
+  "hyperrate.com": 1,
+  "hyread.com.tw": 1,
+  "i1.hk": 1,
+  "i2p2.de": 1,
+  "i2runner.com": 1,
+  "i818hk.com": 1,
+  "i-cable.com": 1,
+  "i-part.com.tw": 1,
+  "iamtopone.com": 1,
+  "iask.ca": 1,
+  "iask.bz": 1,
+  "iav19.com": 1,
+  "ibiblio.org": 1,
+  "iblist.com": 1,
+  "iblogserv-f.net": 1,
+  "ibros.org": 1,
+  "ibtimes.com": 1,
+  "ibvpn.com": 1,
+  "icams.com": 1,
+  "icerocket.com": 1,
+  "icij.org": 1,
+  "icl-fi.org": 1,
+  "icoco.com": 1,
+  "furbo.org": 1,
+  "iconfactory.net": 1,
+  "iconpaper.org": 1,
+  "icu-project.org": 1,
+  "idaiwan.com": 1,
+  "iddddg.com": 1,
+  "idemocracy.asia": 1,
+  "identi.ca": 1,
+  "idiomconnection.com": 1,
+  "idlcoyote.com": 1,
+  "idouga.com": 1,
+  "idreamx.com": 1,
+  "idsam.com": 1,
+  "idv.tw": 1,
+  "ieasy5.com": 1,
+  "ied2k.net": 1,
+  "ienergy1.com": 1,
+  "ifanqiang.com": 1,
+  "ifcss.org": 1,
+  "ifjc.org": 1,
+  "ift.tt": 1,
+  "ifreewares.com": 1,
+  "igcd.net": 1,
+  "igfw.net": 1,
+  "igmg.de": 1,
+  "ignitedetroit.net": 1,
+  "igotmail.com.tw": 1,
+  "igvita.com": 1,
+  "ihakka.net": 1,
+  "ihao.org": 1,
+  "iicns.com": 1,
+  "ikstar.com": 1,
+  "illusionfactory.com": 1,
+  "ilove80.be": 1,
+  "im.tv": 1,
+  "im88.tw": 1,
+  "imgchili.net": 1,
+  "imageab.com": 1,
+  "imagefap.com": 1,
+  "imageflea.com": 1,
+  "imageshack.us": 1,
+  "imagevenue.com": 1,
+  "imagezilla.net": 1,
+  "imb.org": 1,
+  "imdb.com": 1,
+  "img.ly": 1,
+  "imkev.com": 1,
+  "imlive.com": 1,
+  "immoral.jp": 1,
+  "impact.org.au": 1,
+  "impp.mn": 1,
+  "in.com": 1,
+  "in99.org": 1,
+  "in-disguise.com": 1,
+  "incapdns.net": 1,
+  "incloak.com": 1,
+  "incredibox.fr": 1,
+  "indiandefensenews.in": 1,
+  "indiatimes.com": 1,
+  "indiemerch.com": 1,
+  "info-graf.fr": 1,
+  "informer.com": 1,
+  "initiativesforchina.org": 1,
+  "inkui.com": 1,
+  "inmediahk.net": 1,
+  "innermongolia.org": 1,
+  "inoreader.com": 1,
+  "inote.tw": 1,
+  "insecam.org": 1,
+  "insidevoa.com": 1,
+  "instagram.com": 1,
+  "institut-tibetain.org": 1,
+  "interfaceaddiction.com": 1,
+  "internationalrivers.org": 1,
+  "internet.org": 1,
+  "internetdefenseleague.org": 1,
+  "internetfreedom.org": 1,
+  "internetpopculture.com": 1,
+  "inxian.com": 1,
+  "ipalter.com": 1,
+  "iphone4hongkong.com": 1,
+  "iphonehacks.com": 1,
+  "iphonetaiwan.org": 1,
+  "iphonix.fr": 1,
+  "ipicture.ru": 1,
+  "ipjetable.net": 1,
+  "ipobar.com": 1,
+  "ipoock.com": 1,
+  "iportal.me": 1,
+  "ippotv.com": 1,
+  "ipredator.se": 1,
+  "iptv.com.tw": 1,
+  "iptvbin.com": 1,
+  "ipvanish.com": 1,
+  "iredmail.org": 1,
+  "irib.ir": 1,
+  "ironicsoftware.com": 1,
+  "compython.net": 1,
+  "ironpython.net": 1,
+  "ironsocket.com": 1,
+  "is.gd": 1,
+  "islahhaber.net": 1,
+  "islam.org.hk": 1,
+  "islamawareness.net": 1,
+  "islamhouse.com": 1,
+  "islamicity.com": 1,
+  "islamicpluralism.org": 1,
+  "islamtoday.net": 1,
+  "isaacmao.com": 1,
+  "isgreat.org": 1,
+  "ismaelan.com": 1,
+  "ismalltits.com": 1,
+  "ismprofessional.net": 1,
+  "isohunt.com": 1,
+  "israbox.com": 1,
+  "issuu.com": 1,
+  "istarshine.com": 1,
+  "istef.info": 1,
+  "istiqlalhewer.com": 1,
+  "istockphoto.com": 1,
+  "isunaffairs.com": 1,
+  "isuntv.com": 1,
+  "itaboo.info": 1,
+  "italiatibet.org": 1,
+  "ithome.com.tw": 1,
+  "itshidden.com": 1,
+  "itsky.it": 1,
+  "itweet.net": 1,
+  "iu45.com": 1,
+  "iuhrdf.org": 1,
+  "iuksky.com": 1,
+  "ivacy.com": 1,
+  "iverycd.com": 1,
+  "ivpn.net": 1,
+  "ixquick.com": 1,
+  "ixxx.com": 1,
+  "iyouport.com": 1,
+  "izaobao.us": 1,
+  "izihost.org": 1,
+  "izles.net": 1,
+  "izlesem.org": 1,
+  "j.mp": 1,
+  "jackjia.com": 1,
+  "jamaat.org": 1,
+  "jamyangnorbu.com": 1,
+  "jandyx.com": 1,
+  "janwongphoto.com": 1,
+  "japan-whores.com": 1,
+  "jav101.com": 1,
+  "jav2be.com": 1,
+  "jav68.tv": 1,
+  "javakiba.org": 1,
+  "javbus.com": 1,
+  "javfor.me": 1,
+  "javhd.com": 1,
+  "javhip.com": 1,
+  "javmobile.net": 1,
+  "javmoo.com": 1,
+  "javseen.com": 1,
+  "jbtalks.cc": 1,
+  "jbtalks.com": 1,
+  "jbtalks.my": 1,
+  "jdwsy.com": 1,
+  "jeanyim.com": 1,
+  "jfqu36.club": 1,
+  "jfqu37.xyz": 1,
+  "jgoodies.com": 1,
+  "jiangweiping.com": 1,
+  "jiaoyou8.com": 1,
+  "jiehua.cz": 1,
+  "jiepang.com": 1,
+  "jieshibaobao.com": 1,
+  "jigglegifs.com": 1,
+  "jigsy.com": 1,
+  "jigong1024.com": 1,
+  "jihadology.net": 1,
+  "jinbushe.org": 1,
+  "jingsim.org": 1,
+  "jinhai.de": 1,
+  "jingpin.org": 1,
+  "jinpianwang.com": 1,
+  "jinroukong.com": 1,
+  "jiruan.net": 1,
+  "jitouch.com": 1,
+  "jizzthis.com": 1,
+  "jjgirls.com": 1,
+  "jkb.cc": 1,
+  "jkforum.net": 1,
+  "jma.go.jp": 1,
+  "jmscult.com": 1,
+  "joachims.org": 1,
+  "jobso.tv": 1,
+  "joeedelman.com": 1,
+  "journalchretien.net": 1,
+  "journalofdemocracy.org": 1,
+  "joymiihub.com": 1,
+  "jpopforum.net": 1,
+  "jubushoushen.com": 1,
+  "juhuaren.com": 1,
+  "juliereyc.com": 1,
+  "junauza.com": 1,
+  "june4commemoration.org": 1,
+  "junefourth-20.net": 1,
+  "junglobal.net": 1,
+  "juoaa.com": 1,
+  "justfreevpn.com": 1,
+  "justicefortenzin.org": 1,
+  "justpaste.it": 1,
+  "justtristan.com": 1,
+  "juyuange.org": 1,
+  "juziyue.com": 1,
+  "jwmusic.org": 1,
+  "jyxf.net": 1,
+  "k-doujin.net": 1,
+  "ka-wai.com": 1,
+  "kagyu.org": 1,
+  "kagyumonlam.org": 1,
+  "kagyunews.com.hk": 1,
+  "kagyuoffice.org": 1,
+  "kagyuoffice.org.tw": 1,
+  "kaiyuan.de": 1,
+  "kakao.com": 1,
+  "kalachakralugano.org": 1,
+  "kankan.today": 1,
+  "kannewyork.com": 1,
+  "kanshifang.com": 1,
+  "kanzhongguo.com": 1,
+  "kanzhongguo.eu": 1,
+  "kaotic.com": 1,
+  "karayou.com": 1,
+  "karkhung.com": 1,
+  "karmapa.org": 1,
+  "karmapa-teachings.org": 1,
+  "kba-tx.org": 1,
+  "kcoolonline.com": 1,
+  "kcsoftwares.com": 1,
+  "kebrum.com": 1,
+  "kechara.com": 1,
+  "keepandshare.com": 1,
+  "keezmovies.com": 1,
+  "kendincos.net": 1,
+  "kenengba.com": 1,
+  "keontech.net": 1,
+  "kepard.com": 1,
+  "keso.cn": 1,
+  "keycdn.com": 1,
+  "khabdha.org": 1,
+  "khmusic.com.tw": 1,
+  "kichiku-doujinko.com": 1,
+  "kimy.com.tw": 1,
+  "kindleren.com": 1,
+  "kingdomsalvation.org": 1,
+  "kinghost.com": 1,
+  "kingstone.com.tw": 1,
+  "kink.com": 1,
+  "killwall.com": 1,
+  "kir.jp": 1,
+  "kissbbao.cn": 1,
+  "kiwi.kz": 1,
+  "kk-whys.co.jp": 1,
+  "kmuh.org.tw": 1,
+  "knowledgerush.com": 1,
+  "kobo.com": 1,
+  "kobobooks.com": 1,
+  "kodingen.com": 1,
+  "kompozer.net": 1,
+  "konachan.com": 1,
+  "kone.com": 1,
+  "koolsolutions.com": 1,
+  "koornk.com": 1,
+  "koranmandarin.com": 1,
+  "korenan2.com": 1,
+  "krtco.com.tw": 1,
+  "ksdl.org": 1,
+  "ksnews.com.tw": 1,
+  "ktzhk.com": 1,
+  "kui.name": 1,
+  "kun.im": 1,
+  "kurashsultan.com": 1,
+  "kurtmunger.com": 1,
+  "kusocity.com": 1,
+  "kwcg.ca": 1,
+  "kwongwah.com.my": 1,
+  "kxsw.life": 1,
+  "kyofun.com": 1,
+  "kyohk.net": 1,
+  "kyoyue.com": 1,
+  "kyzyhello.com": 1,
+  "kzeng.info": 1,
+  "la-forum.org": 1,
+  "ladbrokes.com": 1,
+  "labiennale.org": 1,
+  "lagranepoca.com": 1,
+  "lalulalu.com": 1,
+  "lama.com.tw": 1,
+  "lamayeshe.com": 1,
+  "lamenhu.com": 1,
+  "lamrim.com": 1,
+  "lanterncn.cn": 1,
+  "lantosfoundation.org": 1,
+  "laod.cn": 1,
+  "laogai.org": 1,
+  "laomiu.com": 1,
+  "laoyang.info": 1,
+  "laptoplockdown.com": 1,
+  "laqingdan.net": 1,
+  "larsgeorge.com": 1,
+  "lastcombat.com": 1,
+  "lastfm.es": 1,
+  "latelinenews.com": 1,
+  "latibet.org": 1,
+  "le-vpn.com": 1,
+  "leafyvpn.net": 1,
+  "leeao.com.cn": 1,
+  "lefora.com": 1,
+  "left21.hk": 1,
+  "legalporno.com": 1,
+  "legsjapan.com": 1,
+  "leirentv.ca": 1,
+  "leisurecafe.ca": 1,
+  "lematin.ch": 1,
+  "lemonde.fr": 1,
+  "lenwhite.com": 1,
+  "lerosua.org": 1,
+  "lester850.info": 1,
+  "lesoir.be": 1,
+  "letou.com": 1,
+  "letscorp.net": 1,
+  "lhakar.org": 1,
+  "lhasocialwork.org": 1,
+  "liangyou.net": 1,
+  "lianyue.net": 1,
+  "liaowangxizang.net": 1,
+  "liberal.org.hk": 1,
+  "libertytimes.com.tw": 1,
+  "libraryinformationtechnology.com": 1,
+  "lidecheng.com": 1,
+  "lighten.org.tw": 1,
+  "limiao.net": 1,
+  "linkuswell.com": 1,
+  "linpie.com": 1,
+  "line.me": 1,
+  "line-apps.com": 1,
+  "linglingfa.com": 1,
+  "lingvodics.com": 1,
+  "link-o-rama.com": 1,
+  "linkideo.com": 1,
+  "linksalpha.com": 1,
+  "linux.org.hk": 1,
+  "linuxtoy.org": 1,
+  "lionsroar.com": 1,
+  "lipuman.com": 1,
+  "liquidvpn.com": 1,
+  "list-manage.com": 1,
+  "listentoyoutube.com": 1,
+  "listorious.com": 1,
+  "liudejun.com": 1,
+  "liuhanyu.com": 1,
+  "liujianshu.com": 1,
+  "liuxiaobo.net": 1,
+  "liuxiaotong.com": 1,
+  "livedoor.jp": 1,
+  "liveleak.com": 1,
+  "livestation.com": 1,
+  "livestream.com": 1,
+  "livingonline.us": 1,
+  "livingstream.com": 1,
+  "livevideo.com": 1,
+  "liwangyang.com": 1,
+  "lizhizhuangbi.com": 1,
+  "lkcn.net": 1,
+  "load.to": 1,
+  "lobsangwangyal.com": 1,
+  "localdomain.ws": 1,
+  "localpresshk.com": 1,
+  "lockdown.com": 1,
+  "lockestek.com": 1,
+  "logbot.net": 1,
+  "logiqx.com": 1,
+  "logmein.com": 1,
+  "logmike.com": 1,
+  "londonchinese.ca": 1,
+  "longhair.hk": 1,
+  "longtermly.net": 1,
+  "lookingglasstheatre.org": 1,
+  "lookpic.com": 1,
+  "looktoronto.com": 1,
+  "lotsawahouse.org": 1,
+  "lotuslight.org.hk": 1,
+  "lotuslight.org.tw": 1,
+  "loved.hk": 1,
+  "lpsg.com": 1,
+  "lrfz.com": 1,
+  "lrip.org": 1,
+  "lsd.org.hk": 1,
+  "lsforum.net": 1,
+  "lsm.org": 1,
+  "lsmchinese.org": 1,
+  "lsmkorean.org": 1,
+  "lsmradio.com": 1,
+  "lsmwebcast.com": 1,
+  "ltn.com.tw": 1,
+  "luke54.com": 1,
+  "luke54.org": 1,
+  "lupm.org": 1,
+  "lushstories.com": 1,
+  "luxebc.com": 1,
+  "lvhai.org": 1,
+  "lvv2.com": 1,
+  "lyfhk.net": 1,
+  "m-team.cc": 1,
+  "macrovpn.com": 1,
+  "macts.com.tw": 1,
+  "mad-ar.ch": 1,
+  "madthumbs.com": 1,
+  "magic-net.info": 1,
+  "mahabodhi.org": 1,
+  "mail.ru": 1,
+  "maiplus.com": 1,
+  "maizhong.org": 1,
+  "makkahnewspaper.com": 1,
+  "manicur4ik.ru": 1,
+  "maplew.com": 1,
+  "marc.info": 1,
+  "marguerite.su": 1,
+  "martincartoons.com": 1,
+  "maskedip.com": 1,
+  "maiio.net": 1,
+  "mail-archive.com": 1,
+  "malaysiakini.com": 1,
+  "makemymood.com": 1,
+  "maniash.com": 1,
+  "mansion.com": 1,
+  "mansionpoker.com": 1,
+  "martau.com": 1,
+  "martinoei.com": 1,
+  "martsangkagyuofficial.org": 1,
+  "maruta.be": 1,
+  "marxist.com": 1,
+  "marxist.net": 1,
+  "marxists.org": 1,
+  "matainja.com": 1,
+  "mathable.io": 1,
+  "mathiew-badimon.com": 1,
+  "matsushimakaede.com": 1,
+  "maturejp.com": 1,
+  "mayimayi.com": 1,
+  "maxing.jp": 1,
+  "mcaf.ee": 1,
+  "mcadforums.com": 1,
+  "mcfog.com": 1,
+  "mcreasite.com": 1,
+  "md-t.org": 1,
+  "meansys.com": 1,
+  "media.org.hk": 1,
+  "mediachinese.com": 1,
+  "mediafire.com": 1,
+  "mediafreakcity.com": 1,
+  "medium.com": 1,
+  "meetav.com": 1,
+  "meetup.com": 1,
+  "mefeedia.com": 1,
+  "megaproxy.com": 1,
+  "megarotic.com": 1,
+  "megavideo.com": 1,
+  "megurineluka.com": 1,
+  "meirixiaochao.com": 1,
+  "melon-peach.com": 1,
+  "meltoday.com": 1,
+  "memehk.com": 1,
+  "memorybbs.com": 1,
+  "memri.org": 1,
+  "memrijttm.org": 1,
+  "mercyprophet.org": 1,
+  "meridian-trust.org": 1,
+  "meripet.biz": 1,
+  "meripet.com": 1,
+  "merit-times.com.tw": 1,
+  "meshrep.com": 1,
+  "mesotw.com": 1,
+  "metacafe.com": 1,
+  "meteorshowersonline.com": 1,
+  "metrohk.com.hk": 1,
+  "metrolife.ca": 1,
+  "metroradio.com.hk": 1,
+  "meyou.jp": 1,
+  "meyul.com": 1,
+  "mgoon.com": 1,
+  "mgstage.com": 1,
+  "mh4u.org": 1,
+  "mhradio.org": 1,
+  "michaelanti.com": 1,
+  "michaelmarketl.com": 1,
+  "microvpn.com": 1,
+  "middle-way.net": 1,
+  "mihk.hk": 1,
+  "mihr.com": 1,
+  "mihua.org": 1,
+  "mikesoltys.com": 1,
+  "milph.net": 1,
+  "milsurps.com": 1,
+  "mimiai.net": 1,
+  "mimivip.com": 1,
+  "mimivv.com": 1,
+  "mindrolling.org": 1,
+  "minghui.or.kr": 1,
+  "minghui.org": 1,
+  "minghui-a.org": 1,
+  "minghui-b.org": 1,
+  "minghui-school.org": 1,
+  "mingjinglishi.com": 1,
+  "mingjingnews.com": 1,
+  "mingjingtimes.com": 1,
+  "mingpao.com": 1,
+  "mingpaocanada.com": 1,
+  "mingpaomonthly.com": 1,
+  "mingpaonews.com": 1,
+  "mingpaony.com": 1,
+  "mingpaosf.com": 1,
+  "mingpaotor.com": 1,
+  "mingpaovan.com": 1,
+  "mingshengbao.com": 1,
+  "minhhue.net": 1,
+  "miniforum.org": 1,
+  "ministrybooks.org": 1,
+  "minzhuhua.net": 1,
+  "minzhuzhanxian.com": 1,
+  "minzhuzhongguo.org": 1,
+  "miroguide.com": 1,
+  "mirrorbooks.com": 1,
+  "mit.edu": 1,
+  "mitao.com.tw": 1,
+  "mitbbs.com": 1,
+  "mixero.com": 1,
+  "mixpod.com": 1,
+  "mixx.com": 1,
+  "mizzmona.com": 1,
+  "mk5000.com": 1,
+  "mlcool.com": 1,
+  "mmaaxx.com": 1,
+  "mmmca.com": 1,
+  "mobatek.net": 1,
+  "mobile01.com": 1,
+  "mobileways.de": 1,
+  "mobypicture.com": 1,
+  "moby.to": 1,
+  "moeerolibrary.com": 1,
+  "moegirl.org": 1,
+  "mofaxiehui.com": 1,
+  "mofos.com": 1,
+  "mog.com": 1,
+  "molihua.org": 1,
+  "mondex.org": 1,
+  "money-link.com.tw": 1,
+  "monlamit.org": 1,
+  "moonbbs.com": 1,
+  "mooo.com": 1,
+  "monitorchina.org": 1,
+  "morbell.com": 1,
+  "morningsun.org": 1,
+  "moroneta.com": 1,
+  "motherless.com": 1,
+  "motor4ik.ru": 1,
+  "mousebreaker.com": 1,
+  "movements.org": 1,
+  "moviefap.com": 1,
+  "moztw.org": 1,
+  "mp3buscador.com": 1,
+  "mp3ye.eu": 1,
+  "mpettis.com": 1,
+  "mpfinance.com": 1,
+  "mpinews.com": 1,
+  "mponline.hk": 1,
+  "mqxd.org": 1,
+  "mrtweet.com": 1,
+  "msn.com": 1,
+  "msn.com.tw": 1,
+  "msguancha.com": 1,
+  "mswe1.org": 1,
+  "mthruf.com": 1,
+  "muchosucko.com": 1,
+  "multiply.com": 1,
+  "multiproxy.org": 1,
+  "multiupload.com": 1,
+  "mullvad.net": 1,
+  "mummysgold.com": 1,
+  "murmur.tw": 1,
+  "musicade.net": 1,
+  "muslimvideo.com": 1,
+  "muzi.com": 1,
+  "muzi.net": 1,
+  "mx981.com": 1,
+  "my-formosa.com": 1,
+  "my-proxy.com": 1,
+  "my903.com": 1,
+  "myactimes.com": 1,
+  "myaudiocast.com": 1,
+  "myav.com.tw": 1,
+  "mybbs.us": 1,
+  "myca168.com": 1,
+  "mycanadanow.com": 1,
+  "mychat.to": 1,
+  "mychinamyhome.com": 1,
+  "mychinanet.com": 1,
+  "mychinanews.com": 1,
+  "mycnnews.com": 1,
+  "mykomica.org": 1,
+  "mycould.com": 1,
+  "myeasytv.com": 1,
+  "myeclipseide.com": 1,
+  "myforum.com.hk": 1,
+  "com.uk": 1,
+  "myfreecams.com": 1,
+  "myfreepaysite.com": 1,
+  "myfreshnet.com": 1,
+  "myiphide.com": 1,
+  "mymaji.com": 1,
+  "mymediarom.com": 1,
+  "mymoe.moe": 1,
+  "mymusic.net.tw": 1,
+  "myparagliding.com": 1,
+  "mypopescu.com": 1,
+  "myradio.hk": 1,
+  "mysinablog.com": 1,
+  "myspace.com": 1,
+  "mytalkbox.com": 1,
+  "mytizi.com": 1,
+  "naacoalition.org": 1,
+  "nabble.com": 1,
+  "naitik.net": 1,
+  "nakuz.com": 1,
+  "nalandabodhi.org": 1,
+  "nalandawest.org": 1,
+  "namgyal.org": 1,
+  "namgyalmonastery.org": 1,
+  "namsisi.com": 1,
+  "nanyang.com": 1,
+  "nanyangpost.com": 1,
+  "nanzao.com": 1,
+  "nasa.gov": 1,
+  "nakido.com": 1,
+  "naol.ca": 1,
+  "naol.cc": 1,
+  "narod.ru": 1,
+  "nat.moe": 1,
+  "natado.com": 1,
+  "nationalgeographic.com": 1,
+  "nationsonline.org": 1,
+  "naver.jp": 1,
+  "navy.mil": 1,
+  "nbtvpn.com": 1,
+  "nccwatch.org.tw": 1,
+  "nch.com.tw": 1,
+  "ncn.org": 1,
+  "ncol.com": 1,
+  "nde.de": 1,
+  "ndr.de": 1,
+  "ned.org": 1,
+  "nekoslovakia.net": 1,
+  "nepusoku.com": 1,
+  "netbig.com": 1,
+  "netbirds.com": 1,
+  "netcolony.com": 1,
+  "netfirms.com": 1,
+  "netme.cc": 1,
+  "netsneak.com": 1,
+  "network54.com": 1,
+  "networkedblogs.com": 1,
+  "networktunnel.net": 1,
+  "neverforget8964.org": 1,
+  "new-3lunch.net": 1,
+  "new-akiba.com": 1,
+  "new96.ca": 1,
+  "newcenturymc.com": 1,
+  "newcenturynews.com": 1,
+  "newchen.com": 1,
+  "newgrounds.com": 1,
+  "newipnow.com": 1,
+  "newlandmagazine.com.au": 1,
+  "newnews.ca": 1,
+  "news100.com.tw": 1,
+  "newschinacomment.org": 1,
+  "newscn.org": 1,
+  "newspeak.cc": 1,
+  "newsancai.com": 1,
+  "newsdh.com": 1,
+  "newstamago.com": 1,
+  "newstapa.org": 1,
+  "newstarnet.com": 1,
+  "newtaiwan.com.tw": 1,
+  "newtalk.tw": 1,
+  "newyorktimes.com": 1,
+  "nexon.com": 1,
+  "next11.co.jp": 1,
+  "nextmag.com.tw": 1,
+  "nextmedia.com": 1,
+  "nexton-net.jp": 1,
+  "nexttv.com.tw": 1,
+  "nfjtyd.com": 1,
+  "ng.mil": 1,
+  "nga.mil": 1,
+  "ngensis.com": 1,
+  "nhentai.net": 1,
+  "nhk-ondemand.jp": 1,
+  "nicovideo.jp": 1,
+  "nighost.org": 1,
+  "ninecommentaries.com": 1,
+  "ninjacloak.com": 1,
+  "ninjaproxy.ninja": 1,
+  "nintendium.com": 1,
+  "ning.com": 1,
+  "niusnews.com": 1,
+  "njactb.org": 1,
+  "njuice.com": 1,
+  "nlfreevpn.com": 1,
+  "gooddns.info": 1,
+  "gotdns.ch": 1,
+  "maildns.xyz": 1,
+  "no-ip.org": 1,
+  "opendn.xyz": 1,
+  "servehttp.com": 1,
+  "sytes.net": 1,
+  "whodns.xyz": 1,
+  "zapto.org": 1,
+  "no-ip.com": 1,
+  "nobel.se": 1,
+  "nobelprize.org": 1,
+  "nobodycanstop.us": 1,
+  "nokogiri.org": 1,
+  "nokola.com": 1,
+  "noodlevpn.com": 1,
+  "norbulingka.org": 1,
+  "nordvpn.com": 1,
+  "novelasia.com": 1,
+  "now.com": 1,
+  "nownews.com": 1,
+  "nowtorrents.com": 1,
+  "noypf.com": 1,
+  "npa.go.jp": 1,
+  "npnt.me": 1,
+  "nps.gov": 1,
+  "nrk.no": 1,
+  "ntd.tv": 1,
+  "ntdtv.com": 1,
+  "ntdtv.co.kr": 1,
+  "ntdtv.ca": 1,
+  "ntdtv.org": 1,
+  "ntdtv.ru": 1,
+  "ntdtvla.com": 1,
+  "ntrfun.com": 1,
+  "ntu.edu.tw": 1,
+  "nubiles.net": 1,
+  "nuexpo.com": 1,
+  "nukistream.com": 1,
+  "nurgo-software.com": 1,
+  "nutaku.net": 1,
+  "nuvid.com": 1,
+  "nvdst.com": 1,
+  "nuzcom.com": 1,
+  "nvquan.org": 1,
+  "nvtongzhisheng.org": 1,
+  "nwtca.org": 1,
+  "nyaa.eu": 1,
+  "nyaa.se": 1,
+  "nydus.ca": 1,
+  "nylon-angel.com": 1,
+  "nylonstockingsonline.com": 1,
+  "nyt.com": 1,
+  "nytchina.com": 1,
+  "nytcn.me": 1,
+  "nytco.com": 1,
+  "nyti.ms": 1,
+  "nytimes.com": 1,
+  "nytimg.com": 1,
+  "nytlog.com": 1,
+  "nytstyle.com": 1,
+  "nzchinese.com": 1,
+  "observechina.net": 1,
+  "obutu.com": 1,
+  "ocaspro.com": 1,
+  "occupytiananmen.com": 1,
+  "oclp.hk": 1,
+  "ocreampies.com": 1,
+  "october-review.org": 1,
+  "offbeatchina.com": 1,
+  "officeoftibet.com": 1,
+  "ofile.org": 1,
+  "ogaoga.org": 1,
+  "ogate.org": 1,
+  "ohchr.org": 1,
+  "oikos.com.tw": 1,
+  "oiktv.com": 1,
+  "oizoblog.com": 1,
+  "ok.ru": 1,
+  "okayfreedom.com": 1,
+  "okk.tw": 1,
+  "olabloga.pl": 1,
+  "old-cat.net": 1,
+  "olumpo.com": 1,
+  "olympicwatch.org": 1,
+  "omgili.com": 1,
+  "omnitalk.com": 1,
+  "omnitalk.org": 1,
+  "omy.sg": 1,
+  "on.cc": 1,
+  "live.com": 1,
+  "onlinecha.com": 1,
+  "onlineyoutube.com": 1,
+  "onmoon.net": 1,
+  "onmoon.com": 1,
+  "onthehunt.com": 1,
+  "oopsforum.com": 1,
+  "open.com.hk": 1,
+  "openallweb.com": 1,
+  "opendemocracy.net": 1,
+  "openervpn.in": 1,
+  "openid.net": 1,
+  "openleaks.org": 1,
+  "openvpn.net": 1,
+  "openwebster.com": 1,
+  "openwrt.org.cn": 1,
+  "opera.com": 1,
+  "opera-mini.net": 1,
+  "orchidbbs.com": 1,
+  "organcare.org.tw": 1,
+  "organharvestinvestigation.net": 1,
+  "orgfree.com": 1,
+  "orient-doll.com": 1,
+  "orientaldaily.com.my": 1,
+  "orn.jp": 1,
+  "orzdream.com": 1,
+  "orzistic.org": 1,
+  "osfoora.com": 1,
+  "otnd.org": 1,
+  "otto.de": 1,
+  "ourdearamy.com": 1,
+  "oursogo.com": 1,
+  "oursteps.com.au": 1,
+  "oursweb.net": 1,
+  "ourtv.hk": 1,
+  "over-blog.com": 1,
+  "overplay.net": 1,
+  "ovi.com": 1,
+  "owl.li": 1,
+  "ht.ly": 1,
+  "htl.li": 1,
+  "mash.to": 1,
+  "owind.com": 1,
+  "oxid.it": 1,
+  "oyax.com": 1,
+  "oyghan.com": 1,
+  "ozchinese.com": 1,
+  "ow.ly": 1,
+  "ozxw.com": 1,
+  "ozyoyo.com": 1,
+  "pachosting.com": 1,
+  "pacificpoker.com": 1,
+  "packetix.net": 1,
+  "pacopacomama.com": 1,
+  "padmanet.com": 1,
+  "page2rss.com": 1,
+  "pagodabox.com": 1,
+  "palacemoon.com": 1,
+  "palmislife.com": 1,
+  "eriversoft.com": 1,
+  "paldengyal.com": 1,
+  "paljorpublications.com": 1,
+  "paltalk.com": 1,
+  "pangci.net": 1,
+  "panacom.co.jp": 1,
+  "pandapow.co": 1,
+  "pandapow.net": 1,
+  "pandavpn-jp.com": 1,
+  "panluan.net": 1,
+  "pao-pao.net": 1,
+  "paper.li": 1,
+  "paperb.us": 1,
+  "paradisepoker.com": 1,
+  "partycasino.com": 1,
+  "partypoker.com": 1,
+  "passion.com": 1,
+  "passiontimes.hk": 1,
+  "pastebin.com": 1,
+  "pastie.org": 1,
+  "pathtosharepoint.com": 1,
+  "pbs.org": 1,
+  "pbwiki.com": 1,
+  "pbworks.com": 1,
+  "oauth.net": 1,
+  "phonegap.com": 1,
+  "jqueryui.com": 1,
+  "pbxes.com": 1,
+  "pbxes.org": 1,
+  "pcdvd.com.tw": 1,
+  "pchome.com.tw": 1,
+  "pcij.org": 1,
+  "pcstore.com.tw": 1,
+  "pct.org.tw": 1,
+  "pdetails.com": 1,
+  "pdproxy.com": 1,
+  "peace.ca": 1,
+  "peacefire.org": 1,
+  "peacehall.com": 1,
+  "pearlher.org": 1,
+  "peeasian.com": 1,
+  "pekingduck.org": 1,
+  "pemulihan.or.id": 1,
+  "pen.io": 1,
+  "penchinese.com": 1,
+  "penchinese.net": 1,
+  "pengyulong.com": 1,
+  "penisbot.com": 1,
+  "pentalogic.net": 1,
+  "penthouse.com": 1,
+  "pentoy.hk": 1,
+  "peoplebookcafe.com": 1,
+  "peoplenews.tw": 1,
+  "peopo.org": 1,
+  "percy.in": 1,
+  "perfectgirls.net": 1,
+  "perfectvpn.net": 1,
+  "persecutionblog.com": 1,
+  "persiankitty.com": 1,
+  "pfd.org.hk": 1,
+  "phapluan.org": 1,
+  "phayul.com": 1,
+  "philborges.com": 1,
+  "philly.com": 1,
+  "phncdn.com": 1,
+  "photodharma.net": 1,
+  "photofocus.com": 1,
+  "phuquocservices.com": 1,
+  "picidae.net": 1,
+  "picturesocial.com": 1,
+  "pin6.com": 1,
+  "ping.fm": 1,
+  "pinimg.com": 1,
+  "pinkrod.com": 1,
+  "pinoy-n.com": 1,
+  "pinterest.at": 1,
+  "pinterest.co.kr": 1,
+  "pinterest.com": 1,
+  "pinterest.de": 1,
+  "pinterest.dk": 1,
+  "pinterest.fr": 1,
+  "pinterest.jp": 1,
+  "pinterest.nl": 1,
+  "pinterest.se": 1,
+  "pipii.tv": 1,
+  "piposay.com": 1,
+  "piraattilahti.org": 1,
+  "piring.com": 1,
+  "pixelqi.com": 1,
+  "pixnet.in": 1,
+  "pixnet.net": 1,
+  "pk.com": 1,
+  "placemix.com": 1,
+  "playboy.com": 1,
+  "playboyplus.com": 1,
+  "playno1.com": 1,
+  "playpcesor.com": 1,
+  "plays.com.tw": 1,
+  "plixi.com": 1,
+  "plm.org.hk": 1,
+  "plunder.com": 1,
+  "plus28.com": 1,
+  "plusbb.com": 1,
+  "pmatehunter.com": 1,
+  "pmates.com": 1,
+  "po2b.com": 1,
+  "podictionary.com": 1,
+  "pokerstars.net": 1,
+  "pokerstrategy.com": 1,
+  "politicalchina.org": 1,
+  "politicalconsultation.org": 1,
+  "polymerhk.com": 1,
+  "popo.tw": 1,
+  "popvote.hk": 1,
+  "popyard.com": 1,
+  "popyard.org": 1,
+  "porn.com": 1,
+  "porn2.com": 1,
+  "porn5.com": 1,
+  "pornbase.org": 1,
+  "pornerbros.com": 1,
+  "pornhd.com": 1,
+  "pornhost.com": 1,
+  "pornhub.com": 1,
+  "pornhubdeutsch.net": 1,
+  "pornmm.net": 1,
+  "pornoxo.com": 1,
+  "pornrapidshare.com": 1,
+  "pornsharing.com": 1,
+  "pornsocket.com": 1,
+  "pornstarclub.com": 1,
+  "porntube.com": 1,
+  "porntubenews.com": 1,
+  "porntvblog.com": 1,
+  "pornvisit.com": 1,
+  "portablevpn.nl": 1,
+  "poskotanews.com": 1,
+  "post01.com": 1,
+  "post76.com": 1,
+  "post852.com": 1,
+  "postadult.com": 1,
+  "postimg.org": 1,
+  "potvpn.com": 1,
+  "powercx.com": 1,
+  "powerphoto.org": 1,
+  "powerpointninja.com": 1,
+  "presidentlee.tw": 1,
+  "printfriendly.com": 1,
+  "pritunl.com": 1,
+  "provpnaccounts.com": 1,
+  "proxfree.com": 1,
+  "proxyanonimo.es": 1,
+  "pscp.tv": 1,
+  "pts.org.tw": 1,
+  "pttvan.org": 1,
+  "pubu.com.tw": 1,
+  "puffinbrowser.com": 1,
+  "pureinsight.org": 1,
+  "putty.org": 1,
+  "calebelston.com": 1,
+  "fizzik.com": 1,
+  "nf.id.au": 1,
+  "sogrady.me": 1,
+  "vatn.org": 1,
+  "ventureswell.com": 1,
+  "whereiswerner.com": 1,
+  "power.com": 1,
+  "powerapple.com": 1,
+  "abc.pp.ru": 1,
+  "heix.pp.ru": 1,
+  "prayforchina.net": 1,
+  "premeforwindows7.com": 1,
+  "presentationzen.com": 1,
+  "prestige-av.com": 1,
+  "prisoneralert.com": 1,
+  "privacybox.de": 1,
+  "private.com": 1,
+  "privateinternetaccess.com": 1,
+  "privatepaste.com": 1,
+  "privatetunnel.com": 1,
+  "privatevpn.com": 1,
+  "procopytips.com": 1,
+  "provideocoalition.com": 1,
+  "prosiben.de": 1,
+  "proxifier.com": 1,
+  "proxlet.com": 1,
+  "proxomitron.info": 1,
+  "proxpn.com": 1,
+  "proxy.org": 1,
+  "proxypy.net": 1,
+  "proxyroad.com": 1,
+  "proxytunnel.net": 1,
+  "proyectoclubes.com": 1,
+  "prozz.net": 1,
+  "psblog.name": 1,
+  "psiphon.ca": 1,
+  "psiphon3.com": 1,
+  "psiphontoday.com": 1,
+  "ptt.cc": 1,
+  "puffstore.com": 1,
+  "puuko.com": 1,
+  "pullfolio.com": 1,
+  "punyu.com": 1,
+  "pureconcepts.net": 1,
+  "purepdf.com": 1,
+  "purevpn.com": 1,
+  "purplelotus.org": 1,
+  "pursuestar.com": 1,
+  "pussyspace.com": 1,
+  "putihome.org": 1,
+  "putlocker.com": 1,
+  "pwned.com": 1,
+  "python.com": 1,
+  "python.com.tw": 1,
+  "pythonhackers.com": 1,
+  "qanote.com": 1,
+  "qgirl.com.tw": 1,
+  "qi-gong.me": 1,
+  "qidian.ca": 1,
+  "qienkuen.org": 1,
+  "qiwen.lu": 1,
+  "qixianglu.cn": 1,
+  "qmzdd.com": 1,
+  "qkshare.com": 1,
+  "qoos.com": 1,
+  "qooza.hk": 1,
+  "efksoft.com": 1,
+  "qstatus.com": 1,
+  "qtweeter.com": 1,
+  "qtrac.eu": 1,
+  "quannengshen.org": 1,
+  "quantumbooter.net": 1,
+  "quitccp.net": 1,
+  "quitccp.org": 1,
+  "quran.com": 1,
+  "quranexplorer.com": 1,
+  "qusi8.net": 1,
+  "qvodzy.org": 1,
+  "qx.net": 1,
+  "qxbbs.org": 1,
+  "ra.gg": 1,
+  "radicalparty.org": 1,
+  "rael.org": 1,
+  "radioaustralia.net.au": 1,
+  "radiohilight.net": 1,
+  "radiotime.com": 1,
+  "radiovaticana.org": 1,
+  "radiovncr.com": 1,
+  "raggedbanner.com": 1,
+  "raidcall.com.tw": 1,
+  "raidtalk.com.tw": 1,
+  "rainbowplan.org": 1,
+  "raizoji.or.jp": 1,
+  "rangwang.biz": 1,
+  "rangzen.com": 1,
+  "rangzen.net": 1,
+  "rangzen.org": 1,
+  "ranxiang.com": 1,
+  "ranyunfei.com": 1,
+  "rapbull.net": 1,
+  "rapidgator.net": 1,
+  "rapidmoviez.com": 1,
+  "rapidvpn.com": 1,
+  "raremovie.cc": 1,
+  "raremovie.net": 1,
+  "rawgit.com": 1,
+  "rawgithub.com": 1,
+  "razyboard.com": 1,
+  "rcinet.ca": 1,
+  "read100.com": 1,
+  "readingtimes.com.tw": 1,
+  "readmoo.com": 1,
+  "readydown.com": 1,
+  "realcourage.org": 1,
+  "realraptalk.com": 1,
+  "realsexpass.com": 1,
+  "recordhistory.org": 1,
+  "recovery.org.tw": 1,
+  "recoveryversion.org": 1,
+  "recoveryversion.com.tw": 1,
+  "red-lang.org": 1,
+  "redchinacn.net": 1,
+  "redchinacn.org": 1,
+  "redtube.com": 1,
+  "referer.us": 1,
+  "reflectivecode.com": 1,
+  "relaxbbs.com": 1,
+  "relay.com.tw": 1,
+  "releaseinternational.org": 1,
+  "religioustolerance.org": 1,
+  "renminbao.com": 1,
+  "renyurenquan.org": 1,
+  "revocationcheck.com": 1,
+  "rerouted.org": 1,
+  "resilio.com": 1,
+  "reuters.com": 1,
+  "reutersmedia.net": 1,
+  "revleft.com": 1,
+  "retweetist.com": 1,
+  "retweetrank.com": 1,
+  "revver.com": 1,
+  "rfa.org": 1,
+  "rfachina.com": 1,
+  "rfamobile.org": 1,
+  "rfaweb.org": 1,
+  "rferl.org": 1,
+  "rfi.fr": 1,
+  "rfi.my": 1,
+  "rightster.com": 1,
+  "rigpa.org": 1,
+  "rileyguide.com": 1,
+  "riku.me": 1,
+  "ritouki.jp": 1,
+  "rlwlw.com": 1,
+  "rmjdw.com": 1,
+  "rmjdw132.info": 1,
+  "roadshow.hk": 1,
+  "robtex.com": 1,
+  "robustnessiskey.com": 1,
+  "roc-taiwan.org": 1,
+  "rocket-inc.net": 1,
+  "rocketbbs.com": 1,
+  "rojo.com": 1,
+  "ronjoneswriter.com": 1,
+  "rolia.net": 1,
+  "roodo.com": 1,
+  "rosechina.net": 1,
+  "rotten.com": 1,
+  "rsf.org": 1,
+  "rsf-chinese.org": 1,
+  "rsgamen.org": 1,
+  "rssing.com": 1,
+  "rssmeme.com": 1,
+  "rtalabel.org": 1,
+  "rthk.hk": 1,
+  "rthk.org.hk": 1,
+  "rti.org.tw": 1,
+  "rtycminnesota.org": 1,
+  "ruanyifeng.com": 1,
+  "rukor.org": 1,
+  "rushbee.com": 1,
+  "rutube.ru": 1,
+  "ruyiseek.com": 1,
+  "rxhj.net": 1,
+  "s1s1s1.com": 1,
+  "s-cute.com": 1,
+  "s-dragon.org": 1,
+  "s1heng.com": 1,
+  "s4miniarchive.com": 1,
+  "s8forum.com": 1,
+  "saboom.com": 1,
+  "sacks.com": 1,
+  "sacom.hk": 1,
+  "sadpanda.us": 1,
+  "safervpn.com": 1,
+  "saintyculture.com": 1,
+  "saiq.me": 1,
+  "sakuralive.com": 1,
+  "sakya.org": 1,
+  "salvation.org.hk": 1,
+  "samair.ru": 1,
+  "sambhota.org": 1,
+  "sandscotaicentral.com": 1,
+  "sanmin.com.tw": 1,
+  "sapikachu.net": 1,
+  "savemedia.com": 1,
+  "savetibet.de": 1,
+  "savetibet.fr": 1,
+  "savetibet.nl": 1,
+  "savetibet.org": 1,
+  "savetibet.ru": 1,
+  "savetibetstore.org": 1,
+  "savevid.com": 1,
+  "say2.info": 1,
+  "sbme.me": 1,
+  "sbs.com.au": 1,
+  "scasino.com": 1,
+  "sciencemag.org": 1,
+  "sciencenets.com": 1,
+  "scmp.com": 1,
+  "scmpchinese.com": 1,
+  "scramble.io": 1,
+  "scribd.com": 1,
+  "scriptspot.com": 1,
+  "seapuff.com": 1,
+  "search.com": 1,
+  "searchtruth.com": 1,
+  "secretchina.com": 1,
+  "secretgarden.no": 1,
+  "secretsline.biz": 1,
+  "securetunnel.com": 1,
+  "securitykiss.com": 1,
+  "seed4.me": 1,
+  "seehua.com": 1,
+  "seesmic.com": 1,
+  "seevpn.com": 1,
+  "seezone.net": 1,
+  "sejie.com": 1,
+  "sendspace.com": 1,
+  "seraph.me": 1,
+  "sesawe.net": 1,
+  "sesawe.org": 1,
+  "sethwklein.net": 1,
+  "setn.com": 1,
+  "setty.com.tw": 1,
+  "sevenload.com": 1,
+  "sex.com": 1,
+  "sex-11.com": 1,
+  "sex3.com": 1,
+  "sex8.cc": 1,
+  "sexandsubmission.com": 1,
+  "sexbot.com": 1,
+  "sexhu.com": 1,
+  "sexhuang.com": 1,
+  "sexinsex.net": 1,
+  "sextvx.com": 1,
+  "sfileydy.com": 1,
+  "sfshibao.com": 1,
+  "sftindia.org": 1,
+  "sftuk.org": 1,
+  "shadeyouvpn.com": 1,
+  "shadow.ma": 1,
+  "shadowsky.xyz": 1,
+  "shadowsocks.asia": 1,
+  "shadowsocks.com": 1,
+  "shadowsocks.org": 1,
+  "shadowsocks-r.com": 1,
+  "shafaqna.com": 1,
+  "shambalapost.com": 1,
+  "shambhalasun.com": 1,
+  "shangfang.org": 1,
+  "shapeservices.com": 1,
+  "sharebee.com": 1,
+  "sharecool.org": 1,
+  "sharpdaily.com.hk": 1,
+  "sharpdaily.hk": 1,
+  "sharpdaily.tw": 1,
+  "shat-tibet.com": 1,
+  "sheikyermami.com": 1,
+  "shellfire.de": 1,
+  "shenshou.org": 1,
+  "shenyun.com": 1,
+  "shenyunperformingarts.org": 1,
+  "shenzhoufilm.com": 1,
+  "sherabgyaltsen.com": 1,
+  "shiatv.net": 1,
+  "shicheng.org": 1,
+  "shinychan.com": 1,
+  "shipcamouflage.com": 1,
+  "shitaotv.org": 1,
+  "shixiao.org": 1,
+  "shizhao.org": 1,
+  "shkspr.mobi": 1,
+  "shodanhq.com": 1,
+  "shooshtime.com": 1,
+  "shop2000.com.tw": 1,
+  "shopping.com": 1,
+  "showhaotu.com": 1,
+  "showtime.jp": 1,
+  "shvoong.com": 1,
+  "shwchurch.org": 1,
+  "shwchurch3.com": 1,
+  "siddharthasintent.org": 1,
+  "sidelinesnews.com": 1,
+  "sidelinessportseatery.com": 1,
+  "sijihuisuo.club": 1,
+  "sijihuisuo.com": 1,
+  "silkbook.com": 1,
+  "simbolostwitter.com": 1,
+  "simplecd.org": 1,
+  "simpleproductivityblog.com": 1,
+  "sina.com": 1,
+  "sina.com.tw": 1,
+  "sina.com.hk": 1,
+  "sinchew.com.my": 1,
+  "singaporepools.com.sg": 1,
+  "singfortibet.com": 1,
+  "singpao.com.hk": 1,
+  "singtao.com": 1,
+  "singtao.ca": 1,
+  "sino-monthly.com": 1,
+  "sinocast.com": 1,
+  "sinocism.com": 1,
+  "sinomontreal.ca": 1,
+  "sinonet.ca": 1,
+  "sinopitt.info": 1,
+  "sinoants.com": 1,
+  "sinoquebec.com": 1,
+  "sierrafriendsoftibet.org": 1,
+  "sis.xxx": 1,
+  "sis001.com": 1,
+  "sis001.us": 1,
+  "site90.net": 1,
+  "sitebro.tw": 1,
+  "sitekreator.com": 1,
+  "uk.to": 1,
+  "sitemaps.org": 1,
+  "sjrt.org": 1,
+  "sjum.cn": 1,
+  "sketchappsources.com": 1,
+  "skimtube.com": 1,
+  "skybet.com": 1,
+  "skynet.be": 1,
+  "skykiwi.com": 1,
+  "skype.com": 1,
+  "skyvegas.com": 1,
+  "xskywalker.com": 1,
+  "skyxvpn.com": 1,
+  "slandr.net": 1,
+  "slaytizle.com": 1,
+  "sleazydream.com": 1,
+  "slheng.com": 1,
+  "slideshare.net": 1,
+  "slime.com.tw": 1,
+  "slinkset.com": 1,
+  "slickvpn.com": 1,
+  "slutload.com": 1,
+  "smartdnsproxy.com": 1,
+  "smarthide.com": 1,
+  "smchbooks.com": 1,
+  "smh.com.au": 1,
+  "smhric.org": 1,
+  "smith.edu": 1,
+  "smyxy.org": 1,
+  "snapchat.com": 1,
+  "snaptu.com": 1,
+  "sndcdn.com": 1,
+  "sneakme.net": 1,
+  "snowlionpub.com": 1,
+  "so-net.net.tw": 1,
+  "soc.mil": 1,
+  "sockscap64.com": 1,
+  "sockslist.net": 1,
+  "socrec.org": 1,
+  "sod.co.jp": 1,
+  "softether.org": 1,
+  "softether-download.com": 1,
+  "softlayer.net": 1,
+  "sogclub.com": 1,
+  "sohcradio.com": 1,
+  "sokmil.com": 1,
+  "sorting-algorithms.com": 1,
+  "sostibet.org": 1,
+  "soumo.info": 1,
+  "soup.io": 1,
+  "sobees.com": 1,
+  "socialwhale.com": 1,
+  "softether.co.jp": 1,
+  "softwarebychuck.com": 1,
+  "sogoo.org": 1,
+  "soh.tw": 1,
+  "sohfrance.org": 1,
+  "soifind.com": 1,
+  "sokamonline.com": 1,
+  "solidaritetibet.org": 1,
+  "solidfiles.com": 1,
+  "somee.com": 1,
+  "songjianjun.com": 1,
+  "sonicbbs.cc": 1,
+  "sonidodelaesperanza.org": 1,
+  "sopcast.com": 1,
+  "sopcast.org": 1,
+  "sorazone.net": 1,
+  "sos.org": 1,
+  "sou-tong.org": 1,
+  "soubory.com": 1,
+  "soul-plus.net": 1,
+  "soulcaliburhentai.net": 1,
+  "soundcloud.com": 1,
+  "soundofhope.kr": 1,
+  "soundofhope.org": 1,
+  "soupofmedia.com": 1,
+  "sourceforge.net": 1,
+  "sourcewadio.com": 1,
+  "southnews.com.tw": 1,
+  "sowers.org.hk": 1,
+  "sowiki.net": 1,
+  "spankbang.com": 1,
+  "spankingtube.com": 1,
+  "spankwire.com": 1,
+  "spb.com": 1,
+  "speakerdeck.com": 1,
+  "spem.at": 1,
+  "spencertipping.com": 1,
+  "spicevpn.com": 1,
+  "spideroak.com": 1,
+  "spike.com": 1,
+  "spotflux.com": 1,
+  "spring4u.info": 1,
+  "sproutcore.com": 1,
+  "sproxy.info": 1,
+  "srocket.us": 1,
+  "ss-link.com": 1,
+  "ssglobal.me": 1,
+  "ssh91.com": 1,
+  "sspro.ml": 1,
+  "sss.camp": 1,
+  "sstmlt.moe": 1,
+  "sstmlt.net": 1,
+  "stackoverflow.com": 1,
+  "stage64.hk": 1,
+  "standupfortibet.org": 1,
+  "stanford.edu": 1,
+  "state.gov": 1,
+  "statueofdemocracy.org": 1,
+  "starfishfx.com": 1,
+  "starp2p.com": 1,
+  "startpage.com": 1,
+  "static-economist.com": 1,
+  "stc.com.sa": 1,
+  "steamcommunity.com": 1,
+  "steel-storm.com": 1,
+  "steganos.com": 1,
+  "steganos.net": 1,
+  "stepchina.com": 1,
+  "stgloballink.com": 1,
+  "stheadline.com": 1,
+  "sthoo.com": 1,
+  "stickam.com": 1,
+  "stickeraction.com": 1,
+  "stileproject.com": 1,
+  "sto.cc": 1,
+  "stoneip.info": 1,
+  "storagenewsletter.com": 1,
+  "storm.mg": 1,
+  "stoptibetcrisis.net": 1,
+  "storify.com": 1,
+  "stormmediagroup.com": 1,
+  "stoweboyd.com": 1,
+  "stranabg.com": 1,
+  "streamingthe.net": 1,
+  "streema.com": 1,
+  "streetvoice.com": 1,
+  "strikingly.com": 1,
+  "strongvpn.com": 1,
+  "strongwindpress.com": 1,
+  "student.tw": 1,
+  "studentsforafreetibet.org": 1,
+  "stumbleupon.com": 1,
+  "stupidvideos.com": 1,
+  "successfn.com": 1,
+  "sueddeutsche.de": 1,
+  "sugarsync.com": 1,
+  "sugobbs.com": 1,
+  "sugumiru18.com": 1,
+  "suissl.com": 1,
+  "summify.com": 1,
+  "sumrando.com": 1,
+  "sun1911.com": 1,
+  "sunporno.com": 1,
+  "sunmedia.ca": 1,
+  "sunskyforum.com": 1,
+  "sunta.com.tw": 1,
+  "sunvpn.net": 1,
+  "suoluo.org": 1,
+  "superfreevpn.com": 1,
+  "supervpn.net": 1,
+  "suppig.net": 1,
+  "suprememastertv.com": 1,
+  "surfeasy.com": 1,
+  "surfeasy.com.au": 1,
+  "surrenderat20.net": 1,
+  "suyangg.com": 1,
+  "swissvpn.net": 1,
+  "switchvpn.net": 1,
+  "swift-tools.net": 1,
+  "sydneytoday.com": 1,
+  "sylfoundation.org": 1,
+  "syncback.com": 1,
+  "sysresccd.org": 1,
+  "syx86.com": 1,
+  "syx86.cn": 1,
+  "szbbs.net": 1,
+  "szetowah.org.hk": 1,
+  "t35.com": 1,
+  "t66y.com": 1,
+  "taa-usa.org": 1,
+  "taaze.tw": 1,
+  "tablesgenerator.com": 1,
+  "tabtter.jp": 1,
+  "tacem.org": 1,
+  "taconet.com.tw": 1,
+  "taedp.org.tw": 1,
+  "tafm.org": 1,
+  "tagwa.org.au": 1,
+  "tagwalk.com": 1,
+  "tahr.org.tw": 1,
+  "taipeisociety.org": 1,
+  "taiwanbible.com": 1,
+  "taiwancon.com": 1,
+  "taiwandaily.net": 1,
+  "taiwandc.org": 1,
+  "taiwanembassy.org": 1,
+  "taiwanjustice.com": 1,
+  "taiwankiss.com": 1,
+  "taiwannation.com": 1,
+  "taiwannation.com.tw": 1,
+  "taiwanncf.org.tw": 1,
+  "taiwannews.com.tw": 1,
+  "taiwanonline.cc": 1,
+  "taiwantoday.tw": 1,
+  "taiwantp.net": 1,
+  "taiwantt.org.tw": 1,
+  "taiwanus.net": 1,
+  "taiwanyes.com": 1,
+  "taiwan-sex.com": 1,
+  "talk853.com": 1,
+  "talkboxapp.com": 1,
+  "talkonly.net": 1,
+  "tamiaode.tk": 1,
+  "tanc.org": 1,
+  "tangben.com": 1,
+  "tangren.us": 1,
+  "taoism.net": 1,
+  "taolun.info": 1,
+  "tapatalk.com": 1,
+  "taragana.com": 1,
+  "tascn.com.au": 1,
+  "taup.net": 1,
+  "taup.org.tw": 1,
+  "taweet.com": 1,
+  "tbcollege.org": 1,
+  "tbi.org.hk": 1,
+  "tbicn.org": 1,
+  "tbjyt.org": 1,
+  "tbpic.info": 1,
+  "tbrc.org": 1,
+  "tbs-rainbow.org": 1,
+  "tbsec.org": 1,
+  "page.tl": 1,
+  "tbsmalaysia.org": 1,
+  "tbsn.org": 1,
+  "tbsseattle.org": 1,
+  "tbssqh.org": 1,
+  "tbswd.org": 1,
+  "tbthouston.org": 1,
+  "tccwonline.org": 1,
+  "tcewf.org": 1,
+  "tchrd.org": 1,
+  "tcnynj.org": 1,
+  "tcsofbc.org": 1,
+  "tcsovi.org": 1,
+  "teamamericany.com": 1,
+  "teck.in": 1,
+  "teeniefuck.net": 1,
+  "teensinasia.com": 1,
+  "telecomspace.com": 1,
+  "telegram.org": 1,
+  "telegramdownload.com": 1,
+  "tenacy.com": 1,
+  "tenzinpalmo.com": 1,
+  "tew.org": 1,
+  "thaicn.com": 1,
+  "theatrum-belli.com": 1,
+  "theblemish.com": 1,
+  "thebcomplex.com": 1,
+  "thebobs.com": 1,
+  "thechinabeat.org": 1,
+  "thechinastory.org": 1,
+  "thedalailamamovie.com": 1,
+  "thedw.us": 1,
+  "thefrontier.hk": 1,
+  "thegioitinhoc.vn": 1,
+  "thegly.com": 1,
+  "thehots.info": 1,
+  "thehousenews.com": 1,
+  "thehun.net": 1,
+  "theinitium.com": 1,
+  "thenewslens.com": 1,
+  "thepiratebay.org": 1,
+  "theportalwiki.com": 1,
+  "thereallove.kr": 1,
+  "thespeeder.com": 1,
+  "thestandnews.com": 1,
+  "thetibetcenter.org": 1,
+  "thetibetconnection.org": 1,
+  "thetibetmuseum.org": 1,
+  "thetibetpost.com": 1,
+  "thetrotskymovie.com": 1,
+  "thevivekspot.com": 1,
+  "thewgo.org": 1,
+  "thinkingtaiwan.com": 1,
+  "thisav.com": 1,
+  "thlib.org": 1,
+  "thomasbernhard.org": 1,
+  "thongdreams.com": 1,
+  "threatchaos.com": 1,
+  "throughnightsfire.com": 1,
+  "thumbzilla.com": 1,
+  "thywords.com": 1,
+  "thywords.com.tw": 1,
+  "tiananmenmother.org": 1,
+  "tiananmenduizhi.com": 1,
+  "tiananmenuniv.com": 1,
+  "tiananmenuniv.net": 1,
+  "tiandixing.org": 1,
+  "tianhuayuan.com": 1,
+  "tianlawoffice.com": 1,
+  "tianti.io": 1,
+  "tiantibooks.org": 1,
+  "tianzhu.org": 1,
+  "tibet.at": 1,
+  "tibet.ca": 1,
+  "tibet.com": 1,
+  "tibet.fr": 1,
+  "tibet.net": 1,
+  "tibet.nu": 1,
+  "tibet.org": 1,
+  "tibet.sk": 1,
+  "tibet.org.tw": 1,
+  "tibet.to": 1,
+  "tibet-envoy.eu": 1,
+  "tibet-foundation.org": 1,
+  "tibet-info.net": 1,
+  "tibet-initiative.de": 1,
+  "tibet-munich.de": 1,
+  "tibet3rdpole.org": 1,
+  "tibetaction.net": 1,
+  "tibetaid.org": 1,
+  "tibetalk.com": 1,
+  "tibetan.fr": 1,
+  "tibetan-alliance.org": 1,
+  "tibetanarts.org": 1,
+  "tibetanbuddhistinstitute.org": 1,
+  "tibetancommunity.org": 1,
+  "tibetanjournal.com": 1,
+  "tibetanlanguage.org": 1,
+  "tibetanliberation.org": 1,
+  "tibetcollection.com": 1,
+  "tibetanaidproject.org": 1,
+  "tibetancommunityuk.net": 1,
+  "tibetanculture.org": 1,
+  "tibetanfeministcollective.org": 1,
+  "tibetanpaintings.com": 1,
+  "tibetanphotoproject.com": 1,
+  "tibetanpoliticalreview.org": 1,
+  "tibetanreview.net": 1,
+  "tibetansports.org": 1,
+  "tibetanwomen.org": 1,
+  "tibetanyouth.org": 1,
+  "tibetanyouthcongress.org": 1,
+  "tibetcharity.dk": 1,
+  "tibetcharity.in": 1,
+  "tibetchild.org": 1,
+  "tibetcity.com": 1,
+  "tibetcorps.org": 1,
+  "tibetexpress.net": 1,
+  "tibetfocus.com": 1,
+  "tibetfund.org": 1,
+  "tibetgermany.com": 1,
+  "tibetgermany.de": 1,
+  "tibethaus.com": 1,
+  "tibetheritagefund.org": 1,
+  "tibethouse.jp": 1,
+  "tibethouse.org": 1,
+  "tibethouse.us": 1,
+  "tibetinfonet.net": 1,
+  "tibetjustice.org": 1,
+  "tibetkomite.dk": 1,
+  "tibetmuseum.org": 1,
+  "tibetnetwork.org": 1,
+  "tibetoffice.ch": 1,
+  "tibetoffice.eu": 1,
+  "tibetoffice.org": 1,
+  "tibetonline.com": 1,
+  "tibetoffice.com.au": 1,
+  "tibetonline.tv": 1,
+  "tibetoralhistory.org": 1,
+  "tibetpolicy.eu": 1,
+  "tibetsites.com": 1,
+  "tibetsociety.com": 1,
+  "tibetsun.com": 1,
+  "tibetsupportgroup.org": 1,
+  "tibetswiss.ch": 1,
+  "tibettelegraph.com": 1,
+  "tibettimes.net": 1,
+  "tibetwrites.org": 1,
+  "ticket.com.tw": 1,
+  "tigervpn.com": 1,
+  "timdir.com": 1,
+  "time.com": 1,
+  "timsah.com": 1,
+  "tiney.com": 1,
+  "tintuc101.com": 1,
+  "tiny.cc": 1,
+  "tinychat.com": 1,
+  "tinypaste.com": 1,
+  "tistory.com": 1,
+  "tkcs-collins.com": 1,
+  "tmagazine.com": 1,
+  "tmdfish.com": 1,
+  "tmi.me": 1,
+  "tmpp.org": 1,
+  "tnaflix.com": 1,
+  "tngrnow.com": 1,
+  "tngrnow.net": 1,
+  "tnp.org": 1,
+  "to-porno.com": 1,
+  "togetter.com": 1,
+  "tokyo-247.com": 1,
+  "tokyo-hot.com": 1,
+  "tokyo-porn-tube.com": 1,
+  "tokyocn.com": 1,
+  "tomonews.net": 1,
+  "tongil.or.kr": 1,
+  "tono-oka.jp": 1,
+  "tonyyan.net": 1,
+  "toodoc.com": 1,
+  "toonel.net": 1,
+  "top81.ws": 1,
+  "topnews.in": 1,
+  "torguard.net": 1,
+  "topshareware.com": 1,
+  "topsy.com": 1,
+  "toptip.ca": 1,
+  "tora.to": 1,
+  "torcn.com": 1,
+  "torproject.org": 1,
+  "torrentcrazy.com": 1,
+  "torrentprivacy.com": 1,
+  "torrentproject.se": 1,
+  "torrenty.org": 1,
+  "torrentz.eu": 1,
+  "torvpn.com": 1,
+  "totalvpn.com": 1,
+  "towngain.com": 1,
+  "toypark.in": 1,
+  "toytractorshow.com": 1,
+  "tparents.org": 1,
+  "tpi.org.tw": 1,
+  "traffichaus.com": 1,
+  "transparency.org": 1,
+  "treemall.com.tw": 1,
+  "trendsmap.com": 1,
+  "trialofccp.org": 1,
+  "trimondi.de": 1,
+  "trouw.nl": 1,
+  "trtc.com.tw": 1,
+  "truebuddha-md.org": 1,
+  "trulyergonomic.com": 1,
+  "co.tv": 1,
+  "truthontour.org": 1,
+  "truveo.com": 1,
+  "tsctv.net": 1,
+  "tsemtulku.com": 1,
+  "tsquare.tv": 1,
+  "tsu.org.tw": 1,
+  "tsunagarumon.com": 1,
+  "tt-rss.org": 1,
+  "tt1069.com": 1,
+  "tttan.com": 1,
+  "ttv.com.tw": 1,
+  "tu8964.com": 1,
+  "tubaholic.com": 1,
+  "tube.com": 1,
+  "tube8.com": 1,
+  "tube911.com": 1,
+  "tubecup.com": 1,
+  "tubegals.com": 1,
+  "tubeislam.com": 1,
+  "tubestack.com": 1,
+  "tubewolf.com": 1,
+  "tuidang.net": 1,
+  "tuidang.org": 1,
+  "tuidang.se": 1,
+  "tuitui.info": 1,
+  "tumutanzi.com": 1,
+  "tumview.com": 1,
+  "tunein.com": 1,
+  "tunnelbear.com": 1,
+  "tunnelr.com": 1,
+  "tuo8.blue": 1,
+  "tuo8.cc": 1,
+  "tuo8.club": 1,
+  "tuo8.hk": 1,
+  "tuo8.in": 1,
+  "tuo8.ninja": 1,
+  "tuo8.org": 1,
+  "tuo8.pw": 1,
+  "tuo8.red": 1,
+  "tuitwit.com": 1,
+  "turansam.org": 1,
+  "turbobit.net": 1,
+  "turbohide.com": 1,
+  "tushycash.com": 1,
+  "tutanota.com": 1,
+  "tuvpn.com": 1,
+  "tuzaijidi.com": 1,
+  "tw01.org": 1,
+  "tumblr.com": 1,
+  "soylent.com": 1,
+  "tv.com": 1,
+  "tvants.com": 1,
+  "tvb.com": 1,
+  "tvbs.com.tw": 1,
+  "tvboxnow.com": 1,
+  "tvider.com": 1,
+  "tvmost.com.hk": 1,
+  "tvplayvideos.com": 1,
+  "tvunetworks.com": 1,
+  "tw-blog.com": 1,
+  "tw-npo.org": 1,
+  "twaitter.com": 1,
+  "twapperkeeper.com": 1,
+  "twaud.io": 1,
+  "twavi.com": 1,
+  "twbbs.net.tw": 1,
+  "twbbs.org": 1,
+  "twbbs.tw": 1,
+  "twblogger.com": 1,
+  "tweepmag.com": 1,
+  "tweepml.org": 1,
+  "tweetbackup.com": 1,
+  "tweetboard.com": 1,
+  "tweetboner.biz": 1,
+  "tweetcs.com": 1,
+  "tweetdeck.com": 1,
+  "deck.ly": 1,
+  "mtw.tl": 1,
+  "tweetedtimes.com": 1,
+  "tweetmylast.fm": 1,
+  "tweetphoto.com": 1,
+  "tweetrans.com": 1,
+  "tweetree.com": 1,
+  "tweettunnel.com": 1,
+  "tweetwally.com": 1,
+  "tweetymail.com": 1,
+  "twelve.today": 1,
+  "twftp.org": 1,
+  "twibase.com": 1,
+  "twibble.de": 1,
+  "twibbon.com": 1,
+  "twibs.com": 1,
+  "twicsy.com": 1,
+  "twiends.com": 1,
+  "twifan.com": 1,
+  "twiffo.com": 1,
+  "twilightsex.com": 1,
+  "twilog.org": 1,
+  "twimbow.com": 1,
+  "twindexx.com": 1,
+  "twipple.jp": 1,
+  "twip.me": 1,
+  "twishort.com": 1,
+  "twistar.cc": 1,
+  "twister.net.co": 1,
+  "twisterio.com": 1,
+  "twisternow.com": 1,
+  "twistory.net": 1,
+  "twitbrowser.net": 1,
+  "twitcause.com": 1,
+  "twitgether.com": 1,
+  "twiggit.org": 1,
+  "twitgoo.com": 1,
+  "twitiq.com": 1,
+  "twitlonger.com": 1,
+  "tl.gd": 1,
+  "twitmania.com": 1,
+  "twitoaster.com": 1,
+  "twitonmsn.com": 1,
+  "twitpic.com": 1,
+  "twit2d.com": 1,
+  "twitstat.com": 1,
+  "firstfivefollowers.com": 1,
+  "retweeteffect.com": 1,
+  "tweeplike.me": 1,
+  "tweepguide.com": 1,
+  "turbotwitter.com": 1,
+  "twitvid.com": 1,
+  "t.co": 1,
+  "twt.tl": 1,
+  "twittbot.net": 1,
+  "ads-twitter.com": 1,
+  "twitter.com": 1,
+  "twitter.jp": 1,
+  "twttr.com": 1,
+  "twitter4j.org": 1,
+  "twittercounter.com": 1,
+  "twitterfeed.com": 1,
+  "twittergadget.com": 1,
+  "twitterkr.com": 1,
+  "twittermail.com": 1,
+  "twitterrific.com": 1,
+  "twittertim.es": 1,
+  "twitthat.com": 1,
+  "twitturk.com": 1,
+  "twitturly.com": 1,
+  "twitzap.com": 1,
+  "twiyia.com": 1,
+  "twstar.net": 1,
+  "twtkr.com": 1,
+  "twimg.com": 1,
+  "twnorth.org.tw": 1,
+  "twskype.com": 1,
+  "twtrland.com": 1,
+  "twurl.nl": 1,
+  "twyac.org": 1,
+  "txxx.com": 1,
+  "tycool.com": 1,
+  "tzangms.com": 1,
+  "typepad.com": 1,
+  "expofutures.com": 1,
+  "law.com": 1,
+  "tampabay.com": 1,
+  "twilio.com": 1,
+  "embr.in": 1,
+  "u9un.com": 1,
+  "ubddns.org": 1,
+  "uberproxy.net": 1,
+  "uc-japan.org": 1,
+  "ucam.org": 1,
+  "ucanews.com": 1,
+  "ucdc1998.org": 1,
+  "uderzo.it": 1,
+  "udn.com": 1,
+  "udn.com.tw": 1,
+  "udnbkk.com": 1,
+  "uforadio.com.tw": 1,
+  "ufreevpn.com": 1,
+  "ugo.com": 1,
+  "uhdwallpapers.org": 1,
+  "uhrp.org": 1,
+  "uighur.nl": 1,
+  "uighurbiz.net": 1,
+  "ulike.net": 1,
+  "ultravpn.fr": 1,
+  "ultraxs.com": 1,
+  "umich.edu": 1,
+  "unblock.cn.com": 1,
+  "unblocker.yt": 1,
+  "unblock-us.com": 1,
+  "unblockdmm.com": 1,
+  "unblocksit.es": 1,
+  "uncyclomedia.org": 1,
+  "uncyclopedia.hk": 1,
+  "uncyclopedia.tw": 1,
+  "underwoodammo.com": 1,
+  "unholyknight.com": 1,
+  "uni.cc": 1,
+  "unicode.org": 1,
+  "unification.net": 1,
+  "unification.org.tw": 1,
+  "unitedsocialpress.com": 1,
+  "unix100.com": 1,
+  "unknownspace.org": 1,
+  "unodedos.com": 1,
+  "unpo.org": 1,
+  "untraceable.us": 1,
+  "uocn.org": 1,
+  "updatestar.com": 1,
+  "upholdjustice.org": 1,
+  "upload4u.info": 1,
+  "uploaded.net": 1,
+  "uploaded.to": 1,
+  "uploadstation.com": 1,
+  "upornia.com": 1,
+  "uproxy.org": 1,
+  "uptodown.com": 1,
+  "upwill.org": 1,
+  "ur7s.com": 1,
+  "urbansurvival.com": 1,
+  "url.com.tw": 1,
+  "urlborg.com": 1,
+  "urlparser.com": 1,
+  "us.to": 1,
+  "usacn.com": 1,
+  "usaip.eu": 1,
+  "usc.edu": 1,
+  "usejump.com": 1,
+  "usfk.mil": 1,
+  "usma.edu": 1,
+  "usmc.mil": 1,
+  "uspto.gov": 1,
+  "ustream.tv": 1,
+  "usunitednews.com": 1,
+  "usus.cc": 1,
+  "utopianpal.com": 1,
+  "uu-gg.com": 1,
+  "uvwxyz.xyz": 1,
+  "uwants.com": 1,
+  "uwants.net": 1,
+  "uyghur-j.org": 1,
+  "uyghuramerican.org": 1,
+  "uyghurcanadiansociety.org": 1,
+  "uyghurcongress.org": 1,
+  "uyghurpen.org": 1,
+  "uyghurpress.com": 1,
+  "uyghurstudies.org": 1,
+  "uygur.org": 1,
+  "uymaarip.com": 1,
+  "v2ray.com": 1,
+  "van001.com": 1,
+  "van698.com": 1,
+  "vanemu.cn": 1,
+  "vanilla-jp.com": 1,
+  "vanpeople.com": 1,
+  "vansky.com": 1,
+  "vcf-online.org": 1,
+  "vcfbuilder.org": 1,
+  "velkaepocha.sk": 1,
+  "venbbs.com": 1,
+  "venchina.com": 1,
+  "venetianmacao.com": 1,
+  "veoh.com": 1,
+  "verizon.net": 1,
+  "vermonttibet.org": 1,
+  "versavpn.com": 1,
+  "verybs.com": 1,
+  "vft.com.tw": 1,
+  "viber.com": 1,
+  "vica.info": 1,
+  "victimsofcommunism.org": 1,
+  "vid.me": 1,
+  "vidble.com": 1,
+  "videobam.com": 1,
+  "videodetective.com": 1,
+  "videomega.tv": 1,
+  "videomo.com": 1,
+  "videopediaworld.com": 1,
+  "videopress.com": 1,
+  "vidinfo.org": 1,
+  "vietdaikynguyen.com": 1,
+  "vijayatemple.org": 1,
+  "vimeo.com": 1,
+  "vimperator.org": 1,
+  "vincnd.com": 1,
+  "vinniev.com": 1,
+  "virginia.edu": 1,
+  "visibletweets.com": 1,
+  "visiontimes.com": 1,
+  "vital247.org": 1,
+  "viu.com": 1,
+  "vivahentai4u.net": 1,
+  "vivatube.com": 1,
+  "vivthomas.com": 1,
+  "vjmedia.com.hk": 1,
+  "vllcs.org": 1,
+  "vmixcore.com": 1,
+  "voa.mobi": 1,
+  "voachineseblog.com": 1,
+  "voagd.com": 1,
+  "voacantonese.com": 1,
+  "voachinese.com": 1,
+  "voanews.com": 1,
+  "voatibetan.com": 1,
+  "voatibetanenglish.com": 1,
+  "vocativ.com": 1,
+  "vocn.tv": 1,
+  "vot.org": 1,
+  "vovo2000.com": 1,
+  "voxer.com": 1,
+  "voy.com": 1,
+  "vpn.ac": 1,
+  "vpn4all.com": 1,
+  "vpnaccount.org": 1,
+  "vpnaccounts.com": 1,
+  "vpncomparison.org": 1,
+  "vpncup.com": 1,
+  "vpnbook.com": 1,
+  "vpncoupons.com": 1,
+  "vpndada.com": 1,
+  "vpnfan.com": 1,
+  "vpnfire.com": 1,
+  "vpnforgame.net": 1,
+  "vpnunlimitedapp.com": 1,
+  "vpngate.jp": 1,
+  "vpngate.net": 1,
+  "vpngratis.net": 1,
+  "vpnhq.com": 1,
+  "vpnmaster.com": 1,
+  "vpninja.net": 1,
+  "vpnintouch.com": 1,
+  "vpnintouch.net": 1,
+  "vpnjack.com": 1,
+  "vpnpick.com": 1,
+  "vpnpop.com": 1,
+  "vpnpronet.com": 1,
+  "vpnreactor.com": 1,
+  "vpnreviewz.com": 1,
+  "vpnsecure.me": 1,
+  "vpnshazam.com": 1,
+  "vpnshieldapp.com": 1,
+  "vpnsp.com": 1,
+  "vpntraffic.com": 1,
+  "vpntunnel.com": 1,
+  "vpnuk.info": 1,
+  "vpnvip.com": 1,
+  "vpnworldwide.com": 1,
+  "vporn.com": 1,
+  "vpser.net": 1,
+  "vraiesagesse.net": 1,
+  "vtunnel.com": 1,
+  "vuku.cc": 1,
+  "w3.org": 1,
+  "w3schools.com": 1,
+  "waffle1999.com": 1,
+  "wahas.com": 1,
+  "waigaobu.com": 1,
+  "waikeung.org": 1,
+  "wailaike.net": 1,
+  "waiwaier.com": 1,
+  "wallornot.org": 1,
+  "wallpapercasa.com": 1,
+  "wallproxy.com": 1,
+  "waltermartin.com": 1,
+  "waltermartin.org": 1,
+  "wan-press.org": 1,
+  "wanderinghorse.net": 1,
+  "wangafu.net": 1,
+  "wangjinbo.org": 1,
+  "wanglixiong.com": 1,
+  "wango.org": 1,
+  "wangruoshui.net": 1,
+  "wangruowang.org": 1,
+  "want-daily.com": 1,
+  "wapedia.mobi": 1,
+  "waselpro.com": 1,
+  "watchinese.com": 1,
+  "wattpad.com": 1,
+  "warehouse333.com": 1,
+  "washeng.net": 1,
+  "watch8x.com": 1,
+  "watchmygf.net": 1,
+  "wav.tv": 1,
+  "wdf5.com": 1,
+  "wearehairy.com": 1,
+  "wearn.com": 1,
+  "weather.com.hk": 1,
+  "hudatoriq.web.id": 1,
+  "web2project.net": 1,
+  "webbang.net": 1,
+  "webevader.org": 1,
+  "webfreer.com": 1,
+  "weblagu.com": 1,
+  "webjb.org": 1,
+  "webrush.net": 1,
+  "webs-tv.net": 1,
+  "websitepulse.com": 1,
+  "websnapr.com": 1,
+  "webwarper.net": 1,
+  "webworkerdaily.com": 1,
+  "weekmag.info": 1,
+  "wefightcensorship.org": 1,
+  "wefong.com": 1,
+  "weiboleak.com": 1,
+  "weihuo.org": 1,
+  "weijingsheng.org": 1,
+  "weiming.info": 1,
+  "weiquanwang.org": 1,
+  "weisuo.ws": 1,
+  "welovecock.com": 1,
+  "wemigrate.org": 1,
+  "wengewang.com": 1,
+  "wengewang.org": 1,
+  "wenhui.ch": 1,
+  "wenweipo.com": 1,
+  "wenxuecity.com": 1,
+  "wenyunchao.com": 1,
+  "westca.com": 1,
+  "westernwolves.com": 1,
+  "westkit.net": 1,
+  "westpoint.edu": 1,
+  "westernshugdensociety.org": 1,
+  "wetpussygames.com": 1,
+  "wetplace.com": 1,
+  "wexiaobo.org": 1,
+  "wezhiyong.org": 1,
+  "wezone.net": 1,
+  "wforum.com": 1,
+  "whatblocked.com": 1,
+  "wheatseeds.org": 1,
+  "wheelockslatin.com": 1,
+  "whippedass.com": 1,
+  "whotalking.com": 1,
+  "whylover.com": 1,
+  "whyx.org": 1,
+  "wikia.com": 1,
+  "wikileaks.ch": 1,
+  "wikileaks.com": 1,
+  "wikileaks.de": 1,
+  "wikileaks.eu": 1,
+  "wikileaks.lu": 1,
+  "wikileaks.org": 1,
+  "wikileaks.pl": 1,
+  "wikileaks-forum.com": 1,
+  "wildammo.com": 1,
+  "collateralmurder.com": 1,
+  "collateralmurder.org": 1,
+  "wikilivres.info": 1,
+  "wikimapia.org": 1,
+  "wikisource.org": 1,
+  "wikinews.org": 1,
+  "wikivoyage.org": 1,
+  "wiktionary.org": 1,
+  "wikipedia.org": 1,
+  "wikiwiki.jp": 1,
+  "williamhill.com": 1,
+  "willw.net": 1,
+  "windowsphoneme.com": 1,
+  "windscribe.com": 1,
+  "winning11.com": 1,
+  "winwhispers.info": 1,
+  "wiredbytes.com": 1,
+  "wiredpen.com": 1,
+  "wireshark.org": 1,
+  "wisdompubs.org": 1,
+  "wisevid.com": 1,
+  "witnessleeteaching.com": 1,
+  "witopia.net": 1,
+  "wjbk.org": 1,
+  "wn.com": 1,
+  "wnacg.com": 1,
+  "wnacg.org": 1,
+  "wo.tc": 1,
+  "woeser.com": 1,
+  "woesermiddle-way.net": 1,
+  "wokar.org": 1,
+  "wolfax.com": 1,
+  "woolyss.com": 1,
+  "woopie.jp": 1,
+  "woopie.tv": 1,
+  "workatruna.com": 1,
+  "workerdemo.org.hk": 1,
+  "workersthebig.net": 1,
+  "worldcat.org": 1,
+  "worldjournal.com": 1,
+  "worldvpn.net": 1,
+  "wordpress.com": 1,
+  "wp.com": 1,
+  "wow.com": 1,
+  "wow-life.net": 1,
+  "wowlegacy.ml": 1,
+  "wowporn.com": 1,
+  "wowgirls.com": 1,
+  "wowrk.com": 1,
+  "woxinghuiguo.com": 1,
+  "woyaolian.org": 1,
+  "wpoforum.com": 1,
+  "wqyd.org": 1,
+  "wrchina.org": 1,
+  "wretch.cc": 1,
+  "wsj.com": 1,
+  "wsj.net": 1,
+  "wsjhk.com": 1,
+  "wtbn.org": 1,
+  "wtfpeople.com": 1,
+  "wuerkaixi.com": 1,
+  "wufafangwen.com": 1,
+  "wufi.org.tw": 1,
+  "wuguoguang.com": 1,
+  "wujie.net": 1,
+  "wujieliulan.com": 1,
+  "wukangrui.net": 1,
+  "wwitv.com": 1,
+  "wzyboy.im": 1,
+  "x-berry.com": 1,
+  "x-art.com": 1,
+  "x-wall.org": 1,
+  "x1949x.com": 1,
+  "x365x.com": 1,
+  "xanga.com": 1,
+  "xbabe.com": 1,
+  "xbookcn.com": 1,
+  "xcafe.in": 1,
+  "xcity.jp": 1,
+  "xcritic.com": 1,
+  "xerotica.com": 1,
+  "xfiles.to": 1,
+  "xfm.pp.ru": 1,
+  "xgmyd.com": 1,
+  "xhamster.com": 1,
+  "xianchawang.net": 1,
+  "xianjian.tw": 1,
+  "xianqiao.net": 1,
+  "xiaobaiwu.com": 1,
+  "xiaochuncnjp.com": 1,
+  "xiaod.in": 1,
+  "xiaohexie.com": 1,
+  "xiaolan.me": 1,
+  "xiaoma.org": 1,
+  "xiezhua.com": 1,
+  "xihua.es": 1,
+  "xinbao.de": 1,
+  "xing.com": 1,
+  "xinmiao.com.hk": 1,
+  "xinsheng.net": 1,
+  "xinshijue.com": 1,
+  "xinhuanet.org": 1,
+  "xinyubbs.net": 1,
+  "xiongpian.com": 1,
+  "xiuren.org": 1,
+  "xizang-zhiye.org": 1,
+  "xjp.cc": 1,
+  "xjtravelguide.com": 1,
+  "xlfmtalk.com": 1,
+  "xlfmwz.info": 1,
+  "xml-training-guide.com": 1,
+  "xmovies.com": 1,
+  "xnxx.com": 1,
+  "xpdo.net": 1,
+  "xpud.org": 1,
+  "xrentdvd.com": 1,
+  "xskywalker.net": 1,
+  "xtube.com": 1,
+  "xuite.net": 1,
+  "xuzhiyong.net": 1,
+  "xuchao.org": 1,
+  "xuchao.net": 1,
+  "xvideo.cc": 1,
+  "xvideos.com": 1,
+  "xvideos.es": 1,
+  "xxbbx.com": 1,
+  "xxlmovies.com": 1,
+  "xxx.com": 1,
+  "xxxfuckmom.com": 1,
+  "xxxx.com.au": 1,
+  "xxxymovies.com": 1,
+  "xys.org": 1,
+  "xysblogs.org": 1,
+  "xyy69.com": 1,
+  "xyy69.info": 1,
+  "yahoo.com": 1,
+  "yahoo.co.jp": 1,
+  "yahoo.com.tw": 1,
+  "yahoo.com.hk": 1,
+  "yahoo.net": 1,
+  "yakbutterblues.com": 1,
+  "yam.com": 1,
+  "yam.org.tw": 1,
+  "yanghengjun.com": 1,
+  "yangjianli.com": 1,
+  "yasukuni.or.jp": 1,
+  "yayabay.com": 1,
+  "ydy.com": 1,
+  "yeahteentube.com": 1,
+  "yecl.net": 1,
+  "yeelou.com": 1,
+  "yeeyi.com": 1,
+  "yegle.net": 1,
+  "yes.xxx": 1,
+  "yes123.com.tw": 1,
+  "yesasia.com": 1,
+  "yesasia.com.hk": 1,
+  "yes-news.com": 1,
+  "yespornplease.com": 1,
+  "yhcw.net": 1,
+  "yibada.com": 1,
+  "yibaochina.com": 1,
+  "yidio.com": 1,
+  "yilubbs.com": 1,
+  "yimg.com": 1,
+  "yingsuoss.com": 1,
+  "yipub.com": 1,
+  "yinlei.org": 1,
+  "yizhihongxing.com": 1,
+  "yobt.com": 1,
+  "yogichen.org": 1,
+  "yong.hu": 1,
+  "yorkbbs.ca": 1,
+  "youxu.info": 1,
+  "youjizz.com": 1,
+  "youmaker.com": 1,
+  "youngspiration.hk": 1,
+  "youpai.org": 1,
+  "your-freedom.net": 1,
+  "yourepeat.com": 1,
+  "yourprivatevpn.com": 1,
+  "yousendit.com": 1,
+  "youthnetradio.org": 1,
+  "youthwant.com.tw": 1,
+  "youporn.com": 1,
+  "youporngay.com": 1,
+  "yourlisten.com": 1,
+  "yourlust.com": 1,
+  "youshun12.com": 1,
+  "youtubecn.com": 1,
+  "youversion.com": 1,
+  "ytht.net": 1,
+  "yuanming.net": 1,
+  "yuanzhengtang.org": 1,
+  "yulghun.com": 1,
+  "yunchao.net": 1,
+  "yuvutu.com": 1,
+  "yvesgeleyn.com": 1,
+  "ywpw.com": 1,
+  "yx51.net": 1,
+  "yyii.org": 1,
+  "yzzk.com": 1,
+  "zacebook.com": 1,
+  "zalmos.com": 1,
+  "zannel.com": 1,
+  "zaobao.com.sg": 1,
+  "zaozon.com": 1,
+  "zdnet.com.tw": 1,
+  "zello.com": 1,
+  "zengjinyan.org": 1,
+  "zenmate.com": 1,
+  "zenmate.com.ru": 1,
+  "zeutch.com": 1,
+  "zfreet.com": 1,
+  "zgsddh.com": 1,
+  "zgzcjj.net": 1,
+  "zhanbin.net": 1,
+  "zhangboli.net": 1,
+  "zhangtianliang.com": 1,
+  "zhenghui.org": 1,
+  "zhengwunet.org": 1,
+  "zhenlibu.info": 1,
+  "zhenlibu1984.com": 1,
+  "zhenxiang.biz": 1,
+  "zhinengluyou.com": 1,
+  "zhongguo.ca": 1,
+  "zhongguorenquan.org": 1,
+  "zhongguotese.net": 1,
+  "zhongmeng.org": 1,
+  "zhreader.com": 1,
+  "zhuangbi.me": 1,
+  "zhuanxing.cn": 1,
+  "zhuatieba.com": 1,
+  "zhuichaguoji.org": 1,
+  "zi5.me": 1,
+  "ziddu.com": 1,
+  "zillionk.com": 1,
+  "zinio.com": 1,
+  "ziplib.com": 1,
+  "ziporn.com": 1,
+  "zkaip.com": 1,
+  "zkiz.com": 1,
+  "zmw.cn": 1,
+  "zodgame.us": 1,
+  "zomobo.net": 1,
+  "zonaeuropa.com": 1,
+  "zonghexinwen.com": 1,
+  "zonghexinwen.net": 1,
+  "zootool.com": 1,
+  "zoozle.net": 1,
+  "zoho.com": 1,
+  "zpn.im": 1,
+  "zshare.net": 1,
+  "zsrhao.com": 1,
+  "zuo.la": 1,
+  "zuobiao.me": 1,
+  "zuola.com": 1,
+  "zvereff.com": 1,
+  "zynaima.com": 1,
+  "zyzc9.com": 1,
+  "zzcartoon.com": 1,
+  "apple.com": 1,
+  "google.com.hk": 1,
+  "github.com": 1
+};
+
+var direct = 'DIRECT;';
+
+var hasOwnProperty = Object.hasOwnProperty;
+
+function FindProxyForURL(url, host) {
+    var suffix;
+    var pos = host.lastIndexOf('.');
+    for (;;) {
+        suffix = host.substring(pos + 1);
+        if (hasOwnProperty.call(domains, suffix)) {
+            return proxy;
+        }
+        if (pos <= 0) {
+            return direct;
+        }
+        pos = host.lastIndexOf('.', pos - 1);
     }
-});
+}

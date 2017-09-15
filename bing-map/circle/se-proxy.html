@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SurfEasy Server</title>
+    <meta charset="utf-8" />
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+
+    <!-- Reference to the Bing Maps SDK -->
+    <script type='text/javascript'
+            src='https://www.bing.com/api/maps/mapcontrol?callback=GetMap' 
+            async defer></script>
+    
+  <script type='text/javascript'>
+  var PROXY_BASE_NAME = "se-proxy.net";
+  var DNS_SERVER_NAME = "{{NAME}}";
+  var DNS_SERVER = "https://dns.google.com/resolve?name={{NAME}}";
+  var IPAPI_URL_IP = "{{IP}}";
+  var IPAPI_URL = "https://ipapi.co/{{IP}}/json";
+  var PROXY_LIST = [{"country_code":"CA","country":"Canada","lat":43.6532,"lng":-79.3832,"state":"active"},{"country_code":"US","country":"United States","lat":40.7306,"lng":-73.9352,"state":"active"},{"country_code":"BR","country":"Brazil","lat":-22.9707,"lng":-43.1823,"state":"active"},{"country_code":"DE","country":"Germany","lat":8.8333,"lng":48.8333,"state":"active"},{"country_code":"NL","country":"Netherlands","lat":52.3702,"lng":4.8952,"state":"active"},{"country_code":"SG","country":"Singapore","lat":103.812,"lng":1.3317,"state":"active"},{"country_code":"GB","country":"United Kingdom","lat":-0.0931,"lng":51.5142,"state":"active"},{"country_code":"FR","country":"France","lat":48.8566,"lng":2.3522,"state":"active"},{"country_code":"TR","country":"Turkey","lat":27.8861,"lng":39.6492,"state":"active"},{"country_code":"AU","country":"Australia","lat":144.963,"lng":-37.8136,"state":"active"},{"country_code":"AT","country":"Austria","lat":16.1833,"lng":47.0333,"state":"active"},{"country_code":"BE","country":"Belgium","lat":4.3333,"lng":51.2167,"state":"active"},{"country_code":"IE","country":"Ireland","lat":-6.9261,"lng":52.8408,"state":"active"},{"country_code":"ZA","country":"South Africa","lat":24.85,"lng":-28.2333,"state":"active"},{"country_code":"CH","country":"Switzerland","lat":8.2896,"lng":47.5892,"state":"active"},{"country_code":"CZ","country":"Czech Republic","lat":14.4667,"lng":50.0833,"state":"active"},{"country_code":"IT","country":"Italy","lat":45.4654,"lng":9.1913,"state":"active"},{"country_code":"JP","country":"Japan","lat":136.917,"lng":35.1667,"state":"active"},{"country_code":"MX","country":"Mexico","lat":-102.3,"lng":21.8833,"state":"active"},{"country_code":"NO","country":"Norway","lat":59.9167,"lng":10.75,"state":"active"},{"country_code":"PL","country":"Poland","lat":15.4167,"lng":52.7333,"state":"active"},{"country_code":"RO","country":"Romania","lat":23.5833,"lng":46.0667,"state":"active"},{"country_code":"ES","country":"Spain","lat":40.4168,"lng":-3.7038,"state":"active"},{"country_code":"SE","country":"Sweden","lat":14.6167,"lng":61.1167,"state":"active"},{"country_code":"UA","country":"Ukraine","lat":30.35,"lng":53.9,"state":"active"},{"country_code":"FI","country":"Finland","lat":19.95,"lng":60.1,"state":"active"},{"country_code":"IL","country":"Israel","lat":34.6118,"lng":31.6732,"state":"active"},{"country_code":"DK","country":"Denmark","lat":12.546,"lng":55.7749,"state":"active"}];
+  var PushpinList = [];
+  var ProxyMap = function () {
+    var ProxyMap = this;
+
+    ProxyMap.getProxyIPs = function (name, callback) {
+      $.getJSON(DNS_SERVER.replace(DNS_SERVER_NAME, name))
+      .then(function (json) {
+        callback(json.Answer);
+      });
+    };
+
+    ProxyMap.getIPLocation = function (ip, callback) {
+      $('#ip').text(ip);
+      console.log(ip);
+      $.getJSON(IPAPI_URL.replace(IPAPI_URL_IP, ip))
+      .then(function (json) {
+        callback(json);
+      });
+    };
+
+    ProxyMap.getPushpin = function(json) {
+      var option = {
+        title: json.city,
+        subTitle: json.ip,
+        text: json.country,
+        enableHoverStyle: true
+      };
+      var loc = new Microsoft.Maps.Location(json.latitude, json.longitude);
+      return new Microsoft.Maps.Pushpin(loc, option);
+    };
+  };
+  function GetMap()
+  {
+      console.log('GetMap Start');
+      window.map = new Microsoft.Maps.Map('#myMap', {
+        credentials: 'At8g0RbyhJIuKh3ctoceki9TqUkD7FcMg3tjKDNdN8yrBJXjDJhRMik6ydqR95Cl',
+        center: new Microsoft.Maps.Location(31.25486609903968, 121.48103426106735),
+        showMapTypeSelector: false,
+        showTrafficButton: false,
+        showZoomButtons: false,
+        showLocateMeButton: false,
+        zoom: 2
+      });
+
+      var P_IP = [];
+      var PMap = new ProxyMap();
+      var len = PROXY_LIST.length;
+
+      var getNextIPLoc = function (index) {
+        var IPs = P_IP[index];
+        if (!IPs) {
+          console.log('END');
+          $('#subId').text("Finish");
+          $('#ip').text('');
+          return;
+        }
+        var len = IPs.ip.length;
+        var fn = function (ip, times) {
+          return function () {
+            PMap.getIPLocation(ip[times].data, function (json) {
+              var pushpin = PMap.getPushpin(json);
+              map.entities.push(pushpin);
+
+              if (times == len - 1) {
+                getNextIPLoc(index + 1);
+              } else {
+                setTimeout(fn(ip, times + 1), 1000 * times + 1);
+              }
+            });
+          };
+        };
+
+        setTimeout(fn(IPs.ip, 0), 1000);
+      }
+
+      PROXY_LIST.forEach(function (proxy) {
+        var IPCount = 0;
+        var code = proxy.country_code.toLowerCase();
+        PMap.getProxyIPs([code, PROXY_BASE_NAME].join('.'), function (IPs) {
+          P_IP.push({ code: code, ip: IPs });
+          if (P_IP.length == len) {
+            setTimeout(function () {
+              console.log('total: ', P_IP.length);
+              $('#subId').text("Loading");
+              getNextIPLoc(0);
+            }, 2000);
+          }
+        });
+      });
+  }
+
+  </script>
+</head>
+<body>
+    <div id="myMap" style="position:relative;width:100%;height:400px;margin: auto"></div>
+    <div id="outputPanel">
+        <div id="subId"></div>
+        <div id="ip"></div>
+    </div>
+</body>
+<style>
+  body {
+    margin: 0;
+  }
+  #outputPanel {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+</style>
+</html>

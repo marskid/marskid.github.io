@@ -241,7 +241,6 @@
             three.init(map, locs[0]);
             three.renderCircles([locs[1], locs[2]]);
             
-            map.setView({ center: loc, zoom: 14 });
             setTimeout(function () {
               Microsoft.Maps.Events.addThrottledHandler(map, 'viewchangeend', viewChangeHandler, 2000);
             }, 1000);
